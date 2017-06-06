@@ -228,13 +228,13 @@ class WC_Dynamic_Gallery_Functions
 		if ( $plugin_name != WOO_DYNAMIC_GALLERY_NAME) {
 			return $links;
 		}
-		$links[] = '<a href="http://docs.a3rev.com/user-guides/woocommerce/woo-dynamic-gallery/" target="_blank">'.__('Documentation', 'woo_dgallery').'</a>';
-		$links[] = '<a href="http://wordpress.org/support/plugin/woocommerce-dynamic-gallery/" target="_blank">'.__('Support', 'woo_dgallery').'</a>';
+		$links[] = '<a href="http://docs.a3rev.com/user-guides/woocommerce/woo-dynamic-gallery/" target="_blank">'.__('Documentation', 'woocommerce-dynamic-gallery' ).'</a>';
+		$links[] = '<a href="http://wordpress.org/support/plugin/woocommerce-dynamic-gallery/" target="_blank">'.__('Support', 'woocommerce-dynamic-gallery' ).'</a>';
 		return $links;
 	}
 
 	public static function settings_plugin_links($actions) {
-		$actions = array_merge( array( 'settings' => '<a href="admin.php?page=woo-dynamic-gallery">' . __( 'Settings', 'woo_dgallery' ) . '</a>' ), $actions );
+		$actions = array_merge( array( 'settings' => '<a href="admin.php?page=woo-dynamic-gallery">' . __( 'Settings', 'woocommerce-dynamic-gallery' ) . '</a>' ), $actions );
 
 		return $actions;
 	}
@@ -242,45 +242,45 @@ class WC_Dynamic_Gallery_Functions
 	public static function plugin_extension_box( $boxes = array() ) {
 		global $wc_dgallery_admin_init;
 
-		$support_box = '<a href="'.$wc_dgallery_admin_init->support_url.'" target="_blank" alt="'.__('Go to Support Forum', 'woo_dgallery').'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/go-to-support-forum.png" /></a>';
+		$support_box = '<a href="'.$wc_dgallery_admin_init->support_url.'" target="_blank" alt="'.__('Go to Support Forum', 'woocommerce-dynamic-gallery' ).'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/go-to-support-forum.png" /></a>';
 
 		$boxes[] = array(
 			'content' => $support_box,
 			'css' => 'border: none; padding: 0; background: none;'
 		);
 
-		$review_box = '<div style="margin-bottom: 5px; font-size: 12px;"><strong>' . __('Is this plugin is just what you needed? If so', 'woo_dgallery') . '</strong></div>';
-        $review_box .= '<a href="https://wordpress.org/support/view/plugin-reviews/woocommerce-dynamic-gallery#postform" target="_blank" alt="'.__('Submit Review for Plugin on WordPress', 'woo_dgallery').'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/a-5-star-rating-would-be-appreciated.png" /></a>';
+		$review_box = '<div style="margin-bottom: 5px; font-size: 12px;"><strong>' . __('Is this plugin is just what you needed? If so', 'woocommerce-dynamic-gallery' ) . '</strong></div>';
+        $review_box .= '<a href="https://wordpress.org/support/view/plugin-reviews/woocommerce-dynamic-gallery#postform" target="_blank" alt="'.__('Submit Review for Plugin on WordPress', 'woocommerce-dynamic-gallery' ).'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/a-5-star-rating-would-be-appreciated.png" /></a>';
 
         $boxes[] = array(
             'content' => $review_box,
             'css' => 'border: none; padding: 0; background: none;'
         );
 
-		$pro_box = '<a href="'.$wc_dgallery_admin_init->pro_plugin_page_url.'" target="_blank" alt="'.__('Product Dynamic Gallery Pro', 'woo_dgallery').'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/pro-version.jpg" /></a>';
+		$pro_box = '<a href="'.$wc_dgallery_admin_init->pro_plugin_page_url.'" target="_blank" alt="'.__('Product Dynamic Gallery Pro', 'woocommerce-dynamic-gallery' ).'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/pro-version.jpg" /></a>';
 
 		$boxes[] = array(
 			'content' => $pro_box,
 			'css' => 'border: none; padding: 0; background: none;'
 		);
 
-		$free_woocommerce_box = '<a href="https://profiles.wordpress.org/a3rev/#content-plugins" target="_blank" alt="'.__('Free WooCommerce Plugins', 'woo_dgallery').'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/free-woocommerce-plugins.png" /></a>';
+		$free_woocommerce_box = '<a href="https://profiles.wordpress.org/a3rev/#content-plugins" target="_blank" alt="'.__('Free WooCommerce Plugins', 'woocommerce-dynamic-gallery' ).'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/free-woocommerce-plugins.png" /></a>';
 
 		$boxes[] = array(
 			'content' => $free_woocommerce_box,
 			'css' => 'border: none; padding: 0; background: none;'
 		);
 
-		$free_wordpress_box = '<a href="https://profiles.wordpress.org/a3rev/#content-plugins" target="_blank" alt="'.__('Free WordPress Plugins', 'woo_dgallery').'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/free-wordpress-plugins.png" /></a>';
+		$free_wordpress_box = '<a href="https://profiles.wordpress.org/a3rev/#content-plugins" target="_blank" alt="'.__('Free WordPress Plugins', 'woocommerce-dynamic-gallery' ).'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/free-wordpress-plugins.png" /></a>';
 
 		$boxes[] = array(
 			'content' => $free_wordpress_box,
 			'css' => 'border: none; padding: 0; background: none;'
 		);
 
-		$connect_box = '<div style="margin-bottom: 5px;">' . __('Connect with us via','woo_dgallery') . '</div>';
-		$connect_box .= '<a href="https://www.facebook.com/a3rev" target="_blank" alt="'.__('a3rev Facebook', 'woo_dgallery').'" style="margin-right: 5px;"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/follow-facebook.png" /></a> ';
-		$connect_box .= '<a href="https://twitter.com/a3rev" target="_blank" alt="'.__('a3rev Twitter', 'woo_dgallery').'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/follow-twitter.png" /></a>';
+		$connect_box = '<div style="margin-bottom: 5px;">' . __('Connect with us via','woocommerce-dynamic-gallery' ) . '</div>';
+		$connect_box .= '<a href="https://www.facebook.com/a3rev" target="_blank" alt="'.__('a3rev Facebook', 'woocommerce-dynamic-gallery' ).'" style="margin-right: 5px;"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/follow-facebook.png" /></a> ';
+		$connect_box .= '<a href="https://twitter.com/a3rev" target="_blank" alt="'.__('a3rev Twitter', 'woocommerce-dynamic-gallery' ).'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/follow-twitter.png" /></a>';
 
 		$boxes[] = array(
 			'content' => $connect_box,

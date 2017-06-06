@@ -187,7 +187,7 @@ class WC_Gallery_Preview_Display
 			}
 
 			$popup_gallery = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'popup_gallery' );
-			$zoom_label = __('ZOOM +', 'woo_dgallery');
+			$zoom_label = __('ZOOM +', 'woocommerce-dynamic-gallery' );
 			if ($popup_gallery == 'deactivate') {
 				$lightbox_class = '';
 				$zoom_label = '';
@@ -500,8 +500,8 @@ class WC_Gallery_Preview_Display
                             enable: true,
                             autostart: '.$g_auto.',
                             speed: '.$g_speed.'000,
-                            start_label: "'.__('START SLIDESHOW', 'woo_dgallery').'",
-                            stop_label: "'.__('STOP SLIDESHOW', 'woo_dgallery').'",
+                            start_label: "'.__('START SLIDESHOW', 'woocommerce-dynamic-gallery' ).'",
+                            stop_label: "'.__('STOP SLIDESHOW', 'woocommerce-dynamic-gallery' ).'",
 							zoom_label: "'.$zoom_label.'",
                             stop_on_scroll: true,
                             countdown_prefix: "(",

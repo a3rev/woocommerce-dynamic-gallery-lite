@@ -5,7 +5,10 @@ Plugin URI: http://a3rev.com/shop/woocommerce-dynamic-gallery/
 Description: Auto adds a fully customizable dynamic images gallery to every single product page with thumbnails, caption text and lazy-load. Over 28 settings to fine tune every aspect of the gallery. Creates an image gallery manager on every product edit page - greatly simplifies managing product images. Search engine optimized images with WooCommerce Dynamic Gallery Pro.
 Version: 2.3.5
 Author: a3rev Software
-Author URI: http://www.a3rev.com/
+Author URI: https://a3rev.com/
+Tested up to: 4.8.0
+Text Domain: woocommerce-dynamic-gallery
+Domain Path: /languages
 License: GPLv2 or later
 */
 
@@ -36,6 +39,23 @@ if(!defined("WOO_DYNAMIC_GALLERY_DOCS_URI"))
 
 define( 'WOO_DYNAMIC_GALLERY_VERSION', '2.3.5' );
 define( 'WOO_DYNAMIC_GALLERY_DB_VERSION', '2.3.5' );
+
+/**
+ * Load Localisation files.
+ *
+ * Note: the first-loaded translation file overrides any following ones if the same translation is present.
+ *
+ * Locales found in:
+ * 		- WP_LANG_DIR/woocommerce-dynamic-gallery/woocommerce-dynamic-gallery-LOCALE.mo
+ * 	 	- WP_LANG_DIR/plugins/woocommerce-dynamic-gallery-LOCALE.mo
+ * 	 	- /wp-content/plugins/woocommerce-dynamic-gallery/languages/woocommerce-dynamic-gallery-LOCALE.mo (which if not found falls back to)
+ */
+function wc_dynamic_gallery_plugin_textdomain() {
+	$locale = apply_filters( 'plugin_locale', get_locale(), 'woocommerce-dynamic-gallery' );
+
+	load_textdomain( 'woocommerce-dynamic-gallery', WP_LANG_DIR . '/woocommerce-dynamic-gallery/woocommerce-dynamic-gallery-' . $locale . '.mo' );
+	load_plugin_textdomain( 'woocommerce-dynamic-gallery', false, WOO_DYNAMIC_GALLERY_FOLDER . '/languages/' );
+}
 
 include('admin/admin-ui.php');
 include('admin/admin-interface.php');

@@ -30,8 +30,10 @@ function wc_dynamic_gallery_init() {
 		wp_redirect( admin_url( 'admin.php?page=woo-dynamic-gallery', 'relative' ) );
 		exit;
 	}
-	load_plugin_textdomain( 'woo_dgallery', false, WOO_DYNAMIC_GALLERY_FOLDER.'/languages' );
+
+	wc_dynamic_gallery_plugin_textdomain();
 }
+
 // Add language
 add_action('init', 'wc_dynamic_gallery_init');
 

@@ -247,8 +247,8 @@ class WC_Gallery_Display_Class
 
 			$popup_gallery     = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'popup_gallery' );
 			$hide_thumb_1image = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'hide_thumb_1image', 'yes' );
-			$start_label       = __('START SLIDESHOW', 'woo_dgallery');
-			$stop_label        = __('STOP SLIDESHOW', 'woo_dgallery');
+			$start_label       = __('START SLIDESHOW', 'woocommerce-dynamic-gallery' );
+			$stop_label        = __('STOP SLIDESHOW', 'woocommerce-dynamic-gallery' );
 
 			if ( 'yes' == $global_stop_scroll_1image && count( $dgallery_ids ) <= 1 ) {
 				$enable_scroll            = 'false';
@@ -261,7 +261,7 @@ class WC_Gallery_Display_Class
 				$display_back_and_forward = 'false';
 			}
 
-			$zoom_label        = __('ZOOM +', 'woo_dgallery');
+			$zoom_label        = __('ZOOM +', 'woocommerce-dynamic-gallery' );
 			if ( 'deactivate' == $popup_gallery ) {
 				$zoom_label     = '';
 				$lightbox_class = 'lightbox';
@@ -419,7 +419,7 @@ class WC_Gallery_Display_Class
 						$script_fancybox = '';
                         if ( count( $dgallery_ids ) > 0 ) {
 
-							$current_color_text = __('image {current} of {total}', 'woo_dgallery');
+							$current_color_text = __('image {current} of {total}', 'woocommerce-dynamic-gallery' );
 							$current_color_text = '';
 
 							$script_colorbox .= '<script type="text/javascript">';

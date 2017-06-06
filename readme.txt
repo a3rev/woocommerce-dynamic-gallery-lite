@@ -60,7 +60,7 @@ As soon as you install WooCommerce Dynamic Gallery your Product pages image gall
 = Localization =
 
 * English (default) - always include.
-* .po file (woo_dgallery.po) in languages folder for translations.
+* .po file (woocommerce-dynamic-gallery.po) in languages folder for translations.
 * Your translation? Please do yours and [send it to us](http://a3rev.com/contact-us-page/) We'll acknowledge your work and link to your site.
 Please [Contact us](http://a3rev.com/contact-us-page/) if you'd like to provide a translation or an update.
 
