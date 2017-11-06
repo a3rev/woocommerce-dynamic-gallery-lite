@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery
 Requires at least: 4.5
-Tested up to: 4.8.2
-Stable tag: 2.4.1
+Tested up to: 4.8.3
+Stable tag: 2.5.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -123,6 +123,16 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 2.5.0 - 2017/11/06 =
+* Feature Upgrade. This feature upgrade adds the ability to set the source of images that populate the Dynamic gallery.
+* Feature - Add new Dynamic Gallery Image Source option support for show the slideshow on frontend from Attached Images of Product or WC Product Images
+* Feature - Add separate Dynamic Gallery Image Source option to Dynamic Gallery Meta menu on Edit Product page so that can override global option
+* Feature - Added Global Reset for this feature from the settings page option box
+* Tweak - Add new Dynamic Gallery Image Source Options box on the plugins settings page 
+* Tweak - Added Image source options to the WooCommerce Product Data - Dynamic Gallery menu on each product edit page
+* Tweak - Tested for compatibility with WooCommerce 3.2.3
+* Tweak - Tested for compatibility with WordPress 4.8.3
 
 = 2.4.1 - 2017/10/13 =
 * Tweak - Tested for compatibility with WooCommerce 3.2.0
@@ -602,6 +612,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 2.5.0 =
+Feature Upgrade. In this release we add the ability to define where images are sourced from for the Gallery, either all images uploaded to the post or just the images that have been uploaded to Product Image gallery.
 
 = 2.4.1 =
 Maintenance Upgrade. Tweaks for compatibility with WooCommerce 3.2.0 and WordPress 4.8.2

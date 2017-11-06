@@ -24,6 +24,11 @@ class WC_Dynamic_Gallery_Functions
 		$wpdb->query( "DELETE FROM ".$wpdb->postmeta." WHERE meta_key='_wc_dgallery_auto_feature_image' " );
 	}
 
+	public static function reset_image_source() {
+		global $wpdb;
+		$wpdb->query( "DELETE FROM ".$wpdb->postmeta." WHERE meta_key='_wc_dgallery_image_source' " );
+	}
+
 	public static function reset_thumbnails_activate() {
 		global $wpdb;
 		$wpdb->query( "DELETE FROM ".$wpdb->postmeta." WHERE meta_key='_wc_dgallery_enable_gallery_thumb' " );
@@ -64,6 +69,15 @@ class WC_Dynamic_Gallery_Functions
 			return self::get_gallery_ids_back_compatibility( $post_id );
 		}
 
+		$default_image_source = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'image_source' );
+		$image_source         = get_post_meta($post_id, '_wc_dgallery_image_source',true);
+		if ( empty( $image_source ) ) {
+			$image_source = $default_image_source;
+		}
+		if ( empty( $image_source ) ) {
+			$image_source = 'wc_gallery' ;
+		}
+
 		$default_auto_feature_image = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'auto_feature_image', 'yes' );
 		$auto_feature_image = get_post_meta( $post_id, '_wc_dgallery_auto_feature_image', true );
 		if ( $auto_feature_image == '' ) {
@@ -73,71 +87,67 @@ class WC_Dynamic_Gallery_Functions
 			$auto_feature_image = 'yes';
 		}
 
-		$have_gallery_ids    = false;
 		$have_featured_image = false;
+		$dgallery_ids        = array();
 
 		$featured_img_id = (int) get_post_meta( $post_id, '_thumbnail_id', true );
 		if ( ! empty( $featured_img_id ) && $featured_img_id > 0 ) {
 			$have_featured_image = true;
-			$have_gallery_ids = true;
 		}
 
-		// Use the WooCommerce Default Gallery
-		$dgallery_ids = get_post_meta( $post_id, '_product_image_gallery', true );
-		if ( ! empty( $dgallery_ids ) && '' != trim( $dgallery_ids ) ) {
-			$dgallery_ids = explode( ',', $dgallery_ids );
+		if ( 'attached' != $image_source ) {
 
-			if ( count( $dgallery_ids ) > 0 ) {
-				$have_gallery_ids = true;
+			// Use the WooCommerce Default Gallery
+			$dgallery_ids = get_post_meta( $post_id, '_product_image_gallery', true );
+			if ( ! empty( $dgallery_ids ) && '' != trim( $dgallery_ids ) ) {
+				$dgallery_ids = explode( ',', $dgallery_ids );
 			}
-		}
 
-		if ( $have_gallery_ids && is_array( $dgallery_ids ) && count( $dgallery_ids ) > 0 ) {
+			if ( is_array( $dgallery_ids ) && count( $dgallery_ids ) > 0 ) {
 
-			foreach ( $dgallery_ids as $img_id ) {
-				// Remove image id if it is not image
-				if ( ! wp_attachment_is_image( $img_id ) ) {
-					$dgallery_ids = array_diff( $dgallery_ids, array( $img_id ) );
+				foreach ( $dgallery_ids as $img_id ) {
+					// Remove image id if it is not image
+					if ( ! wp_attachment_is_image( $img_id ) ) {
+						$dgallery_ids = array_diff( $dgallery_ids, array( $img_id ) );
+					}
+				}
+
+			}
+
+			if ( 'yes' == $auto_feature_image && $have_featured_image && is_array( $dgallery_ids ) && ! in_array( $featured_img_id, $dgallery_ids ) ) {
+				$dgallery_ids = array_merge( array( $featured_img_id ), $dgallery_ids );
+			} else {
+				$dgallery_ids = array( $featured_img_id );
+			}
+
+		} else {			
+
+			if ( 'yes' == $auto_feature_image && $have_featured_image ) {
+				$dgallery_ids[] = $featured_img_id;
+			}
+
+			$attached_images = (array) get_posts( array(
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'numberposts'    => -1,
+				'post_status'    => null,
+				'post_parent'    => $post_id,
+				'orderby'        => 'menu_order',
+				'order'          => 'ASC',
+				'exclude'        => array( $featured_img_id ),
+			) );
+
+			if ( is_array( $attached_images ) && count( $attached_images ) > 0 ) {
+				foreach ( $attached_images as $item_thumb ) {
+					$is_excluded   = get_post_meta( $item_thumb->ID, '_woocommerce_exclude_image', true );
+
+					// Don't get if this image is excluded on main gallery
+					if ( 1 == $is_excluded ) continue;
+
+					$dgallery_ids[]    = $item_thumb->ID;
 				}
 			}
 
-			if ( 'yes' == $auto_feature_image && $have_featured_image && ! in_array( $featured_img_id, $dgallery_ids ) ) {
-				$dgallery_ids = array_merge( array( $featured_img_id ), $dgallery_ids );
-			}
-
-			if ( count( $dgallery_ids ) > 0 ) {
-				return $dgallery_ids;
-			}
-
-		}
-
-		// set dgallery_ids to empty array if don't have Woo Default Gallery
-		$dgallery_ids = array();
-
-		if ( $have_featured_image ) {
-			$dgallery_ids[] = $featured_img_id;
-		}
-
-		$attached_images = (array) get_posts( array(
-			'post_type'      => 'attachment',
-			'post_mime_type' => 'image',
-			'numberposts'    => -1,
-			'post_status'    => null,
-			'post_parent'    => $post_id,
-			'orderby'        => 'menu_order',
-			'order'          => 'ASC',
-			'exclude'        => array( $featured_img_id ),
-		) );
-
-		if ( is_array( $attached_images ) && count( $attached_images ) > 0 ) {
-			foreach ( $attached_images as $item_thumb ) {
-				$is_excluded   = get_post_meta( $item_thumb->ID, '_woocommerce_exclude_image', true );
-
-				// Don't get if this image is excluded on main gallery
-				if ( 1 == $is_excluded ) continue;
-
-				$dgallery_ids[]    = $item_thumb->ID;
-			}
 		}
 
 		return $dgallery_ids;

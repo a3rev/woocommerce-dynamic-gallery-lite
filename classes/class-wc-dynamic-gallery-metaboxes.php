@@ -46,6 +46,16 @@ class WC_Dynamic_Gallery_Meta_Boxes
 			$actived_d_gallery = 1;
 		}
 
+
+		$default_image_source = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'image_source' );
+		$image_source         = get_post_meta($post->ID, '_wc_dgallery_image_source',true);
+		if ( empty( $image_source ) ) {
+			$image_source = $default_image_source;
+		}
+		if ( empty( $image_source ) ) {
+			$image_source = 'wc_gallery' ;
+		}
+
 		$default_enable_gallery_thumb = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'enable_gallery_thumb' );
 		$enable_gallery_thumb         = get_post_meta($post->ID, '_wc_dgallery_enable_gallery_thumb',true);
 		if ( $enable_gallery_thumb == '' ) {
@@ -108,7 +118,7 @@ class WC_Dynamic_Gallery_Meta_Boxes
 					<input type="checkbox" <?php checked( 1, $actived_d_gallery, true ); ?> value="1" id="actived_d_gallery" name="actived_d_gallery" class="checkbox actived_d_gallery" />
 					<span class="description"><?php _e( 'Activate a3 Dynamic Image Gallery', 'woocommerce-dynamic-gallery' ); ?></span>
 					<br />
-					<?php echo __( 'Dynamic Gallery function is applied to all images in the WooCommerce Default Product Gallery. Use the Product Gallery Meta box in the right sidebar of this product edit page to Add, Move or Delete images.', 'woocommerce-dynamic-gallery' ); ?>
+					<?php echo __( 'Use the Product Gallery Meta box in the right sidebar of this product edit page to Add, Move or Delete images.', 'woocommerce-dynamic-gallery' ); ?>
 					<br />
 					<?php echo __( '<strong>Important!</strong> If you do not see the Product Gallery meta box in the sidebar go to the Screen Options Tab at the top right corner of this page and check the [ ] Product Gallery box so it will show.', 'woocommerce-dynamic-gallery' ); ?>
 					<br />
@@ -119,9 +129,11 @@ class WC_Dynamic_Gallery_Meta_Boxes
 			<div id="main_dgallery_panel" class="options_group a3_dgallery_is_variable_product" style="<?php if ( 1 != $actived_d_gallery ) { echo 'display: none;'; } ?>">
 
 				<p class="form-field">
-					<label for="wc_dgallery_enable_gallery_thumb"><?php _e( 'Gallery Thumbnails', 'woocommerce-dynamic-gallery' ); ?></label>
-					<input type="checkbox" <?php checked( 1, $enable_gallery_thumb, true ); ?> value="1" id="wc_dgallery_enable_gallery_thumb" name="wc_dgallery_enable_gallery_thumb" class="checkbox wc_dgallery_enable_gallery_thumb" />
-					<span class="description"><?php _e( 'Check to show Thumbnails with this Gallery', 'woocommerce-dynamic-gallery' ); ?></span>
+					<label for="wc_dgallery_image_source"><?php _e( 'Gallery Image Source', 'woocommerce-dynamic-gallery' ); ?></label>
+					<input type="radio" <?php checked( 'attached', $image_source, true ); ?> value="attached" name="wc_dgallery_image_source" class="radio" />
+					<span class="description"><?php _e( 'All images attached to this product', 'woocommerce-dynamic-gallery' ); ?></span><br>
+					<input type="radio" <?php checked( 'wc_gallery', $image_source, true ); ?> value="wc_gallery" name="wc_dgallery_image_source" class="radio" />
+					<span class="description"><?php _e( 'Only images uploaded to the WC Product Image gallery', 'woocommerce-dynamic-gallery' ); ?></span>
 				</p>
 
 				<p class="form-field">
@@ -131,6 +143,13 @@ class WC_Dynamic_Gallery_Meta_Boxes
 					<br />
 					<?php echo __( 'Unchecked and Product Image is not used in the gallery unless it is uploaded to the Dynamic Product Gallery', 'woocommerce-dynamic-gallery' ); ?>
 				</p>
+
+				<p class="form-field">
+					<label for="wc_dgallery_enable_gallery_thumb"><?php _e( 'Gallery Thumbnails', 'woocommerce-dynamic-gallery' ); ?></label>
+					<input type="checkbox" <?php checked( 1, $enable_gallery_thumb, true ); ?> value="1" id="wc_dgallery_enable_gallery_thumb" name="wc_dgallery_enable_gallery_thumb" class="checkbox wc_dgallery_enable_gallery_thumb" />
+					<span class="description"><?php _e( 'Check to show Thumbnails with this Gallery', 'woocommerce-dynamic-gallery' ); ?></span>
+				</p>
+
 			</div>
 
 			<?php
@@ -194,7 +213,7 @@ class WC_Dynamic_Gallery_Meta_Boxes
         			<?php echo __( 'A3 Dynamic Image Gallery activated', 'woocommerce-dynamic-gallery' ); ?>
         		</label>
         		<br />
-				<?php echo __( 'Dynamic Gallery function is applied to all images in the WooCommerce Default Product Gallery. Use the Product Gallery Meta box in the right sidebar of this product edit page to Add, Move or Delete images.', 'woocommerce-dynamic-gallery' ); ?>
+				<?php echo __( 'Use the Product Gallery Meta box in the right sidebar of this product edit page to Add, Move or Delete images.', 'woocommerce-dynamic-gallery' ); ?>
 				<br />
 				<?php echo __( '<strong>Important!</strong> If you do not see the Product Gallery meta box in the sidebar go to the Screen Options Tab at the top right corner of this page and check the [ ] Product Gallery box so it will show.', 'woocommerce-dynamic-gallery' ); ?>
 				<br />
@@ -283,6 +302,12 @@ class WC_Dynamic_Gallery_Meta_Boxes
 			update_post_meta( $post_id, '_actived_d_gallery', 1 );
 		} else {
 			update_post_meta( $post_id, '_actived_d_gallery', 0 );
+		}
+
+		if ( isset( $_REQUEST['wc_dgallery_image_source'] ) ) {
+			update_post_meta( $post_id, '_wc_dgallery_image_source', $_REQUEST['wc_dgallery_image_source'] );
+		} else {
+			delete_post_meta( $post_id, '_wc_dgallery_image_source' );
 		}
 
 		if ( isset( $_REQUEST['wc_dgallery_enable_gallery_thumb'] ) ) {
