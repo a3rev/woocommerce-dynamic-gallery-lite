@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery
 Requires at least: 4.5
 Tested up to: 4.9.0
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -123,6 +123,10 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 2.5.1 - 2017/11/15 =
+* Fixed - Show WC dynamic gallery images on frontend if feature image as part of gallery
+* Tweak - Tested for compatibility with WordPress 4.9
 
 = 2.5.0 - 2017/11/06 =
 * Feature Upgrade. This feature upgrade adds the ability to set the source of images that populate the Dynamic gallery.
@@ -612,6 +616,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 2.5.1 = 
+Maintenance Update. 1 Teak and 1 bug fix for full compatibility with WordPress 4.9
 
 = 2.5.0 =
 Feature Upgrade. In this release we add the ability to define where images are sourced from for the Gallery, either all images uploaded to the post or just the images that have been uploaded to Product Image gallery.

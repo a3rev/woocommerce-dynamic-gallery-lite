@@ -116,7 +116,7 @@ class WC_Dynamic_Gallery_Functions
 
 			if ( 'yes' == $auto_feature_image && $have_featured_image && is_array( $dgallery_ids ) && ! in_array( $featured_img_id, $dgallery_ids ) ) {
 				$dgallery_ids = array_merge( array( $featured_img_id ), $dgallery_ids );
-			} else {
+			} elseif( 'yes' == $auto_feature_image && $have_featured_image && empty( $dgallery_ids ) ) {
 				$dgallery_ids = array( $featured_img_id );
 			}
 
