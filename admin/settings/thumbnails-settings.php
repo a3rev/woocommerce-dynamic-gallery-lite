@@ -29,6 +29,13 @@ class WC_Dynamic_Gallery_Thumbnails_Settings
 	/* Init all fields of this form */
 	/*-----------------------------------------------------------------------------------*/
 	public function init_form_fields() {
+
+		$wc_version = get_option( 'woocommerce_version', '1.0' );
+
+		$wc_display_settings_url = admin_url( 'customize.php?autofocus[panel]=woocommerce&autofocus[section]=woocommerce_product_images' );
+		if ( version_compare( $wc_version, '3.3.0', '<' ) ) {
+			$wc_display_settings_url = admin_url( 'admin.php?page=wc-settings&tab=products&section=display' );
+		}
 				
   		// Define settings			
      	$this->form_fields = array(
@@ -100,7 +107,7 @@ class WC_Dynamic_Gallery_Thumbnails_Settings
 				'desc'		=> '<table class="form-table"><tbody>
 				<tr valign="top">
 				<th class="titledesc" scope="row"><label>' . __( 'Thumbnail Dimensions', 'woocommerce-dynamic-gallery' ) . '</label></th>
-				<td class="forminp">' . sprintf( __( 'The plugin is using <a href="%s" target="_blank">Product Thumbnails Dimension</a> from WooCommerce Settings', 'woocommerce-dynamic-gallery' ), admin_url( 'admin.php?page=wc-settings&tab=products&section=display' ) ) . '</td>
+				<td class="forminp">' . sprintf( __( 'The plugin is using <a href="%s" target="_blank">Product Thumbnails Dimension</a> from WooCommerce Settings', 'woocommerce-dynamic-gallery' ), $wc_display_settings_url ) . '</td>
 				</tr></tbody></table>',
            	),
 			array(

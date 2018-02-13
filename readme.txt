@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery
 Requires at least: 4.5
-Tested up to: 4.9.0
-Stable tag: 2.5.1
+Tested up to: 4.9.4
+Stable tag: 2.5.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -123,6 +123,17 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 2.5.2 - 2018/02/13 =
+* Maintenance Update. Under the bonnet tweaks to keep your plugin running smoothly and is the foundation for new features to be developed this year 
+* Framework - Update a3rev Plugin Framework to version 2.0.2
+* Framework - Add Framework version for all style and script files
+* Tweak - Update for full compatibility with a3rev Dashboard plugin
+* Tweak - Change OLD thumbnail image name shop_thumbnail to woocommerce_thumbnail for compatibility with WC 3.3.0 . Backward compatibility with WC 3.2.6
+* Tweak - Change OLD thumbnail image name shop_single to woocommerce_single for compatibility with WC 3.3.0 . Backward compatibility with WC 3.2.6
+* Tweak - Update WooCommerce Display Settings URL to link to new WooCommerce Customizer menu URL on WC v 3.3.0
+* Tweak - Test for compatibility with WordPress 4.9.4
+* Tweak - Test for compatibility with WooCommerce 3.3.1
 
 = 2.5.1 - 2017/11/15 =
 * Fixed - Show WC dynamic gallery images on frontend if feature image as part of gallery
@@ -616,6 +627,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 2.5.2 =
+Maintenance Update. This version updates the Plugin Framework to v 2.0.2, adds full compatibility with a3rev Dashboard, WordPress v 4.9.4 and WooCoomerce v 3.3.1
 
 = 2.5.1 = 
 Maintenance Update. 1 Teak and 1 bug fix for full compatibility with WordPress 4.9

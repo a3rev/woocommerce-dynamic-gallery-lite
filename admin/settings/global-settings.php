@@ -140,9 +140,9 @@ class WC_Dynamic_Gallery_Global_Settings extends WC_Dynamic_Gallery_Admin_UI
 			delete_option( WOO_DYNAMIC_GALLERY_PREFIX.'reset_image_source' );
 			WC_Dynamic_Gallery_Functions::reset_image_source();			
 		}
-		if ( ( isset( $_POST['bt_save_settings'] ) || isset( $_POST['bt_reset_settings'] ) ) && get_option( 'wc_dgallery_clean_on_deletion' ) == 'no'  )  {
+		if ( ( isset( $_POST['bt_save_settings'] ) || isset( $_POST['bt_reset_settings'] ) ) && get_option( $this->plugin_name . '_clean_on_deletion' ) == 'no'  )  {
 			$uninstallable_plugins = (array) get_option('uninstall_plugins');
-			unset($uninstallable_plugins[WOO_DYNAMIC_GALLERY_NAME]);
+			unset($uninstallable_plugins[ $this->plugin_path ]);
 			update_option('uninstall_plugins', $uninstallable_plugins);
 		}
 	}
@@ -212,6 +212,13 @@ class WC_Dynamic_Gallery_Global_Settings extends WC_Dynamic_Gallery_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function init_form_fields() {
 
+		$wc_version = get_option( 'woocommerce_version', '1.0' );
+
+		$wc_display_settings_url = admin_url( 'customize.php?autofocus[panel]=woocommerce&autofocus[section]=woocommerce_product_images' );
+		if ( version_compare( $wc_version, '3.3.0', '<' ) ) {
+			$wc_display_settings_url = admin_url( 'admin.php?page=wc-settings&tab=products&section=display' );
+		}
+
   		// Define settings
      	$this->form_fields = apply_filters( $this->option_name . '_settings_fields', array(
 
@@ -246,7 +253,7 @@ class WC_Dynamic_Gallery_Global_Settings extends WC_Dynamic_Gallery_Admin_UI
 			array(
 				'name' 		=> __( 'Clean Up On Deletion', 'woocommerce-dynamic-gallery' ),
 				'desc' 		=> __( 'On deletion (not deactivate) the plugin will completely remove all tables and data it created, leaving no trace it was ever here.', 'woocommerce-dynamic-gallery' ),
-				'id' 		=> 'wc_dgallery_lite_clean_on_deletion',
+				'id' 		=> $this->plugin_name . '_clean_on_deletion',
 				'type' 		=> 'onoff_checkbox',
 				'default'	=> 'no',
 				'separate_option'	=> true,
@@ -464,11 +471,11 @@ class WC_Dynamic_Gallery_Global_Settings extends WC_Dynamic_Gallery_Admin_UI
 				'desc'		=> '<table class="form-table"><tbody>
 				<tr valign="top">
 				<th class="titledesc" scope="row"><label>' . __( 'Gallery Images', 'woocommerce-dynamic-gallery' ) . '</label></th>
-				<td class="forminp">' . sprintf( __( 'Set via the <a href="%s" target="_blank">Single Product Image Dimensions and Hard Crop</a> option from WooCommerce Settings', 'woocommerce-dynamic-gallery' ), admin_url( 'admin.php?page=wc-settings&tab=products&section=display' ) ) . '</td>
+				<td class="forminp">' . sprintf( __( 'Set via the <a href="%s" target="_blank">Product Main Image Dimensions and Hard Crop</a> option from WooCommerce Settings', 'woocommerce-dynamic-gallery' ), $wc_display_settings_url ) . '</td>
 				</tr>
 				<tr valign="top">
 				<th class="titledesc" scope="row"><label>' . __( 'Gallery Thumbnails', 'woocommerce-dynamic-gallery' ) . '</label></th>
-				<td class="forminp">' . sprintf( __( 'Set via the <a href="%s" target="_blank">Product Thumbnails Dimensions and Hard Crop</a> option from WooCommerce Settings', 'woocommerce-dynamic-gallery' ), admin_url( 'admin.php?page=wc-settings&tab=products&section=display' ) ) . '</td>
+				<td class="forminp">' . sprintf( __( 'Set via the <a href="%s" target="_blank">Product Thumbnails Dimensions and Hard Crop</a> option from WooCommerce Settings', 'woocommerce-dynamic-gallery' ), $wc_display_settings_url ) . '</td>
 				</tr></tbody></table>',
            	),
         ));
