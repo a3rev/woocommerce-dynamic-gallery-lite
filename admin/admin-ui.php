@@ -31,12 +31,12 @@ class WC_Dynamic_Gallery_Admin_UI
 	 * You must change to correct plugin name that you are working
 	 */
 
-	public $framework_version      = '2.0.2';
+	public $framework_version      = '2.0.3';
 	public $plugin_name            = WOO_DYNAMIC_GALLERY_KEY;
 	public $plugin_path            = WOO_DYNAMIC_GALLERY_NAME;
-	public $google_api_key_option  = WOO_DYNAMIC_GALLERY_KEY . '_google_api_key';
-	public $toggle_box_open_option = WOO_DYNAMIC_GALLERY_KEY . '_toggle_box_open';
-	public $version_transient      = WOO_DYNAMIC_GALLERY_KEY . '_licinfo';
+	public $google_api_key_option  = '';
+	public $toggle_box_open_option = '';
+	public $version_transient      = '';
 	public $is_free_plugin         = true;
 	
 	public $support_url = 'https://wordpress.org/support/plugin/woocommerce-dynamic-gallery/';
@@ -69,6 +69,12 @@ class WC_Dynamic_Gallery_Admin_UI
 	 * You must change to correct page you want to include scripts & styles, if you have many pages then use array() : array( 'quotes-orders-mode', 'quotes-orders-rule' )
 	 */
 	public $admin_pages = array();
+
+	public function __construct() {
+		$this->google_api_key_option  = WOO_DYNAMIC_GALLERY_KEY . '_google_api_key';
+		$this->toggle_box_open_option = WOO_DYNAMIC_GALLERY_KEY . '_toggle_box_open';
+		$this->version_transient      = WOO_DYNAMIC_GALLERY_KEY . '_licinfo';
+	}
 	
 	
 	/*-----------------------------------------------------------------------------------*/
