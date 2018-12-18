@@ -163,7 +163,11 @@ class WC_Dynamic_Gallery_Meta_Boxes
 	}
 
 	public function woocommerce_meta_boxes_image() {
-		add_meta_box( 'wc-dgallery-product-images', __( 'A3 Dynamic Image Gallery', 'woocommerce-dynamic-gallery' ), array( $this, 'woocommerce_product_image_box' ), 'product', 'normal', 'high' );
+		add_meta_box( 'wc-dgallery-product-images', __( 'A3 Dynamic Image Gallery', 'woocommerce-dynamic-gallery' ), array( $this, 'woocommerce_product_image_box' ), 'product', 'side', 'high'
+			, array( 
+				'__block_editor_compatible_meta_box' => true,
+				'__back_compat_meta_box' => false,
+			));
 	}
 
 	public function woocommerce_product_image_box() {
