@@ -5,10 +5,10 @@
 	margin: 0;
 	padding: 0;
 }
-.a3-dgallery .fa-angle-left:before {
+.a3-dgallery .fa-angle-left {
 	align-self: center;
 }
-.a3-dgallery .fa-angle-right:before {
+.a3-dgallery .fa-angle-right {
 	align-self: center;
 }
 .a3-dgallery .fa-caret-left:before {

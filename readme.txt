@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery
 Requires at least: 4.5
-Tested up to: 5.0.2
-Stable tag: 2.5.4
+Tested up to: 5.1
+Stable tag: 2.5.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -123,6 +123,14 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 2.5.5 - 2019/02/14 =
+* This maintenance adds a code tweak and fix for the Gallery display and function in mobile devices. plus compatibility with WooCommerce 3.5.4 and WordPress 5.1
+* Tweak - Remove auto image transition, next and previous, start and stop on mobile when touch swipe feature is ON.
+* Tweak - Update structure html of icons to avoid conflict with fontawesome latest version that loads  icons as script instead of Webfont
+* Tweak - Test for compatibility with WordPress 5.1
+* Tweak - Test for compatibility with WooCommerce 3.5.4
+* Fix - Auto resize image and center it when change orientation in mobile device
 
 = 2.5.4 - 2018/12/18 =
 * This maintenance update is for compatibility with WordPress 5.0.2, WooCommerce 3.5.2 and PHP 7.3. Also includes performance updates to the plugin framework. 
@@ -647,6 +655,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 2.5.5 =
+This maintenance adds a code tweak and fix for the Gallery display and function in mobile devices. plus compatibility with WooCommerce 3.5.4 and WordPress 5.1
 
 = 2.5.4 =
 This maintenance update is for compatibility with WordPress 5.0.2, WooCommerce 3.5.2 and PHP 7.3. It also includes performance updates to the plugin framework.

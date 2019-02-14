@@ -74,6 +74,11 @@ class WC_Gallery_Preview_Display
 					$( window ).resize(function() {
 						a3revWCDynamicGallery_<?php echo $post->ID; ?>.setHeightProportional();
 					});
+
+					$(window).on( 'resize', function() {
+						var idx = $("#gallery_<?php echo $post->ID; ?> .a3dg-image img").attr("idx");
+						$('body').trigger('wc_dg_resize', [ idx ]);
+					});
 				});
 			})(jQuery);
 			</script>
@@ -544,8 +549,8 @@ class WC_Gallery_Preview_Display
                 <div class="a3dg-navbar-control"><div class="a3dg-navbar-separator"></div></div>
                 <div style="clear: both"></div>
                   <div class="a3dg-nav">
-                  	<div class="fa fa-angle-left a3dg-back"></div>
-					<div class="fa fa-angle-right a3dg-forward"></div>
+                  	<div class="a3dg-back"><i class="fa fa-angle-left"></i></div>
+					<div class="a3dg-forward"><i class="fa fa-angle-right"></i></div>
                     <div class="a3dg-thumbs '.$thumbs_list_class.'">
                       <ul class="a3dg-thumb-list">';
 						
