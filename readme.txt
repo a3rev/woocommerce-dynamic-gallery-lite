@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery
 Requires at least: 4.5
-Tested up to: 5.1
-Stable tag: 2.5.5
+Tested up to: 5.1.1
+Stable tag: 2.5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -123,6 +123,12 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 2.5.6 - 2019/04/26 =
+* This maintenance update has tweaks for compatibility with WordPress 5.2.0 and WooCommerce 3.6.0 major new versions whilst maintaining backward compatibility
+* Tweak - Test for compatibility with WordPress 5.2.0
+* Tweak - Test for compatibility with WooCommerce 3.6.2
+* Tweak - Support for backward compatibility with WooCommerce v 3.5
 
 = 2.5.5 - 2019/02/14 =
 * This maintenance adds a code tweak and fix for the Gallery display and function in mobile devices. plus compatibility with WooCommerce 3.5.4 and WordPress 5.1
@@ -655,6 +661,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 2.5.6 =
+This maintenance update has tweaks for compatibility with WordPress 5.2.0 and WooCommerce 3.6.0 major new versions whilst maintaining backward compatibility
 
 = 2.5.5 =
 This maintenance adds a code tweak and fix for the Gallery display and function in mobile devices. plus compatibility with WooCommerce 3.5.4 and WordPress 5.1
