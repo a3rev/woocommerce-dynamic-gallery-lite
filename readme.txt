@@ -1,25 +1,25 @@
-=== WooCommerce Dynamic Gallery ===
+=== Dynamic Product Gallery for WooCommerce ===
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery
 Requires at least: 4.5
-Tested up to: 5.1.1
-Stable tag: 2.5.6
+Tested up to: 5.2.2
+Stable tag: 2.5.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Bring your product pages and presentation alive with WooCommerce Dynamic Gallery. Beautifully.
+Bring your product pages and presentation alive with Dynamic Product Gallery for WooCommerce. Beautifully.
 
 == DESCRIPTION ==
 
-Science has proven that Product images have a massive impact on your stores conversion rates. WooCommerce Dynamic Gallery will bring your stores static image display to life.
+Science has proven that Product images have a massive impact on your stores conversion rates. Dynamic Product Gallery for WooCommerce will bring your stores static image display to life.
 
-As soon as you install WooCommerce Dynamic Gallery your Product pages image gallery is transformed into a dynamic scrolling product gallery with thumbnails displayed in a single row slider.
+As soon as you install Dynamic Gallery your Product pages image gallery is transformed into a dynamic scrolling product gallery with thumbnails displayed in a single row slider.
 
 
 = KEY FEATURES =
 
 * The #1 Product Page image gallery for WooCommerce Products page.
-* First released July 2012 with 69 maintenance updates and feature upgrade versions released in 59 months (as at June 6th 2017)
+* First released July 2012 with 80 maintenance updates and feature upgrade versions released in 83 months (as at May 2019)
 * Full support for WordPress responsive images - srcset and size
 * Fully integrated with WooCommerce Product Gallery
 * Full compatibility with WooCommerce version 3.0.7+ with backward compatibility to version 2.6
@@ -59,13 +59,13 @@ As soon as you install WooCommerce Dynamic Gallery your Product pages image gall
 
 = PREMIUM VERSION =
 
-There is a [Premium Version](http://a3rev.com/shop/woocommerce-dynamic-gallery/) of WooCommerce Dynamic Gallery available if you find you want more features than are available in the free version
+There is a [Premium Version](http://a3rev.com/shop/woocommerce-dynamic-gallery/) of Dynamic Gallery for WooCommerce available if you find you want more features than are available in the free version
 
 = CONTRIBUTE =
 
-When you download WooCommerce Dynamic Gallery, you join our the a3rev Software community. Regardless of if you are a WordPress beginner or experienced developer if you are interested in contributing to the future development of WooCommerce Dynamic Gallery or any of our other plugins on Github head over to the WooCommerce Dynamic Gallery [GitHub Repository](https://github.com/a3rev/woocommerce-dynamic-gallery-lite) to find out how you can contribute.
+When you download Dynamic Product Gallery for WooCommerce, you join our the a3rev Software community. Regardless of if you are a WordPress beginner or experienced developer if you are interested in contributing to the future development of Dynamic Gallery or any of our other plugins on Github head over to the Dynamic Product Gallery [GitHub Repository](https://github.com/a3rev/woocommerce-dynamic-gallery-lite) to find out how you can contribute.
 
-Want to add a new language to WooCommerce Dynamic Gallery! You can contribute via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/woocommerce-dynamic-gallery)
+Want to add a new language? You can contribute via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/woocommerce-dynamic-gallery)
 
 
 == Installation ==
@@ -73,14 +73,14 @@ Want to add a new language to WooCommerce Dynamic Gallery! You can contribute vi
 = Minimum Requirements =
 
 * WordPress 4.5 or greater
-* PHP version 5.5 or greater
+* PHP version 5.6.20 or greater
 * MySQL version 5.5 or greater
 
 = Automatic installation =
 
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don't even need to leave your web browser. To do an automatic install of WooCommerce Dynamic Gallery, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don't even need to leave your web browser. To do an automatic install of Dynamic Gallery, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
 
-In the search field type "WooCommerce Dynamic Gallery" and click Search Plugins. Once you have found our plugin you can install it by simply clicking Install Now. After clicking that link you will be asked if you are sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
+In the search field type "Dynamic Products Gallery for WooCommerce" and click Search Plugins. Once you have found our plugin you can install it by simply clicking Install Now. After clicking that link you will be asked if you are sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
 
 = Manual installation =
 
@@ -93,7 +93,7 @@ The manual installation method involves downloading our plugin and uploading it 
 
 == Screenshots ==
 
-1. WooCommerce Dynamic Gallery replaces the default WooCommerce Gallery
+1. Dynamic Gallery replaces the default WooCommerce Gallery
 2. Zoom feature - opens images at full size
 3. Dynamic Gallery Meta Box is added to WooCommerce Product Data menu
 4. In plugin style and layout options - no coding required
@@ -123,6 +123,12 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 2.5.7 - 2019/06/29 =
+* This is a maintenance upgrade to fix a potentially fatal error conflict with sites running PHP 7.3 plus compatibility with WordPress v 5.2.2 and WooCommerce 3.6.4
+* Tweak - Test for compatibility with WooCommerce 3.6.4
+* Tweak - Test for compatibility with WordPress 5.2.2
+* Fix - PHP warning continue targeting switch is equivalent to break for compatibility on PHP 7.3
 
 = 2.5.6 - 2019/04/26 =
 * This maintenance update has tweaks for compatibility with WordPress 5.2.0 and WooCommerce 3.6.0 major new versions whilst maintaining backward compatibility
@@ -661,6 +667,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 2.5.7 =
+This is a maintenance upgrade to fix a potentially fatal error conflict with sites running PHP 7.3 plus compatibility with WordPress v 5.2.2 and WooCommerce 3.6.4
 
 = 2.5.6 =
 This maintenance update has tweaks for compatibility with WordPress 5.2.0 and WooCommerce 3.6.0 major new versions whilst maintaining backward compatibility

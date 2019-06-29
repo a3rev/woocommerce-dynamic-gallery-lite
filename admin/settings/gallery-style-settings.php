@@ -704,26 +704,11 @@ class WC_Dynamic_Gallery_Style_Settings extends WC_Dynamic_Gallery_Admin_UI
 		global $wc_dgallery_thumbnails_settings;
 		$this->form_fields = array_merge( $this->form_fields, $wc_dgallery_thumbnails_settings->form_fields );
 
-		$this->form_fields = array_merge( $this->form_fields, array(
-			array(
-            	'name' 		=> __( "GALLERY STYLES SUPER POWERS", 'woocommerce-dynamic-gallery' ),
-                'type' 		=> 'heading',
-                'desc'		=> '<img class="rwd_image_maps" src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/gallery_styles_tab.png" usemap="#productCardsMap" style="width: auto; max-width: 100%;" border="0" />
-<map name="productCardsMap" id="productCardsMap">
-	<area shape="rect" coords="325,270,925,205" href="'.$this->pro_plugin_page_url.'" target="_blank" />
-</map>',
-				'alway_open'=> true,
-                'id'		=> 'dgallery_styles_premium_box',
-                'is_box'	=> true,
-           	),
-		) );
-
 		$this->form_fields = apply_filters( $this->form_key . '_settings_fields', $this->form_fields );
 
 	}
 	
 	public function include_script() {
-		wp_enqueue_script( 'jquery-rwd-image-maps' );
 		add_action( 'admin_footer', array($this, 'wc_dynamic_gallery_add_script'), 10 );
 	?>
 <script>
