@@ -160,7 +160,9 @@ $thumb_slider_shadow                = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 't
 
 /* Next / Previous Icons */
 .a3-dgallery .fa-caret-left:before,
-.a3-dgallery .fa-caret-right:before  {
+.a3-dgallery .fa-caret-right:before,
+.a3-dgallery svg.fa-caret-left,
+.a3-dgallery svg.fa-caret-right {
     font-size: <?php echo $nextpre_icons_size; ?>px !important;
     color: <?php echo $nextpre_icons_color; ?> !important;
 }
@@ -185,7 +187,9 @@ $thumb_slider_shadow                = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 't
 
 /* Pause | Play icon */
 .a3-dgallery .fa-pause:before,
-.a3-dgallery .fa-play:before  {
+.a3-dgallery .fa-play:before,
+.a3-dgallery svg.fa-pause,
+.a3-dgallery svg.fa-play {
     font-size: <?php echo $pauseplay_icon_size; ?>px !important;
     color: <?php echo $pauseplay_icon_color; ?> !important;
 }
@@ -226,7 +230,9 @@ margin-right: <?php echo $pauseplay_icon_margin_right; ?>px !important;
 
 /* Thumbnail Slider Next / Previous icons */
 .a3-dgallery .fa-angle-left:before,
-.a3-dgallery .fa-angle-right:before  {
+.a3-dgallery .fa-angle-right:before,
+.a3-dgallery svg.fa-angle-left,
+.a3-dgallery svg.fa-angle-right {
     font-size: <?php echo $thumb_nextpre_icons_size; ?>px !important;
     color: <?php echo $thumb_nextpre_icons_color; ?> !important;
 }

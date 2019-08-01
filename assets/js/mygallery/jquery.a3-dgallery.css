@@ -1,3 +1,6 @@
+.svg-inline--fa {
+    box-sizing: content-box !important;
+}
 .a3-dgallery {
 	position: relative;
 }
@@ -17,11 +20,21 @@
 .a3-dgallery .fa-caret-right:before {
 	font-size: 30px;
 }
+.a3-dgallery svg.fa-caret-right,
+.a3-dgallery svg.fa-caret-left {
+	font-size: 30px;
+	box-sizing: content-box !important;
+}
 .a3-dgallery .fa-pause:before {
 	font-size: 25px;
 }
 .a3-dgallery .fa-play:before {
 	font-size: 25px;
+}
+.a3-dgallery svg.fa-pause,
+.a3-dgallery svg.fa-play {
+	font-size: 25px;
+	box-sizing: content-box !important;
 }
 .a3-dgallery .a3dg-image-wrapper {
 	border: 1px solid #666;

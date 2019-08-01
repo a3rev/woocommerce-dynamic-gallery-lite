@@ -158,6 +158,14 @@ function woo_dgallery_lite_upgrade_plugin () {
 		$wc_wc_dynamic_gallery_less->plugin_build_sass();
 	}
 
+	if( version_compare( get_option('a3rev_woo_dgallery_lite_version'), '2.5.8', '<' ) ){
+		update_option('a3rev_woo_dgallery_lite_version', '2.5.8');
+
+		// Build sass
+		global $wc_wc_dynamic_gallery_less;
+		$wc_wc_dynamic_gallery_less->plugin_build_sass();
+	}
+
 	update_option('a3rev_woo_dgallery_lite_version', WOO_DYNAMIC_GALLERY_VERSION );
 }
 
