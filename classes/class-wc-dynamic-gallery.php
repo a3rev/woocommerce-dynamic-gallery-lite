@@ -54,14 +54,21 @@ class WC_Gallery_Display_Class
 		wp_register_script( 'a3-dynamic-metabox-admin-script', WOO_DYNAMIC_GALLERY_JS_URL . '/a3.dynamic.metabox.admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse', 'jquery-ui-sortable' ), WOO_DYNAMIC_GALLERY_VERSION );
 	}
 
-	public static function wc_dynamic_gallery_display() {
-		global $post, $product;
+	public static function wc_dynamic_gallery_display( $product_id = 0 ) {
+		global $post;
+
+		if ( $product_id < 1 ) {
+			global $product;
+			$product_id = $post->ID;
+		} else {
+			$product = wc_get_product( $product_id );
+		}
 	?>
 		<div class="images gallery_container">
 	<?php
 		do_action('wc_dynamic_gallery_before_gallery');
 
-		WC_Gallery_Display_Class::get_gallery_main( $product->get_id() );
+		WC_Gallery_Display_Class::get_gallery_main( $product_id );
 
 		do_action('wc_dynamic_gallery_after_gallery');
 	?>

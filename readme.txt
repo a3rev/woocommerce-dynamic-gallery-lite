@@ -1,9 +1,9 @@
 === Dynamic Product Gallery for WooCommerce ===
 Contributors: a3rev, nguyencongtuan
-Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery
+Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 4.5
 Tested up to: 5.2.2
-Stable tag: 2.5.8
+Stable tag: 2.6.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -19,10 +19,11 @@ As soon as you install Dynamic Gallery your Product pages image gallery is trans
 = KEY FEATURES =
 
 * The #1 Product Page image gallery for WooCommerce Products page.
-* First released July 2012 with 80 maintenance updates and feature upgrade versions released in 83 months (as at May 2019)
+* First released July 2012 with 82 maintenance updates and feature upgrade versions released in 85 months (as at August 2019)
 * Full support for WordPress responsive images - srcset and size
 * Fully integrated with WooCommerce Product Gallery
-* Full compatibility with WooCommerce version 3.0.7+ with backward compatibility to version 2.6
+* Full compatibility with WooCommerce version 3.6.5+ with backward compatibility to version 3.0
+* **NEW** - Fully Compatible with Elementor Premium Templates 
 
 = PRODUCT GALLERY =
 
@@ -40,6 +41,14 @@ As soon as you install Dynamic Gallery your Product pages image gallery is trans
 * ZOOM - shows full size image with caption text and manual scroll through entire gallery.
 * Choice of 2 different pop-up tools - Fancybox and Colorbox.
 * ZOOM | START SLIDE SHOW / STOP SLIDESHOW controls
+
+= * NEW WIGET & SHORTCODE =
+
+Dynamic Gallery automatically replaces the default WooCommerce Product Gallery on product pages. The Dynamic Gallery Widget and Shortcode enable you to:
+
+* Shortcode - Add a single product Dynamic Gallery to any page or post
+* Widget - Add a single product Dynamic Gallery to any widget area
+* Elementor Product Page Template - Add the WooCommerce Dynamic Gallery to your Elementor Product Page template via the Dynamic Gallery Widget.
 
 
 = GALLERY THUMBNAIL SLIDER =
@@ -74,7 +83,7 @@ Want to add a new language? You can contribute via [translate.wordpress.org](htt
 
 * WordPress 4.5 or greater
 * PHP version 5.6.20 or greater
-* MySQL version 5.5 or greater
+* MySQL version 5.6 or greater
 
 = Automatic installation =
 
@@ -123,6 +132,12 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 2.6.0 - 2019/08/03 =
+* This major feature upgrade adds a Dynamic Gallery Widget & Shortcode. Full compatibility with Elementor Premium Template Builder.
+* Feature - Define new shortcode [wc_product_dynamic_gallery] to enable add Dynamic Gallery of a product to show on any page
+* Feature - Define new widget WC Product Dynamic Gallery to enable add Dynamic Gallery of a product as widget to any sidebar
+* Feature - Add Dynamic Gallery to any Elementor Premium WooCommerce Product Page Template via the new Dynamic Gallery Widget
 
 = 2.5.8 - 2019/08/01 =
 * This maintenance upgrade is to fix a style conflict with fontawesome icons
@@ -671,6 +686,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 2.6.0 =
+This major feature upgrade adds a Dynamic Gallery Widget & Shortcode plus Full compatibility with Elementor Premium Template Builder.
 
 = 2.5.8 =
 This maintenance upgrade is to fix a style conflict with fontawesome icons

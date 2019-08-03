@@ -53,6 +53,9 @@ add_action('plugin_action_links_' . WOO_DYNAMIC_GALLERY_NAME, array( 'WC_Dynamic
 
 add_action( 'wp', array( 'WC_Gallery_Display_Class', 'frontend_register_scripts' ) );
 
+// Add shortcode [wc_product_dynamic_gallery product_id=0]
+add_shortcode( 'wc_product_dynamic_gallery', array( 'WC_Dynamic_Gallery_Shortcodes', 'parse_shortcode_product_dynamic_gallery' ) );
+
 $woocommerce_db_version = get_option( 'woocommerce_db_version', null );
 
 // Change the image show in cart page
