@@ -10,7 +10,10 @@
  * woocommerce_product_image_box()
  * save_actived_d_gallery()
  */
-class WC_Dynamic_Gallery_Meta_Boxes
+
+namespace A3Rev\WCDynamicGallery;
+
+class MetaBoxes
 {
 
 	public function __construct() {
@@ -328,8 +331,3 @@ class WC_Dynamic_Gallery_Meta_Boxes
 	}
 
 }
-
-global $wc_dynamic_gallery_meta_boxes;
-$wc_dynamic_gallery_meta_boxes = new WC_Dynamic_Gallery_Meta_Boxes();
-
-?>

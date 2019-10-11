@@ -1,7 +1,9 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
 
-class WC_Dynamic_Gallery_Notices
+namespace A3Rev\WCDynamicGallery;
+
+class Notices
 {
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'manual_update_database' ) );
@@ -50,6 +52,3 @@ class WC_Dynamic_Gallery_Notices
 		}
 	}
 }
-
-new WC_Dynamic_Gallery_Notices();
-?>

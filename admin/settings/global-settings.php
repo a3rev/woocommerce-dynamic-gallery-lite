@@ -130,15 +130,15 @@ class WC_Dynamic_Gallery_Global_Settings extends WC_Dynamic_Gallery_Admin_UI
 	public function after_save_settings() {
 		if ( isset( $_POST['bt_save_settings'] ) && isset( $_POST[WOO_DYNAMIC_GALLERY_PREFIX.'reset_galleries_activate'] ) ) {
 			delete_option( WOO_DYNAMIC_GALLERY_PREFIX.'reset_galleries_activate' );
-			WC_Dynamic_Gallery_Functions::reset_products_galleries_activate();			
+			\A3Rev\WCDynamicGallery\Functions::reset_products_galleries_activate();			
 		}
 		if ( isset( $_POST['bt_save_settings'] ) && isset( $_POST[WOO_DYNAMIC_GALLERY_PREFIX.'reset_feature_image_activate'] ) ) {
 			delete_option( WOO_DYNAMIC_GALLERY_PREFIX.'reset_feature_image_activate' );
-			WC_Dynamic_Gallery_Functions::reset_auto_feature_image_activate();			
+			\A3Rev\WCDynamicGallery\Functions::reset_auto_feature_image_activate();			
 		}
 		if ( isset( $_POST['bt_save_settings'] ) && isset( $_POST[WOO_DYNAMIC_GALLERY_PREFIX.'reset_image_source'] ) ) {
 			delete_option( WOO_DYNAMIC_GALLERY_PREFIX.'reset_image_source' );
-			WC_Dynamic_Gallery_Functions::reset_image_source();			
+			\A3Rev\WCDynamicGallery\Functions::reset_image_source();			
 		}
 		if ( ( isset( $_POST['bt_save_settings'] ) || isset( $_POST['bt_reset_settings'] ) ) && get_option( $this->plugin_name . '_clean_on_deletion' ) == 'no'  )  {
 			$uninstallable_plugins = (array) get_option('uninstall_plugins');

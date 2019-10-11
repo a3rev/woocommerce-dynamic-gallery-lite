@@ -1,6 +1,6 @@
 <?php
 function wc_dynamic_gallery_show() {
-	WC_Gallery_Display_Class::wc_dynamic_gallery_display();
+	\A3Rev\WCDynamicGallery\Main::wc_dynamic_gallery_display();
 }
 
 function wc_dynamic_gallery_install(){
@@ -36,33 +36,40 @@ function wc_dynamic_gallery_init() {
 add_action('init', 'wc_dynamic_gallery_init');
 
 // Add custom style to dashboard
-add_action( 'admin_enqueue_scripts', array( 'WC_Dynamic_Gallery_Functions', 'a3_wp_admin' ) );
+add_action( 'admin_enqueue_scripts', array( '\A3Rev\WCDynamicGallery\Functions', 'a3_wp_admin' ) );
 
 // Add text on right of Visit the plugin on Plugin manager page
-add_filter( 'plugin_row_meta', array('WC_Dynamic_Gallery_Functions', 'plugin_extra_links'), 10, 2 );
+add_filter( 'plugin_row_meta', array('\A3Rev\WCDynamicGallery\Functions', 'plugin_extra_links'), 10, 2 );
 
 // Need to call Admin Init to show Admin UI
 global $wc_dgallery_admin_init;
 $wc_dgallery_admin_init->init();
 
+
+function register_widget_wc_dynamic_gallery() {
+	register_widget('\A3Rev\WCDynamicGallery\Widgets');
+}
+// Registry widget
+add_action( 'widgets_init', 'register_widget_wc_dynamic_gallery' );
+
 // Add upgrade notice to Dashboard pages
-add_filter( $wc_dgallery_admin_init->plugin_name . '_plugin_extension_boxes', array( 'WC_Dynamic_Gallery_Functions', 'plugin_extension_box' ) );
+add_filter( $wc_dgallery_admin_init->plugin_name . '_plugin_extension_boxes', array( '\A3Rev\WCDynamicGallery\Functions', 'plugin_extension_box' ) );
 
 // Add extra link on left of Deactivate link on Plugin manager page
-add_action('plugin_action_links_' . WOO_DYNAMIC_GALLERY_NAME, array( 'WC_Dynamic_Gallery_Functions', 'settings_plugin_links' ) );
+add_action('plugin_action_links_' . WOO_DYNAMIC_GALLERY_NAME, array( '\A3Rev\WCDynamicGallery\Functions', 'settings_plugin_links' ) );
 
-add_action( 'wp', array( 'WC_Gallery_Display_Class', 'frontend_register_scripts' ) );
+add_action( 'wp', array( '\A3Rev\WCDynamicGallery\Main', 'frontend_register_scripts' ) );
 
 // Add shortcode [wc_product_dynamic_gallery product_id=0]
-add_shortcode( 'wc_product_dynamic_gallery', array( 'WC_Dynamic_Gallery_Shortcodes', 'parse_shortcode_product_dynamic_gallery' ) );
+add_shortcode( 'wc_product_dynamic_gallery', array( '\A3Rev\WCDynamicGallery\Shortcodes', 'parse_shortcode_product_dynamic_gallery' ) );
 
 $woocommerce_db_version = get_option( 'woocommerce_db_version', null );
 
 // Change the image show in cart page
 if ( version_compare( $woocommerce_db_version, '2.1', '<' ) ) {
-	add_filter( 'woocommerce_in_cart_product_thumbnail', array('WC_Dynamic_Gallery_Variations', 'change_image_in_cart_page'), 50, 3 );
+	add_filter( 'woocommerce_in_cart_product_thumbnail', array('\A3Rev\WCDynamicGallery\Variations', 'change_image_in_cart_page'), 50, 3 );
 } else {
-	add_filter( 'woocommerce_cart_item_thumbnail', array('WC_Dynamic_Gallery_Variations', 'change_image_in_cart_page'), 50, 3 );
+	add_filter( 'woocommerce_cart_item_thumbnail', array('\A3Rev\WCDynamicGallery\Variations', 'change_image_in_cart_page'), 50, 3 );
 }
 
 add_action( 'wp', 'setup_dynamic_gallery', 20);
@@ -81,7 +88,7 @@ function setup_dynamic_gallery() {
 		if($actived_d_gallery == 1){
 
 			// Include google fonts into header
-			add_action( 'wp_enqueue_scripts', array( 'WC_Dynamic_Gallery_Functions', 'add_google_fonts'), 9 );
+			add_action( 'wp_enqueue_scripts', array( '\A3Rev\WCDynamicGallery\Functions', 'add_google_fonts'), 9 );
 
 			remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
 			remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
@@ -171,5 +178,3 @@ function woo_dgallery_lite_upgrade_plugin () {
 
 	update_option('a3rev_woo_dgallery_lite_version', WOO_DYNAMIC_GALLERY_VERSION );
 }
-
-?>

@@ -1,5 +1,8 @@
 <?php
-class WC_Dynamic_Gallery_Shortcodes 
+
+namespace A3Rev\WCDynamicGallery;
+
+class Shortcodes 
 {
 	public static function parse_shortcode_product_dynamic_gallery( $attributes ) {
 		// Don't show content for shortcode on Dashboard, still support for admin ajax
@@ -34,7 +37,7 @@ class WC_Dynamic_Gallery_Shortcodes
 
 		if ( 1 == $actived_d_gallery ) {
 			// Include google fonts into header
-			add_action( 'wp_enqueue_scripts', array( 'WC_Dynamic_Gallery_Functions', 'add_google_fonts'), 9 );
+			add_action( 'wp_enqueue_scripts', array( '\A3Rev\WCDynamicGallery\Functions', 'add_google_fonts'), 9 );
 
 			wp_enqueue_style( 'a3-dgallery-style' );
 			wp_enqueue_script( 'a3-dgallery-script' );
@@ -49,7 +52,7 @@ class WC_Dynamic_Gallery_Shortcodes
 			}
 
 			ob_start();
-			WC_Gallery_Display_Class::wc_dynamic_gallery_display( $product_id );
+			Main::wc_dynamic_gallery_display( $product_id );
 
 			$gallery_html = ob_get_clean();
 		}
@@ -57,4 +60,3 @@ class WC_Dynamic_Gallery_Shortcodes
         return $gallery_html;
 	}
 }
-?>

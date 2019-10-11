@@ -8,7 +8,10 @@
  *
  * wc_dynamic_gallery_display()
  */
-class WC_Gallery_Display_Class
+
+namespace A3Rev\WCDynamicGallery;
+
+class Main
 {
 	public static function frontend_register_scripts() {
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
@@ -68,7 +71,7 @@ class WC_Gallery_Display_Class
 	<?php
 		do_action('wc_dynamic_gallery_before_gallery');
 
-		WC_Gallery_Display_Class::get_gallery_main( $product_id );
+		self::get_gallery_main( $product_id );
 
 		do_action('wc_dynamic_gallery_after_gallery');
 	?>
@@ -86,14 +89,14 @@ class WC_Gallery_Display_Class
 		$global_stop_scroll_1image = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'stop_scroll_1image' );
 		$enable_scroll             = 'true';
 		$display_back_and_forward  = 'true';
-		$no_image_uri              = WC_Dynamic_Gallery_Functions::get_no_image_uri();
+		$no_image_uri              = Functions::get_no_image_uri();
 
 		if ( $product_id < 1 ) {
 			$product_id = $post->ID;
 		}
 
 		// Get gallery of this product
-		$dgallery_ids = WC_Dynamic_Gallery_Functions::get_gallery_ids( $product_id );
+		$dgallery_ids = Functions::get_gallery_ids( $product_id );
 		if ( ! is_array( $dgallery_ids ) ) {
 			$dgallery_ids = array();
 		}
@@ -589,4 +592,3 @@ class WC_Gallery_Display_Class
 	<?php
 	}
 }
-?>

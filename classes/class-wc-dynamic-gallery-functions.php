@@ -11,7 +11,10 @@
  * wc_dynamic_gallery_extension()
  * plugin_extra_links()
  */
-class WC_Dynamic_Gallery_Functions
+
+namespace A3Rev\WCDynamicGallery;
+
+class Functions
 {
 
 	public static function reset_products_galleries_activate() {
@@ -300,4 +303,3 @@ class WC_Dynamic_Gallery_Functions
 		return $boxes;
 	}
 }
-?>

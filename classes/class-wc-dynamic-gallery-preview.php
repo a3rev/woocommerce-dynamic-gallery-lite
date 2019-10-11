@@ -8,7 +8,10 @@
  *
  * wc_dynamic_gallery_preview()
  */
-class WC_Gallery_Preview_Display
+
+namespace A3Rev\WCDynamicGallery;
+
+class Preview
 {
 
 	public static function wc_dynamic_gallery_preview($request = ''){
@@ -19,7 +22,7 @@ class WC_Gallery_Preview_Display
 		/**
 		 * Single Product Image
 		 */
-		$post = new stdClass();
+		$post = new \stdClass();
 		$current_db_version = get_option( 'woocommerce_db_version', null );
 		$woo_a3_gallery_settings = $request;
 		$lightbox_class = 'lightbox';
@@ -677,7 +680,7 @@ class WC_Gallery_Preview_Display
 								$script_fancybox .= '</script>';
                             }
                         } else {
-                        	$no_image_uri = WC_Dynamic_Gallery_Functions::get_no_image_uri();
+                        	$no_image_uri = Functions::get_no_image_uri();
                             echo '<li> <a class="lightbox" rel="gallery_product_'.$post->ID.'" href="'.$no_image_uri.'"> <img src="'.$no_image_uri.'" class="image" alt=""> </a> </li>';
                         }
 
@@ -700,4 +703,3 @@ class WC_Gallery_Preview_Display
 	die();
 	}
 }
-?>

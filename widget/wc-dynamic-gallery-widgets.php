@@ -11,7 +11,10 @@
  * update()
  * form()
  */
-class WC_Dynamic_Gallery_Widgets extends WP_Widget 
+
+namespace A3Rev\WCDynamicGallery;
+
+class Widgets extends \WP_Widget 
 {
 
 	function __construct() {
@@ -76,11 +79,3 @@ class WC_Dynamic_Gallery_Widgets extends WP_Widget
 <?php
 	}
 }
-
-function register_widget_wc_dynamic_gallery() {
-	register_widget('WC_Dynamic_Gallery_Widgets');
-}
-
-// Registry widget
-add_action( 'widgets_init', 'register_widget_wc_dynamic_gallery' );
-?>

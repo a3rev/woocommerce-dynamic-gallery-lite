@@ -92,8 +92,8 @@ class WC_Dynamic_Gallery_Style_Settings extends WC_Dynamic_Gallery_Admin_UI
 		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_init' , array( $this, 'after_save_settings' ) );
 		//add_action( $this->plugin_name . '_get_all_settings' , array( $this, 'get_settings' ) );
 		
-		add_action('wp_ajax_woo_dynamic_gallery', array('WC_Gallery_Preview_Display','wc_dynamic_gallery_preview'));
-		add_action('wp_ajax_nopriv_woo_dynamic_gallery', array('WC_Gallery_Preview_Display','wc_dynamic_gallery_preview'));
+		add_action('wp_ajax_woo_dynamic_gallery', array('\A3Rev\WCDynamicGallery\Preview','wc_dynamic_gallery_preview'));
+		add_action('wp_ajax_nopriv_woo_dynamic_gallery', array('\A3Rev\WCDynamicGallery\Preview','wc_dynamic_gallery_preview'));
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -123,7 +123,7 @@ class WC_Dynamic_Gallery_Style_Settings extends WC_Dynamic_Gallery_Admin_UI
 	public function after_save_settings() {
 		if ( isset( $_POST['bt_save_settings'] ) && isset( $_POST[WOO_DYNAMIC_GALLERY_PREFIX.'reset_thumbnails_activate'] ) ) {
 			delete_option( WOO_DYNAMIC_GALLERY_PREFIX.'reset_thumbnails_activate' );
-			WC_Dynamic_Gallery_Functions::reset_thumbnails_activate();			
+			\A3Rev\WCDynamicGallery\Functions::reset_thumbnails_activate();			
 		}
 	}
 
@@ -206,7 +206,7 @@ class WC_Dynamic_Gallery_Style_Settings extends WC_Dynamic_Gallery_Admin_UI
 	/* Init all fields of this form */
 	/*-----------------------------------------------------------------------------------*/
 	public function init_form_fields() {
-		add_action( 'admin_enqueue_scripts', array( 'WC_Gallery_Display_Class', 'backend_register_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( '\A3Rev\WCDynamicGallery\Main', 'backend_register_scripts' ) );
 
   		// Define settings			
      	$this->form_fields = array(
