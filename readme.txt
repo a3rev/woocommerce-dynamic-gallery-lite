@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 4.5
-Tested up to: 5.2.3
-Stable tag: 2.7.0
+Tested up to: 5.3
+Stable tag: 2.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -132,6 +132,14 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 2.7.1 - 2019/11/29 =
+* This maintenance release is for WordPress 5.3 and WooCommerce 3.8.1 compatibility with a full security review of the plugins code. 
+* Tweak - Test for compatibility with WordPress 5.3.0
+* Tweak - Test for compatibility with WooCommerce 3.8.1
+* Tweak - Remove the hard coded PHP error_reporting display errors false from compile sass to css
+* Dev - Replace file_get_contents with HTTP API wp_remote_get
+* Dev - Ensure that all inputs are sanitized and all outputs are escaped
 
 = 2.7.0 - 2019/10/11 =
 * This feature upgrade is for the upgrade of the plugin to Composer PHP dependency manager for cleaner and faster PHP code.
@@ -692,6 +700,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 2.7.1=
+This maintenance release is for WordPress 5.3 and WooCommerce 3.8.1 compatibility with a full security review of the plugins code.
 
 = 2.7.0 =
 This feature upgrade is for the upgrade of the plugin to Composer PHP dependency manager for cleaner and faster PHP code plus compatibility with WooCommerce 3.7.1 and WordPress 5.2.3

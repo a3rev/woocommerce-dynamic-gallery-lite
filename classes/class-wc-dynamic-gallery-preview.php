@@ -18,7 +18,7 @@ class Preview
 		if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) die();
 
 		global $wc_dgallery_admin_interface, $wc_dgallery_fonts_face;
-		$request = $_REQUEST;
+		$request = array_map( 'sanitize_text_field', $_REQUEST );
 		/**
 		 * Single Product Image
 		 */
