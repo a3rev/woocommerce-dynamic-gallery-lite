@@ -17,7 +17,7 @@ class Preview
 	public static function wc_dynamic_gallery_preview($request = ''){
 		if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) die();
 
-		global $wc_dgallery_admin_interface, $wc_dgallery_fonts_face;
+		global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}, ${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'};
 		$request = array_map( 'sanitize_text_field', $_REQUEST );
 		/**
 		 * Single Product Image
@@ -94,7 +94,7 @@ class Preview
 		$caption_font = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'caption_font'];
 		$navbar_font  = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_font'];
 		$google_fonts = array( $caption_font['face'], $navbar_font['face'] );
-		$wc_dgallery_fonts_face->generate_google_webfonts( $google_fonts );
+		${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'}->generate_google_webfonts( $google_fonts );
 
 		?>
         <div class="images" style="100%; margin:30px auto;">
@@ -222,9 +222,9 @@ class Preview
             		margin-right: auto;
             	}
 				.a3-dgallery .a3dg-image-wrapper {
-					'.$wc_dgallery_admin_interface->generate_background_color_css( $main_bg_color ).'
-					'.$wc_dgallery_admin_interface->generate_border_css( $main_border ).'
-					'.$wc_dgallery_admin_interface->generate_shadow_css( $main_shadow ).'
+					'.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $main_bg_color ).'
+					'.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $main_border ).'
+					'.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $main_shadow ).'
 					margin: '.$main_margin_top.'px '.$main_margin_right.'px '.$main_margin_bottom.'px '.$main_margin_left.'px !important;
 					padding: '.$main_padding_top.'px '.$main_padding_right.'px '.$main_padding_bottom.'px '.$main_padding_left.'px !important;
                 }
@@ -244,8 +244,8 @@ class Preview
             echo '
 				/* Caption Text */
 				.a3-dgallery .a3dg-image-wrapper .a3dg-image-description {
-					'.$wc_dgallery_fonts_face->generate_font_css( $caption_font ).'
-					'.$wc_dgallery_admin_interface->generate_background_color_css( $caption_bg_color, $caption_bg_transparent ).'
+					'.${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'}->generate_font_css( $caption_font ).'
+					'.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $caption_bg_color, $caption_bg_transparent ).'
 				}';
 
 				if ( 'no' == $lazy_load_scroll ) {
@@ -257,17 +257,17 @@ class Preview
 				echo '
 				/* Navbar Separator */
 				.product_gallery .a3dg-navbar-separator {
-				    '.str_replace( 'border', 'border-left', $wc_dgallery_admin_interface->generate_border_style_css( $navbar_separator ) ).'
+				    '.str_replace( 'border', 'border-left', ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_style_css( $navbar_separator ) ).'
 				    margin-left: -'. ( (int)$navbar_separator['width'] / 2 ).'px;
 				}
 
 				/* Navbar Control */
 				.product_gallery .a3dg-navbar-control {
 					'.$display_ctrl.';
-				    '.$wc_dgallery_fonts_face->generate_font_css( $navbar_font ).'
-				    '.$wc_dgallery_admin_interface->generate_background_color_css( $navbar_bg_color ).'
-				    '.$wc_dgallery_admin_interface->generate_border_css( $navbar_border ).'
-				    '.$wc_dgallery_admin_interface->generate_shadow_css( $navbar_shadow ).'
+				    '.${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'}->generate_font_css( $navbar_font ).'
+				    '.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $navbar_bg_color ).'
+				    '.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $navbar_border ).'
+				    '.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $navbar_shadow ).'
 				    margin: '.$navbar_margin_top.'px '.$navbar_margin_right.'px '.$navbar_margin_bottom.'px '.$navbar_margin_left.'px !important;
 				    width: calc( 100% - '.( $navbar_margin_left + $navbar_margin_right ).'px );
 				}
@@ -378,9 +378,9 @@ class Preview
 				}
 				.a3-dgallery .a3dg-image-wrapper .a3dg-next,
 				.a3-dgallery .a3dg-image-wrapper .a3dg-prev {
-				    ' . $wc_dgallery_admin_interface->generate_background_color_css( $nextpre_icons_background ) . '
-				    ' . $wc_dgallery_admin_interface->generate_border_css( $nextpre_icons_border ) . '
-				    ' . $wc_dgallery_admin_interface->generate_shadow_css( $nextpre_icons_shadow ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $nextpre_icons_background ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $nextpre_icons_border ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $nextpre_icons_shadow ) . '
 				    padding: ' . $nextpre_icons_padding_top . 'px ' . $nextpre_icons_padding_right . 'px ' . $nextpre_icons_padding_bottom . 'px ' . $nextpre_icons_padding_left . 'px !important;
 				}';
 
@@ -417,9 +417,9 @@ class Preview
 
 				.a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-start-slide,
 				.a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-stop-slide {
-				    ' . $wc_dgallery_admin_interface->generate_background_color_css( $pauseplay_icon_background ) . '
-				    ' . $wc_dgallery_admin_interface->generate_border_css( $pauseplay_icon_border ) . '
-				    ' . $wc_dgallery_admin_interface->generate_shadow_css( $pauseplay_icon_shadow ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $pauseplay_icon_background ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $pauseplay_icon_border ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $pauseplay_icon_shadow ) . '
 				    padding: ' . $pauseplay_icon_padding_top . 'px ' . $pauseplay_icon_padding_right . 'px ' . $pauseplay_icon_padding_bottom . 'px ' . $pauseplay_icon_padding_left . 'px !important;
 				}';
 
@@ -474,9 +474,9 @@ class Preview
 
 				.a3-dgallery .a3dg-forward,
 				.a3-dgallery .a3dg-back {
-				    ' . $wc_dgallery_admin_interface->generate_background_color_css( $thumb_nextpre_icons_background ) . '
-				    ' . $wc_dgallery_admin_interface->generate_border_css( $thumb_nextpre_icons_border ) . '
-				    ' . $wc_dgallery_admin_interface->generate_shadow_css( $thumb_nextpre_icons_shadow ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $thumb_nextpre_icons_background ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $thumb_nextpre_icons_border ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $thumb_nextpre_icons_shadow ) . '
 				    padding-left: ' . $thumb_nextpre_icons_padding_left . 'px !important;
 				    padding-right: ' . $thumb_nextpre_icons_padding_right . 'px !important;
 				}';
@@ -485,9 +485,9 @@ class Preview
 				echo '
 				/* Thumbnail Slider Container */
 				.a3-dgallery .a3dg-nav {
-				    ' . $wc_dgallery_admin_interface->generate_background_color_css( $thumb_slider_background ) . '
-				    ' . $wc_dgallery_admin_interface->generate_border_css( $thumb_slider_border ) . '
-				    ' . $wc_dgallery_admin_interface->generate_shadow_css( $thumb_slider_shadow ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $thumb_slider_background ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $thumb_slider_border ) . '
+				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $thumb_slider_shadow ) . '
 				}';
 			}
 

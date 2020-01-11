@@ -1,15 +1,17 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\WCDynamicGallery\FrameWork\Settings {
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WC Dynamic Gallery Style Settings
 
 -----------------------------------------------------------------------------------*/
 
-class WC_Dynamic_Gallery_Thumbnails_Settings
+class Thumbnails
 {
 	/**
 	 * @var array
@@ -181,7 +183,4 @@ class WC_Dynamic_Gallery_Thumbnails_Settings
 	}
 }
 
-global $wc_dgallery_thumbnails_settings;
-$wc_dgallery_thumbnails_settings = new WC_Dynamic_Gallery_Thumbnails_Settings();
-
-?>
+}

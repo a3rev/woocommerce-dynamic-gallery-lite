@@ -2,8 +2,8 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // Set Settings Default for new features
-global $wc_dgallery_admin_init;
-$wc_dgallery_admin_init->set_default_settings();
+global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'};
+${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'}->set_default_settings();
 
 $bg_image_wrapper = get_option( WOO_DYNAMIC_GALLERY_PREFIX . 'bg_image_wrapper', '' );
 update_option( WOO_DYNAMIC_GALLERY_PREFIX . 'main_bg_color', array( 'enable' => 1, 'color' => $bg_image_wrapper ) );
@@ -20,5 +20,5 @@ $product_gallery_bg_des = get_option( WOO_DYNAMIC_GALLERY_PREFIX . 'product_gall
 update_option( WOO_DYNAMIC_GALLERY_PREFIX . 'caption_bg_color', array( 'enable' => 1, 'color' => $product_gallery_bg_des ) );
 
 // Build sass
-global $wc_wc_dynamic_gallery_less;
-$wc_wc_dynamic_gallery_less->plugin_build_sass();
+global ${WOO_DYNAMIC_GALLERY_PREFIX.'less'};
+${WOO_DYNAMIC_GALLERY_PREFIX.'less'}->plugin_build_sass();

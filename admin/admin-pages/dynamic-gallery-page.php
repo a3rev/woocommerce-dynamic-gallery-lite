@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\WCDynamicGallery\FrameWork\Pages {
+
+use A3Rev\WCDynamicGallery\FrameWork;
+
 // File Security Check
-if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /*-----------------------------------------------------------------------------------
 WC Dynamic Gallery Page
 
@@ -21,7 +25,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WC_Admin_Dynamic_Gallery_Page extends WC_Dynamic_Gallery_Admin_UI
+class Dynamic_Gallery extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -94,8 +98,13 @@ class WC_Admin_Dynamic_Gallery_Page extends WC_Dynamic_Gallery_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function tabs_include() {
 		
-		include_once( $this->admin_plugin_dir() . '/tabs/global-settings-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/gallery-style-tab.php' );
+		global $wc_dgallery_settings_tab;
+		$wc_dgallery_settings_tab = new FrameWork\Tabs\Global_Settings();
+
+		global $wc_dgallery_style_tab;
+		$wc_dgallery_style_tab = new FrameWork\Tabs\Gallery_Styles();
+
+		
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -103,15 +112,17 @@ class WC_Admin_Dynamic_Gallery_Page extends WC_Dynamic_Gallery_Admin_UI
 	/* Show Settings Page */
 	/*-----------------------------------------------------------------------------------*/
 	public function admin_settings_page() {
-		global $wc_dgallery_admin_init;
+		global ${$this->plugin_prefix.'admin_init'};
 		
-		$wc_dgallery_admin_init->admin_settings_page( $this->page_data() );
+		${$this->plugin_prefix.'admin_init'}->admin_settings_page( $this->page_data() );
 	}
 	
 }
 
-global $wc_admin_dgallery_page;
-$wc_admin_dgallery_page = new WC_Admin_Dynamic_Gallery_Page();
+}
+
+// global code
+namespace {
 
 /** 
  * wc_admin_dgallery_page_show()
@@ -122,4 +133,4 @@ function wc_admin_dgallery_page_show() {
 	$wc_admin_dgallery_page->admin_settings_page();
 }
 
-?>
+}

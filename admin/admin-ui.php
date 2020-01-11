@@ -1,9 +1,11 @@
 <?php
 /* "Copyright 2012 a3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\WCDynamicGallery\FrameWork {
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 A3rev Plugin Admin UI
 
@@ -24,14 +26,14 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WC_Dynamic_Gallery_Admin_UI
+class Admin_UI
 {
 	/**
 	 * @var string
 	 * You must change to correct plugin name that you are working
 	 */
 
-	public $framework_version      = '2.2.0';
+	public $framework_version      = '2.3.0';
 	public $plugin_name            = WOO_DYNAMIC_GALLERY_KEY;
 	public $plugin_path            = WOO_DYNAMIC_GALLERY_NAME;
 	public $google_api_key_option  = '';
@@ -49,6 +51,8 @@ class WC_Dynamic_Gallery_Admin_UI
 	 * You must change to correct class name that you are working
 	 */
 	public $class_name = 'WC_Dynamic_Gallery';
+
+	public $plugin_prefix = WOO_DYNAMIC_GALLERY_PREFIX;
 
 	/**
 	 * @var string
@@ -445,4 +449,4 @@ class WC_Dynamic_Gallery_Admin_UI
 
 }
 
-?>
+}

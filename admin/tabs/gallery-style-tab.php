@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\WCDynamicGallery\FrameWork\Tabs {
+
+use A3Rev\WCDynamicGallery\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WC Dynamic Gallery Settings Tab
 
@@ -22,7 +26,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WC_Dynamic_Gallery_Style_Tab extends WC_Dynamic_Gallery_Admin_UI
+class Gallery_Styles extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -103,7 +107,8 @@ class WC_Dynamic_Gallery_Style_Tab extends WC_Dynamic_Gallery_Admin_UI
 	public function settings_include() {
 		
 		// Includes Settings file
-		include_once( $this->admin_plugin_dir() . '/settings/gallery-style-settings.php' );
+		global $wc_dgallery_style_settings;
+		$wc_dgallery_style_settings = new FrameWork\Settings\Gallery_Styles();
 		
 	}
 	
@@ -120,8 +125,10 @@ class WC_Dynamic_Gallery_Style_Tab extends WC_Dynamic_Gallery_Admin_UI
 	}
 }
 
-global $wc_dgallery_style_tab;
-$wc_dgallery_style_tab = new WC_Dynamic_Gallery_Style_Tab();
+}
+
+// global code
+namespace {
 
 /** 
  * wc_admin_ei_email_popup_tab_manager()
@@ -132,4 +139,4 @@ function wc_dgallery_style_tab_manager() {
 	$wc_dgallery_style_tab->tab_manager();
 }
 
-?>
+}

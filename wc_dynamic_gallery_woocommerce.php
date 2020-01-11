@@ -3,10 +3,10 @@
 Plugin Name: Dynamic Product Gallery for WooCommerce
 Plugin URI: http://a3rev.com/shop/woocommerce-dynamic-gallery/
 Description: Auto adds a fully customizable dynamic images gallery to every single product page with thumbnails, caption text and lazy-load. Over 28 settings to fine tune every aspect of the gallery. Creates an image gallery manager on every product edit page - greatly simplifies managing product images. Search engine optimized images with Dynamic Product Gallery for WooCommerce Pro.
-Version: 2.7.1
+Version: 2.8.0
 Author: a3rev Software
 Author URI: https://a3rev.com/
-Tested up to: 5.3
+Tested up to: 5.3.2
 Text Domain: woocommerce-dynamic-gallery
 Domain Path: /languages
 WC requires at least: 2.0.0
@@ -35,17 +35,38 @@ define( 'WOO_DYNAMIC_GALLERY_DIR', WP_PLUGIN_DIR.'/'.WOO_DYNAMIC_GALLERY_FOLDER 
 define( 'WOO_DYNAMIC_GALLERY_CSS_URL',  WOO_DYNAMIC_GALLERY_URL . '/assets/css' );
 define( 'WOO_DYNAMIC_GALLERY_IMAGES_URL',  WOO_DYNAMIC_GALLERY_URL . '/assets/images' );
 define( 'WOO_DYNAMIC_GALLERY_JS_URL',  WOO_DYNAMIC_GALLERY_URL . '/assets/js' );
-define( 'WOO_DYNAMIC_GALLERY_PREFIX', 'wc_dgallery_' );
+
 if(!defined("WOO_DYNAMIC_GALLERY_DOCS_URI"))
     define("WOO_DYNAMIC_GALLERY_DOCS_URI", "http://docs.a3rev.com/user-guides/woocommerce/woo-dynamic-gallery/");
 
 define( 'WOO_DYNAMIC_GALLERY_KEY', 'woo_dynamic_gallery' );
-define( 'WOO_DYNAMIC_GALLERY_VERSION', '2.7.1' );
-define( 'WOO_DYNAMIC_GALLERY_DB_VERSION', '2.7.1' );
+define( 'WOO_DYNAMIC_GALLERY_PREFIX', 'wc_dgallery_' );
+define( 'WOO_DYNAMIC_GALLERY_VERSION', '2.8.0' );
+define( 'WOO_DYNAMIC_GALLERY_DB_VERSION', '2.8.0' );
 define( 'WOO_DYNAMIC_GALLERY_G_FONTS', true );
+
+use \A3Rev\WCDynamicGallery\FrameWork;
 
 if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
 	require __DIR__ . '/vendor/autoload.php';
+
+
+	/**
+	 * Plugin Framework init
+	 */
+	global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'};
+	${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'} = new FrameWork\Admin_Interface();
+
+	global $wc_admin_dgallery_page;
+	$wc_admin_dgallery_page = new FrameWork\Pages\Dynamic_Gallery();
+
+	global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'};
+	${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'} = new FrameWork\Admin_Init();
+
+	global ${WOO_DYNAMIC_GALLERY_PREFIX.'less'};
+	${WOO_DYNAMIC_GALLERY_PREFIX.'less'} = new FrameWork\Less_Sass();
+
+	// End - Plugin Framework init
 
 	global $wc_dynamic_gallery_meta_boxes;
 	$wc_dynamic_gallery_meta_boxes = new \A3Rev\WCDynamicGallery\MetaBoxes();
@@ -72,14 +93,6 @@ function wc_dynamic_gallery_plugin_textdomain() {
 	load_textdomain( 'woocommerce-dynamic-gallery', WP_LANG_DIR . '/woocommerce-dynamic-gallery/woocommerce-dynamic-gallery-' . $locale . '.mo' );
 	load_plugin_textdomain( 'woocommerce-dynamic-gallery', false, WOO_DYNAMIC_GALLERY_FOLDER . '/languages/' );
 }
-
-include('admin/admin-ui.php');
-include('admin/admin-interface.php');
-
-include('admin/admin-pages/dynamic-gallery-page.php');
-
-include('admin/admin-init.php');
-include('admin/less/sass.php');
 
 include('admin/wc_gallery_woocommerce_admin.php');
 

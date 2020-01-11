@@ -38,14 +38,14 @@ class Functions
 	}
 
 	public static function add_google_fonts() {
-		global $wc_dgallery_fonts_face;
+		global ${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'};
 
 		$caption_font = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'caption_font' );
 
 		$navbar_font = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'navbar_font' );
 
 		$google_fonts = array( $caption_font['face'], $navbar_font['face'] );
-		$wc_dgallery_fonts_face->generate_google_webfonts( $google_fonts );
+		${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'}->generate_google_webfonts( $google_fonts );
 	}
 
 	public static function get_no_image_uri() {
@@ -253,9 +253,9 @@ class Functions
 	}
 
 	public static function plugin_extension_box( $boxes = array() ) {
-		global $wc_dgallery_admin_init;
+		global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'};
 
-		$support_box = '<a href="'.$wc_dgallery_admin_init->support_url.'" target="_blank" alt="'.__('Go to Support Forum', 'woocommerce-dynamic-gallery' ).'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/go-to-support-forum.png" /></a>';
+		$support_box = '<a href="'.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'}->support_url.'" target="_blank" alt="'.__('Go to Support Forum', 'woocommerce-dynamic-gallery' ).'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/go-to-support-forum.png" /></a>';
 
 		$boxes[] = array(
 			'content' => $support_box,
@@ -270,7 +270,7 @@ class Functions
             'css' => 'border: none; padding: 0; background: none;'
         );
 
-		$pro_box = '<a href="'.$wc_dgallery_admin_init->pro_plugin_page_url.'" target="_blank" alt="'.__('Product Dynamic Gallery Pro', 'woocommerce-dynamic-gallery' ).'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/pro-version.jpg" /></a>';
+		$pro_box = '<a href="'.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'}->pro_plugin_page_url.'" target="_blank" alt="'.__('Product Dynamic Gallery Pro', 'woocommerce-dynamic-gallery' ).'"><img src="'.WOO_DYNAMIC_GALLERY_IMAGES_URL.'/pro-version.jpg" /></a>';
 
 		$boxes[] = array(
 			'content' => $pro_box,

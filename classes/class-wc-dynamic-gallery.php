@@ -18,8 +18,8 @@ class Main
 
 		// If don't have any plugin or theme register font awesome style then register it from plugin framework
 		if ( ! wp_style_is( 'font-awesome-styles', 'registered' ) ) {
-			global $wc_dgallery_admin_interface;
-			$wc_dgallery_admin_interface->register_fontawesome_style();
+			global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'};
+			${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->register_fontawesome_style();
 		}
 		wp_register_style( 'a3-dgallery-style', WOO_DYNAMIC_GALLERY_JS_URL . '/mygallery/jquery.a3-dgallery.css', array( 'font-awesome-styles' ), WOO_DYNAMIC_GALLERY_VERSION );
 
@@ -39,8 +39,8 @@ class Main
 	public static function backend_register_scripts() {
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
-		global $wc_dgallery_admin_interface;
-		$wc_dgallery_admin_interface->register_fontawesome_style();
+		global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'};
+		${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->register_fontawesome_style();
 
 		wp_register_style( 'a3-dgallery-style', WOO_DYNAMIC_GALLERY_JS_URL . '/mygallery/jquery.a3-dgallery.css', array( 'thickbox', 'font-awesome-styles' ), WOO_DYNAMIC_GALLERY_VERSION );
 		wp_register_style( 'woocommerce_fancybox_styles', WOO_DYNAMIC_GALLERY_JS_URL . '/fancybox/fancybox.css', array(), '1.3.4' );
@@ -84,7 +84,7 @@ class Main
 		/**
 		 * Single Product Image
 		 */
-		global $post, $wc_dgallery_fonts_face;
+		global $post, ${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'};
 
 		$global_stop_scroll_1image = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'stop_scroll_1image' );
 		$enable_scroll             = 'true';
@@ -296,9 +296,9 @@ class Main
 			}
 
 			$_upload_dir = wp_upload_dir();
-			global $wc_wc_dynamic_gallery_less;
+			global ${WOO_DYNAMIC_GALLERY_PREFIX.'less'};
 			if ( file_exists( $_upload_dir['basedir'] . '/sass/woo_dynamic_gallery.min.css' ) ) {
-				echo  '<link media="all" type="text/css" href="' . str_replace(array('http:','https:'), '', $_upload_dir['baseurl'] ) . '/sass/woo_dynamic_gallery.min.css?ver='.$wc_wc_dynamic_gallery_less->get_css_file_version().'" rel="stylesheet" />' . "\n";
+				echo  '<link media="all" type="text/css" href="' . str_replace(array('http:','https:'), '', $_upload_dir['baseurl'] ) . '/sass/woo_dynamic_gallery.min.css?ver='.${WOO_DYNAMIC_GALLERY_PREFIX.'less'}->get_css_file_version().'" rel="stylesheet" />' . "\n";
 			} else {
 				include( WOO_DYNAMIC_GALLERY_DIR . '/templates/customized_style.php' );
 			}

@@ -8,14 +8,14 @@ function wc_dynamic_gallery_install(){
 	update_option('a3_dynamic_gallery_db_version', WOO_DYNAMIC_GALLERY_DB_VERSION);
 
 	// Set Settings Default from Admin Init
-	global $wc_dgallery_admin_init;
-	$wc_dgallery_admin_init->set_default_settings();
+	global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'};
+	${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'}->set_default_settings();
 
 	// Build sass
-	global $wc_wc_dynamic_gallery_less;
-	$wc_wc_dynamic_gallery_less->plugin_build_sass();
+	global ${WOO_DYNAMIC_GALLERY_PREFIX.'less'};
+	${WOO_DYNAMIC_GALLERY_PREFIX.'less'}->plugin_build_sass();
 
-	delete_metadata( 'user', 0, $wc_dgallery_admin_init->plugin_name . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
+	delete_metadata( 'user', 0, ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'}->plugin_name . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
 
 
 	update_option('a3rev_woo_dgallery_just_installed', true);
@@ -42,8 +42,8 @@ add_action( 'admin_enqueue_scripts', array( '\A3Rev\WCDynamicGallery\Functions',
 add_filter( 'plugin_row_meta', array('\A3Rev\WCDynamicGallery\Functions', 'plugin_extra_links'), 10, 2 );
 
 // Need to call Admin Init to show Admin UI
-global $wc_dgallery_admin_init;
-$wc_dgallery_admin_init->init();
+global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'};
+${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'}->init();
 
 
 function register_widget_wc_dynamic_gallery() {
@@ -53,7 +53,7 @@ function register_widget_wc_dynamic_gallery() {
 add_action( 'widgets_init', 'register_widget_wc_dynamic_gallery' );
 
 // Add upgrade notice to Dashboard pages
-add_filter( $wc_dgallery_admin_init->plugin_name . '_plugin_extension_boxes', array( '\A3Rev\WCDynamicGallery\Functions', 'plugin_extension_box' ) );
+add_filter( ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'}->plugin_name . '_plugin_extension_boxes', array( '\A3Rev\WCDynamicGallery\Functions', 'plugin_extension_box' ) );
 
 // Add extra link on left of Deactivate link on Plugin manager page
 add_action('plugin_action_links_' . WOO_DYNAMIC_GALLERY_NAME, array( '\A3Rev\WCDynamicGallery\Functions', 'settings_plugin_links' ) );
@@ -124,8 +124,8 @@ function woo_dgallery_lite_upgrade_plugin () {
 		update_option('a3rev_woo_dgallery_lite_version', '1.5.0');
 
 		// Build sass
-		global $wc_wc_dynamic_gallery_less;
-		$wc_wc_dynamic_gallery_less->plugin_build_sass();
+		global ${WOO_DYNAMIC_GALLERY_PREFIX.'less'};
+		${WOO_DYNAMIC_GALLERY_PREFIX.'less'}->plugin_build_sass();
 	}
 
 	// Upgrade to 1.6.0
@@ -164,16 +164,16 @@ function woo_dgallery_lite_upgrade_plugin () {
 		update_option('a3rev_woo_dgallery_lite_version', '2.3.0');
 
 		// Build sass
-		global $wc_wc_dynamic_gallery_less;
-		$wc_wc_dynamic_gallery_less->plugin_build_sass();
+		global ${WOO_DYNAMIC_GALLERY_PREFIX.'less'};
+		${WOO_DYNAMIC_GALLERY_PREFIX.'less'}->plugin_build_sass();
 	}
 
 	if( version_compare( get_option('a3rev_woo_dgallery_lite_version'), '2.5.8', '<' ) ){
 		update_option('a3rev_woo_dgallery_lite_version', '2.5.8');
 
 		// Build sass
-		global $wc_wc_dynamic_gallery_less;
-		$wc_wc_dynamic_gallery_less->plugin_build_sass();
+		global ${WOO_DYNAMIC_GALLERY_PREFIX.'less'};
+		${WOO_DYNAMIC_GALLERY_PREFIX.'less'}->plugin_build_sass();
 	}
 
 	update_option('a3rev_woo_dgallery_lite_version', WOO_DYNAMIC_GALLERY_VERSION );

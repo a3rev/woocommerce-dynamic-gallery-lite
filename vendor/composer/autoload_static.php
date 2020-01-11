@@ -16,13 +16,26 @@ class ComposerStaticInit3f9dd01c9f0540cf82122595f2fc3946
     public static $prefixDirsPsr4 = array (
         'A3Rev\\WCDynamicGallery\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/includes',
-            1 => __DIR__ . '/../..' . '/classes',
-            2 => __DIR__ . '/../..' . '/widget',
+            0 => __DIR__ . '/../..' . '/admin',
+            1 => __DIR__ . '/../..' . '/includes',
+            2 => __DIR__ . '/../..' . '/classes',
+            3 => __DIR__ . '/../..' . '/widget',
         ),
     );
 
     public static $classMap = array (
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Admin_Init' => __DIR__ . '/../..' . '/admin/admin-init.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Admin_Interface' => __DIR__ . '/../..' . '/admin/admin-interface.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Admin_UI' => __DIR__ . '/../..' . '/admin/admin-ui.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Fonts_Face' => __DIR__ . '/../..' . '/admin/includes/fonts_face.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Less_Sass' => __DIR__ . '/../..' . '/admin/less/sass.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Pages\\Dynamic_Gallery' => __DIR__ . '/../..' . '/admin/admin-pages/dynamic-gallery-page.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Settings\\Gallery_Styles' => __DIR__ . '/../..' . '/admin/settings/gallery-style-settings.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Settings\\Global_Panel' => __DIR__ . '/../..' . '/admin/settings/global-settings.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Settings\\Thumbnails' => __DIR__ . '/../..' . '/admin/settings/thumbnails-settings.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Tabs\\Gallery_Styles' => __DIR__ . '/../..' . '/admin/tabs/gallery-style-tab.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Tabs\\Global_Settings' => __DIR__ . '/../..' . '/admin/tabs/global-settings-tab.php',
+        'A3Rev\\WCDynamicGallery\\FrameWork\\Uploader' => __DIR__ . '/../..' . '/admin/includes/uploader/class-uploader.php',
         'A3Rev\\WCDynamicGallery\\Functions' => __DIR__ . '/../..' . '/classes/class-wc-dynamic-gallery-functions.php',
         'A3Rev\\WCDynamicGallery\\Main' => __DIR__ . '/../..' . '/classes/class-wc-dynamic-gallery.php',
         'A3Rev\\WCDynamicGallery\\MetaBoxes' => __DIR__ . '/../..' . '/classes/class-wc-dynamic-gallery-metaboxes.php',

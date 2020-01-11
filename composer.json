@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-          "A3Rev\\WCDynamicGallery\\": [ "includes/", "classes/", "widget/" ]
+          "A3Rev\\WCDynamicGallery\\": [ "admin/", "includes/", "classes/", "widget/" ]
         }
     }
 }
