@@ -111,10 +111,8 @@ class Dynamic_Gallery extends FrameWork\Admin_UI
 	/* admin_settings_page() */
 	/* Show Settings Page */
 	/*-----------------------------------------------------------------------------------*/
-	public function admin_settings_page() {
-		global ${$this->plugin_prefix.'admin_init'};
-		
-		${$this->plugin_prefix.'admin_init'}->admin_settings_page( $this->page_data() );
+	public function admin_settings_page() {		
+		$GLOBALS[$this->plugin_prefix.'admin_init']->admin_settings_page( $this->page_data() );
 	}
 	
 }

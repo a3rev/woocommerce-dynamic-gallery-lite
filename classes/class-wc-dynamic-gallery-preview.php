@@ -17,7 +17,6 @@ class Preview
 	public static function wc_dynamic_gallery_preview($request = ''){
 		if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) die();
 
-		global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}, ${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'};
 		$request = array_map( 'sanitize_text_field', $_REQUEST );
 		/**
 		 * Single Product Image
@@ -94,7 +93,7 @@ class Preview
 		$caption_font = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'caption_font'];
 		$navbar_font  = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_font'];
 		$google_fonts = array( $caption_font['face'], $navbar_font['face'] );
-		${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'}->generate_google_webfonts( $google_fonts );
+		$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face']->generate_google_webfonts( $google_fonts );
 
 		?>
         <div class="images" style="100%; margin:30px auto;">
@@ -222,9 +221,9 @@ class Preview
             		margin-right: auto;
             	}
 				.a3-dgallery .a3dg-image-wrapper {
-					'.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $main_bg_color ).'
-					'.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $main_border ).'
-					'.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $main_shadow ).'
+					'.$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $main_bg_color ).'
+					'.$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $main_border ).'
+					'.$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $main_shadow ).'
 					margin: '.$main_margin_top.'px '.$main_margin_right.'px '.$main_margin_bottom.'px '.$main_margin_left.'px !important;
 					padding: '.$main_padding_top.'px '.$main_padding_right.'px '.$main_padding_bottom.'px '.$main_padding_left.'px !important;
                 }
@@ -244,8 +243,8 @@ class Preview
             echo '
 				/* Caption Text */
 				.a3-dgallery .a3dg-image-wrapper .a3dg-image-description {
-					'.${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'}->generate_font_css( $caption_font ).'
-					'.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $caption_bg_color, $caption_bg_transparent ).'
+					'.$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face']->generate_font_css( $caption_font ).'
+					'.$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $caption_bg_color, $caption_bg_transparent ).'
 				}';
 
 				if ( 'no' == $lazy_load_scroll ) {
@@ -257,17 +256,17 @@ class Preview
 				echo '
 				/* Navbar Separator */
 				.product_gallery .a3dg-navbar-separator {
-				    '.str_replace( 'border', 'border-left', ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_style_css( $navbar_separator ) ).'
+				    '.str_replace( 'border', 'border-left', $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_style_css( $navbar_separator ) ).'
 				    margin-left: -'. ( (int)$navbar_separator['width'] / 2 ).'px;
 				}
 
 				/* Navbar Control */
 				.product_gallery .a3dg-navbar-control {
 					'.$display_ctrl.';
-				    '.${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'}->generate_font_css( $navbar_font ).'
-				    '.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $navbar_bg_color ).'
-				    '.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $navbar_border ).'
-				    '.${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $navbar_shadow ).'
+				    '.$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face']->generate_font_css( $navbar_font ).'
+				    '.$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $navbar_bg_color ).'
+				    '.$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $navbar_border ).'
+				    '.$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $navbar_shadow ).'
 				    margin: '.$navbar_margin_top.'px '.$navbar_margin_right.'px '.$navbar_margin_bottom.'px '.$navbar_margin_left.'px !important;
 				    width: calc( 100% - '.( $navbar_margin_left + $navbar_margin_right ).'px );
 				}
@@ -378,9 +377,9 @@ class Preview
 				}
 				.a3-dgallery .a3dg-image-wrapper .a3dg-next,
 				.a3-dgallery .a3dg-image-wrapper .a3dg-prev {
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $nextpre_icons_background ) . '
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $nextpre_icons_border ) . '
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $nextpre_icons_shadow ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $nextpre_icons_background ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $nextpre_icons_border ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $nextpre_icons_shadow ) . '
 				    padding: ' . $nextpre_icons_padding_top . 'px ' . $nextpre_icons_padding_right . 'px ' . $nextpre_icons_padding_bottom . 'px ' . $nextpre_icons_padding_left . 'px !important;
 				}';
 
@@ -417,9 +416,9 @@ class Preview
 
 				.a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-start-slide,
 				.a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-stop-slide {
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $pauseplay_icon_background ) . '
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $pauseplay_icon_border ) . '
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $pauseplay_icon_shadow ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $pauseplay_icon_background ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $pauseplay_icon_border ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $pauseplay_icon_shadow ) . '
 				    padding: ' . $pauseplay_icon_padding_top . 'px ' . $pauseplay_icon_padding_right . 'px ' . $pauseplay_icon_padding_bottom . 'px ' . $pauseplay_icon_padding_left . 'px !important;
 				}';
 
@@ -474,9 +473,9 @@ class Preview
 
 				.a3-dgallery .a3dg-forward,
 				.a3-dgallery .a3dg-back {
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $thumb_nextpre_icons_background ) . '
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $thumb_nextpre_icons_border ) . '
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $thumb_nextpre_icons_shadow ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $thumb_nextpre_icons_background ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $thumb_nextpre_icons_border ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $thumb_nextpre_icons_shadow ) . '
 				    padding-left: ' . $thumb_nextpre_icons_padding_left . 'px !important;
 				    padding-right: ' . $thumb_nextpre_icons_padding_right . 'px !important;
 				}';
@@ -485,9 +484,9 @@ class Preview
 				echo '
 				/* Thumbnail Slider Container */
 				.a3-dgallery .a3dg-nav {
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $thumb_slider_background ) . '
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $thumb_slider_border ) . '
-				    ' . ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $thumb_slider_shadow ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $thumb_slider_background ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $thumb_slider_border ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $thumb_slider_shadow ) . '
 				}';
 			}
 

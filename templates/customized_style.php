@@ -1,7 +1,5 @@
 <style>
 <?php
-global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}, ${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'};
-
 $g_thumb_spacing            = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 'thumb_spacing');
 
 $main_bg_color              = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 'main_bg_color');
@@ -49,9 +47,9 @@ $thumb_current_border_color = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 'thumb_cur
     z-index: 100;
 }
 .a3-dgallery .a3dg-image-wrapper {
-	<?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $main_bg_color ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $main_border ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $main_shadow ); ?>
+	<?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $main_bg_color ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $main_border ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $main_shadow ); ?>
     margin: <?php echo $main_margin_top; ?>px <?php echo $main_margin_right; ?>px <?php echo $main_margin_bottom; ?>px <?php echo $main_margin_left; ?>px !important;
     padding: <?php echo $main_padding_top; ?>px <?php echo $main_padding_right; ?>px <?php echo $main_padding_bottom; ?>px <?php echo $main_padding_left; ?>px !important;
 }
@@ -67,22 +65,22 @@ $thumb_current_border_color = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 'thumb_cur
 
 /* Caption Text */
 .a3dg-image-wrapper .a3dg-image-description {
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'}->generate_font_css( $caption_font ); ?>;
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $caption_bg_color, $caption_bg_transparent ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face']->generate_font_css( $caption_font ); ?>;
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $caption_bg_color, $caption_bg_transparent ); ?>
 }
 
 /* Navbar Separator */
 .product_gallery .a3dg-navbar-separator {
-    <?php echo str_replace( 'border', 'border-left', ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_style_css( $navbar_separator ) ); ?>
+    <?php echo str_replace( 'border', 'border-left', $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_style_css( $navbar_separator ) ); ?>
     margin-left: -<?php echo ( (int)$navbar_separator['width'] / 2 ); ?>px;
 }
 
 /* Navbar Control */
 .product_gallery .a3dg-navbar-control {
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face'}->generate_font_css( $navbar_font ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $navbar_bg_color ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $navbar_border ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $navbar_shadow ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'fonts_face']->generate_font_css( $navbar_font ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $navbar_bg_color ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $navbar_border ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $navbar_shadow ); ?>
     margin: <?php echo $navbar_margin_top; ?>px <?php echo $navbar_margin_right; ?>px <?php echo $navbar_margin_bottom; ?>px <?php echo $navbar_margin_left; ?>px !important;
 }
 .product_gallery .a3dg-navbar-control .slide-ctrl,
@@ -168,9 +166,9 @@ $thumb_slider_shadow                = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 't
 }
 .a3-dgallery .a3dg-image-wrapper .a3dg-next,
 .a3-dgallery .a3dg-image-wrapper .a3dg-prev {
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $nextpre_icons_background ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $nextpre_icons_border ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $nextpre_icons_shadow ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $nextpre_icons_background ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $nextpre_icons_border ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $nextpre_icons_shadow ); ?>
     padding: <?php echo $nextpre_icons_padding_top; ?>px <?php echo $nextpre_icons_padding_right; ?>px <?php echo $nextpre_icons_padding_bottom; ?>px <?php echo $nextpre_icons_padding_left; ?>px !important;
     <?php if ( isset( $nextpre_icons_background['enable'] ) && 0 == $nextpre_icons_background['enable'] ) { ?>
     opacity: 1 !important;
@@ -196,9 +194,9 @@ $thumb_slider_shadow                = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 't
 
 .a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-start-slide,
 .a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-stop-slide {
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $pauseplay_icon_background ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $pauseplay_icon_border ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $pauseplay_icon_shadow ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $pauseplay_icon_background ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $pauseplay_icon_border ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $pauseplay_icon_shadow ); ?>
     padding: <?php echo $pauseplay_icon_padding_top; ?>px <?php echo $pauseplay_icon_padding_right; ?>px <?php echo $pauseplay_icon_padding_bottom; ?>px <?php echo $pauseplay_icon_padding_left; ?>px !important;
     <?php if ( isset( $pauseplay_icon_background['enable'] ) && 0 == $pauseplay_icon_background['enable'] ) { ?>
     opacity: 1 !important;
@@ -239,9 +237,9 @@ margin-right: <?php echo $pauseplay_icon_margin_right; ?>px !important;
 
 .a3-dgallery .a3dg-forward,
 .a3-dgallery .a3dg-back {
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $thumb_nextpre_icons_background ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $thumb_nextpre_icons_border ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $thumb_nextpre_icons_shadow ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $thumb_nextpre_icons_background ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $thumb_nextpre_icons_border ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $thumb_nextpre_icons_shadow ); ?>
     padding-left: <?php echo $thumb_nextpre_icons_padding_left; ?>px !important;
     padding-right: <?php echo $thumb_nextpre_icons_padding_right; ?>px !important;
 }
@@ -249,9 +247,9 @@ margin-right: <?php echo $pauseplay_icon_margin_right; ?>px !important;
 <?php if ( 'slider' == $thumb_show_type ) { ?>
 /* Thumbnail Slider Container */
 .a3-dgallery .a3dg-nav {
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_background_color_css( $thumb_slider_background ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_border_css( $thumb_slider_border ); ?>
-    <?php echo ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'}->generate_shadow_css( $thumb_slider_shadow ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $thumb_slider_background ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $thumb_slider_border ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $thumb_slider_shadow ); ?>
 }
 <?php } ?>
 

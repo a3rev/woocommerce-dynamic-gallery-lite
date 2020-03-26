@@ -54,17 +54,14 @@ if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
 	/**
 	 * Plugin Framework init
 	 */
-	global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'};
-	${WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'} = new FrameWork\Admin_Interface();
+	$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface'] = new FrameWork\Admin_Interface();
 
 	global $wc_admin_dgallery_page;
 	$wc_admin_dgallery_page = new FrameWork\Pages\Dynamic_Gallery();
 
-	global ${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'};
-	${WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'} = new FrameWork\Admin_Init();
+	$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_init'] = new FrameWork\Admin_Init();
 
-	global ${WOO_DYNAMIC_GALLERY_PREFIX.'less'};
-	${WOO_DYNAMIC_GALLERY_PREFIX.'less'} = new FrameWork\Less_Sass();
+	$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'less'] = new FrameWork\Less_Sass();
 
 	// End - Plugin Framework init
 
