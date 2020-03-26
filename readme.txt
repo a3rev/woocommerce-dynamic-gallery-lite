@@ -1,9 +1,9 @@
 === Dynamic Product Gallery for WooCommerce ===
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
-Requires at least: 4.9
-Tested up to: 5.3.2
-Stable tag: 2.
+Requires at least: 5.0
+Tested up to: 5.4.0
+Stable tag: 2.8.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,8 +81,8 @@ Want to add a new language? You can contribute via [translate.wordpress.org](htt
 
 = Minimum Requirements =
 
-* WordPress 4.5 or greater
-* PHP version 5.6.20 or greater
+* WordPress 5.0 or greater
+* PHP version 7.0 or greater
 * MySQL version 5.6 or greater
 
 = Automatic installation =
@@ -132,6 +132,16 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 2.8.1 - 2020/03/26 =
+* This maintenance release is for compatibility with WooCommerce 4.0.1, WordPress 5.4, introducing Travis CI unit testing for full compliance with WordPress code standards for PHP versions 7.0 to 7.4
+* Tweak - Test for compatibility with WordPress 5.4
+* Tweak - Test for compatibility with WooCommerce 4.0.1
+* Tweak - Run Travis CI unit build tests for PHP compatibility issues with PHP 7.0 to 7.4
+* Fix - Update global ${$this- to $GLOBALS[$this to resolve 7.0+ PHP warnings
+* Fix - Update global ${$option} to $GLOBALS[$option] to resolve 7.0+ PHP warnings
+* Fix - Update less PHP lib that use square brackets [] instead of curly braces {} for Array , depreciated in PHP 7.4
+* Fix - Validate for do not use get_magic_quotes_gpc function for PHP 7.4
 
 = 2.8.0 - 2020/01/11 =
 * This feature release completes the full refactor (frontend and backend) of the plugins PHP to Composer plus compatibility with WordPress 5.3.2
@@ -706,6 +716,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 2.8.1 =
+This maintenance release is for compatibility with WooCommerce 4.0.1, WordPress 5.4, introducing Travis CI unit testing for full compliance with WordPress code standards for PHP versions 7.0 to 7.4
 
 = 2.8.0 =
 This feature release completes the full refactor (frontend and backend) of the plugins PHP to Composer plus compatibility with WooCommerce 3.8.1 and WordPress 5.3.
