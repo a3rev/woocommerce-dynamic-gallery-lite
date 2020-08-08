@@ -579,10 +579,10 @@ class Preview
 								
                                 if(count($imgs) <= 1 ){
                                     $script_colorbox .= '$(".gallery_product_'.$post->ID.'").colorbox({open:true, maxWidth:"100%" });';
-									$script_fancybox .= '$.fancybox(';
+									$script_fancybox .= '$.fancybox.open(';
                                 }else{
                                     $script_colorbox .= '$(".gallery_product_'.$post->ID.'").colorbox({rel:"gallery_product_'.$post->ID.'", maxWidth:"100%" }); $(".gallery_product_'.$post->ID.'_"+idx).colorbox({open:true, maxWidth:"100%" });';
-									$script_fancybox .= '$.fancybox([';
+									$script_fancybox .= '$.fancybox.open([';
                                 }
 								
                                 $common = '';
@@ -651,9 +651,9 @@ class Preview
 									echo '</li>';
                                     $img_description = esc_js( $img_description );
                                     if($img_description != ''){
-										$script_fancybox .= $common.'{href:"'.$image_lager_default_url.'",title:"'.$img_description.'"}';
+										$script_fancybox .= $common.'{src:"'.$image_lager_default_url.'",opts:{caption:"'.$img_description.'"}}';
                                     }else{
-										$script_fancybox .= $common.'{href:"'.$image_lager_default_url.'",title:""}';
+										$script_fancybox .= $common.'{src:"'.$image_lager_default_url.'"}';
                                     }
                                     $common = ',';
                                     $i++;

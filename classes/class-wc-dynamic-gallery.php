@@ -27,8 +27,8 @@ class Main
 
 		$popup_gallery = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'popup_gallery' );
 		if ( 'fb' == $popup_gallery ) {
-			wp_register_style( 'woocommerce_fancybox_styles', WOO_DYNAMIC_GALLERY_JS_URL . '/fancybox/fancybox.css', array(), '1.3.4' );
-			wp_register_script( 'fancybox', WOO_DYNAMIC_GALLERY_JS_URL . '/fancybox/fancybox'.$suffix.'.js', array( 'jquery' ), '1.3.4', true );
+			wp_register_style( 'woocommerce_fancybox_styles', WOO_DYNAMIC_GALLERY_JS_URL . '/fancybox/jquery.fancybox.min.css', array(), '1.3.4' );
+			wp_register_script( 'fancybox', WOO_DYNAMIC_GALLERY_JS_URL . '/fancybox/jquery.fancybox'.$suffix.'.js', array( 'jquery' ), '1.3.4', true );
 		} elseif ( 'colorbox' == $popup_gallery  ) {
 			wp_register_style( 'a3_colorbox_style', WOO_DYNAMIC_GALLERY_JS_URL . '/colorbox/colorbox.css', array(), '1.4.4' );
 			wp_register_script( 'colorbox_script', WOO_DYNAMIC_GALLERY_JS_URL . '/colorbox/jquery.colorbox'.$suffix.'.js', array( 'jquery' ), '1.4.4', true );
@@ -41,7 +41,7 @@ class Main
 		$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->register_fontawesome_style();
 
 		wp_register_style( 'a3-dgallery-style', WOO_DYNAMIC_GALLERY_JS_URL . '/mygallery/jquery.a3-dgallery.css', array( 'thickbox', 'font-awesome-styles' ), WOO_DYNAMIC_GALLERY_VERSION );
-		wp_register_style( 'woocommerce_fancybox_styles', WOO_DYNAMIC_GALLERY_JS_URL . '/fancybox/fancybox.css', array(), '1.3.4' );
+		wp_register_style( 'woocommerce_fancybox_styles', WOO_DYNAMIC_GALLERY_JS_URL . '/fancybox/jquery.fancybox.min.css', array(), '1.3.4' );
 		wp_register_style( 'a3_colorbox_style', WOO_DYNAMIC_GALLERY_JS_URL . '/colorbox/colorbox.css', array(), '1.4.4' );
 		wp_register_style( 'a3-dynamic-metabox-admin-style', WOO_DYNAMIC_GALLERY_CSS_URL . '/a3.dynamic.metabox.admin.css', array(), WOO_DYNAMIC_GALLERY_VERSION );
 		wp_register_style( 'a3-dynamic-metabox-admin-style-rtl', WOO_DYNAMIC_GALLERY_CSS_URL . '/a3.dynamic.metabox.admin.rtl.css', array(), WOO_DYNAMIC_GALLERY_VERSION );
@@ -49,7 +49,7 @@ class Main
 		wp_register_script( 'preview-gallery-script', WOO_DYNAMIC_GALLERY_JS_URL.'/galleries.js', array( 'jquery', 'thickbox' ), WOO_DYNAMIC_GALLERY_VERSION, true );
 		wp_register_script( 'a3-dgallery-script', WOO_DYNAMIC_GALLERY_JS_URL . '/mygallery/jquery.a3-dgallery.js', array( 'jquery' ), WOO_DYNAMIC_GALLERY_VERSION, true );
 
-		wp_register_script( 'fancybox', WOO_DYNAMIC_GALLERY_JS_URL . '/fancybox/fancybox'.$suffix.'.js', array( 'jquery' ), '1.3.4', true );
+		wp_register_script( 'fancybox', WOO_DYNAMIC_GALLERY_JS_URL . '/fancybox/jquery.fancybox'.$suffix.'.js', array( 'jquery' ), '1.3.4', true );
 		wp_register_script( 'colorbox_script', WOO_DYNAMIC_GALLERY_JS_URL . '/colorbox/jquery.colorbox'.$suffix.'.js', array( 'jquery' ), '1.4.4', true );
 
 		wp_register_script( 'a3-dynamic-metabox-admin-script', WOO_DYNAMIC_GALLERY_JS_URL . '/a3.dynamic.metabox.admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse', 'jquery-ui-sortable' ), WOO_DYNAMIC_GALLERY_VERSION );
@@ -456,10 +456,10 @@ class Main
 
 							if ( count( $dgallery_ids ) <= 1 ) {
 								$script_colorbox .= '$(".gallery_product_'.$product_id.'").colorbox({ current:"'.$current_color_text.'", open:true, maxWidth:"100%" });';
-								$script_fancybox .= '$.fancybox(';
+								$script_fancybox .= '$.fancybox.open(';
 							} else {
 								$script_colorbox .= '$(".gallery_product_'.$product_id.'").colorbox({ current:"'.$current_color_text.'", rel:"gallery_product_'.$product_id.'", maxWidth:"100%" }); $(".gallery_product_'.$product_id.'_"+idx).colorbox({ current:"'.$current_color_text.'", open:true, maxWidth:"100%" });';
-								$script_fancybox .= '$.fancybox([';
+								$script_fancybox .= '$.fancybox.open([';
 							}
 
 							$common = '';
@@ -537,9 +537,9 @@ class Main
 								echo '</li>';
 
 								if ( '' != trim( $gallery_item['caption_text'] ) ) {
-									$script_fancybox .= $common.'{href:"'.$image_large_url.'",title:"'.esc_js( $gallery_item['caption_text'] ).'"}';
+									$script_fancybox .= $common.'{src:"'.$image_large_url.'",opts:{caption:"'.esc_js( $gallery_item['caption_text'] ).'"}}';
 								} else {
-									$script_fancybox .= $common.'{href:"'.$image_large_url.'",title:""}';
+									$script_fancybox .= $common.'{src:"'.$image_large_url.'"}';
                                 }
 								$common = ',';
 								$idx++;

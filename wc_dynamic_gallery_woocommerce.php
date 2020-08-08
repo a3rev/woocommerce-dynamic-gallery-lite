@@ -3,14 +3,14 @@
 Plugin Name: Dynamic Product Gallery for WooCommerce
 Plugin URI: http://a3rev.com/shop/woocommerce-dynamic-gallery/
 Description: Auto adds a fully customizable dynamic images gallery to every single product page with thumbnails, caption text and lazy-load. Over 28 settings to fine tune every aspect of the gallery. Creates an image gallery manager on every product edit page - greatly simplifies managing product images. Search engine optimized images with Dynamic Product Gallery for WooCommerce Pro.
-Version: 2.8.1
+Version: 2.8.2
 Author: a3rev Software
 Author URI: https://a3rev.com/
-Tested up to: 5.4.0
+Tested up to: 5.5
 Text Domain: woocommerce-dynamic-gallery
 Domain Path: /languages
 WC requires at least: 3.0.0
-WC tested up to: 4.0.1
+WC tested up to: 4.3.1
 License: GPLv2 or later
 */
 
@@ -41,8 +41,8 @@ if(!defined("WOO_DYNAMIC_GALLERY_DOCS_URI"))
 
 define( 'WOO_DYNAMIC_GALLERY_KEY', 'woo_dynamic_gallery' );
 define( 'WOO_DYNAMIC_GALLERY_PREFIX', 'wc_dgallery_' );
-define( 'WOO_DYNAMIC_GALLERY_VERSION', '2.8.1' );
-define( 'WOO_DYNAMIC_GALLERY_DB_VERSION', '2.8.1' );
+define( 'WOO_DYNAMIC_GALLERY_VERSION', '2.8.2' );
+define( 'WOO_DYNAMIC_GALLERY_DB_VERSION', '2.8.2' );
 define( 'WOO_DYNAMIC_GALLERY_G_FONTS', true );
 
 use \A3Rev\WCDynamicGallery\FrameWork;
