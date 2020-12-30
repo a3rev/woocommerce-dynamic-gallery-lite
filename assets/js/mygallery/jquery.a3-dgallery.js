@@ -354,7 +354,7 @@
       };
     },
     addAnimation: function(name, fn) {
-      if($.isFunction(fn)) {
+      if(typeof fn === "function") {
         this.animations[name] = fn;
       };
     },
@@ -919,7 +919,7 @@
       this.thumbs_wrapper.animate({scrollLeft: left +'px'});
     },
     fireCallback: function(fn) {
-      if($.isFunction(fn)) {
+      if(typeof fn === "function") {
         fn.call(this);
       };
     }
@@ -1071,7 +1071,7 @@
 	  
     },
     fireCallback: function(fn) {
-      if($.isFunction(fn)) {
+      if(typeof fn === "function") {
         fn.call(this);
       };
     }
