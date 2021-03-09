@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 5.0
-Tested up to: 5.6
-Stable tag: 2.8.7
+Tested up to: 5.7
+Stable tag: 2.8.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -132,6 +132,11 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 2.8.8 - 2021/03/09 =
+* This maintenance release is for compatibility with WordPress 5.7
+* Tweak - Test for compatibility with WordPress 5.7
+* Tweak - Use new function wp_getimagesize of WP instead of getimagesize
 
 = 2.8.7 - 2021/01/13 =
 * This maintenance release is for compatibility with WooCommerce major version 4.9.0.
@@ -764,6 +769,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 2.8.8 =
+This maintenance release is for compatibility with WordPress 5.7
 
 = 2.8.7 =
 This maintenance release is for compatibility with WooCommerce major version 4.9.0

@@ -602,7 +602,7 @@ class Preview
 											$li_class = 'last_item';
 										}
 									}
-                                    $image_attribute = getimagesize( WOO_DYNAMIC_GALLERY_DIR.$item_thumb);
+                                    $image_attribute = version_compare( get_bloginfo( 'version' ), '5.7', '>=' ) ? wp_getimagesize( WOO_DYNAMIC_GALLERY_DIR.$item_thumb) : getimagesize( WOO_DYNAMIC_GALLERY_DIR.$item_thumb);
                                     $image_lager_default_url = WOO_DYNAMIC_GALLERY_URL.$item_thumb;
 									
 									
