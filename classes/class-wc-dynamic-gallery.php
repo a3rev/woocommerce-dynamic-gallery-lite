@@ -214,7 +214,7 @@ class Main
 
 						a3revWCDynamicGallery_<?php echo $product_id; ?>.setHeightProportional();
 
-						$( window ).resize(function() {
+						$( window ).on('resize', function() {
 							a3revWCDynamicGallery_<?php echo $product_id; ?>.setHeightProportional();
 						});
 						$(window).on( 'resize', function() {

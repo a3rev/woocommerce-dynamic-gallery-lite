@@ -91,7 +91,7 @@ jQuery( function( $ ){
 		a3_dgallery_show_hide_variation_gallery();
 	} );
 
-	$('input.actived_d_gallery').change(function() {
+	$('input.actived_d_gallery').on('change', function() {
 		if( $(this).is(":checked") ) {
 			$('#main_dgallery_panel').slideDown();
 			$('.variations_dgallery_deactivated_panel_container').slideUp();
@@ -102,7 +102,7 @@ jQuery( function( $ ){
 		a3_dgallery_show_hide_variation_gallery();
 	} );
 
-	$('input.wc_dgallery_show_variation').change(function() {
+	$('input.wc_dgallery_show_variation').on('change', function() {
 		a3_dgallery_show_hide_variation_gallery();
 	} );
 

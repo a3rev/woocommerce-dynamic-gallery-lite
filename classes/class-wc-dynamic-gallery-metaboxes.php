@@ -102,7 +102,7 @@ class MetaBoxes
 					woo_gallery_link_add.html(dynamic_gallery_link_add_text);
 				}
 
-				jQuery('input.actived_d_gallery').change(function() {
+				jQuery('input.actived_d_gallery').on('change', function() {
 					if( jQuery(this).is(":checked") ) {
 						woo_gallery_title.html(dynamic_gallery_title_text);
 						woo_gallery_link_add.html(dynamic_gallery_link_add_text);
@@ -268,7 +268,7 @@ class MetaBoxes
 				woo_gallery_link_add.html(dynamic_gallery_link_add_text);
 			}
 
-			jQuery('input.actived_d_gallery').change(function() {
+			jQuery('input.actived_d_gallery').on('change', function() {
 				if( jQuery(this).is(":checked") ) {
 					woo_gallery_title.html(dynamic_gallery_title_text);
 					woo_gallery_link_add.html(dynamic_gallery_link_add_text);

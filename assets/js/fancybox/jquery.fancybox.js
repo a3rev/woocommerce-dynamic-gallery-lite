@@ -5367,7 +5367,7 @@
           });
 
           // Opening links in a popup window
-          shareCurrent.$content.find(".fancybox-share__button").click(function () {
+          shareCurrent.$content.find(".fancybox-share__button").on('click', function () {
             window.open(this.href, "Share", "width=550, height=450");
             return false;
           });
@@ -5433,7 +5433,7 @@
       // then triggering click event should start fancyBox
       $("[data-fancybox='" + $.escapeSelector(url.gallery) + "']")
         .eq(url.index - 1)
-        .focus()
+        .trigger('focus')
         .trigger("click.fb-start");
     }
   }

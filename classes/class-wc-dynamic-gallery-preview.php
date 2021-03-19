@@ -73,7 +73,7 @@ class Preview
 
 					a3revWCDynamicGallery_<?php echo $post->ID; ?>.setHeightProportional();
 
-					$( window ).resize(function() {
+					$( window ).on('resize', function() {
 						a3revWCDynamicGallery_<?php echo $post->ID; ?>.setHeightProportional();
 					});
 

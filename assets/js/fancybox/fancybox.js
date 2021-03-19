@@ -801,7 +801,7 @@
 
 				busy = true;
 
-				$(this).blur();
+				$(this).trigger('blur');
 
 				selectedArray = [];
 				selectedIndex = 0;
@@ -1057,15 +1057,15 @@
 			nav_right = $('<a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a>')
 		);
 
-		close.click($.fancybox.close);
-		loading.click($.fancybox.cancel);
+		close.on('click', $.fancybox.close);
+		loading.on('click', $.fancybox.cancel);
 
-		nav_left.click(function(e) {
+		nav_left.on('click', function(e) {
 			e.preventDefault();
 			$.fancybox.prev();
 		});
 
-		nav_right.click(function(e) {
+		nav_right.on('click', function(e) {
 			e.preventDefault();
 			$.fancybox.next();
 		});

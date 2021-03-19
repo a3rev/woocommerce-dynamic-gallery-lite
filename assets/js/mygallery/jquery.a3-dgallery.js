@@ -387,7 +387,7 @@
             thumbs_loaded++;
           };
           link.addClass('a3dg-thumb'+ i);
-          link.click(
+          link.on('click', 
             function() {
               context.showImage(i);
               context.slideshow.stop();
@@ -432,7 +432,7 @@
     },
     initKeyEvents: function() {
       var context = this;
-      $(document).keydown(
+      $(document).on('keydown', 
         function(e) {
           if(e.keyCode == 39) {
             // right arrow
@@ -453,7 +453,7 @@
       this.image_wrapper.append(this.prev_link);
 
       var context = this;
-      this.prev_link.add(this.next_link).click(
+      this.prev_link.add(this.next_link).on('click', 
         function() {
           if($(this).is('.a3dg-next')) {
             context.nextImage();
@@ -512,7 +512,7 @@
       var context = this;
       var has_scrolled = 0;
       var thumbs_scroll_interval = false;
-      $(this.scroll_back).add(this.scroll_forward).click(
+      $(this.scroll_back).add(this.scroll_forward).on('click', 
         function() {
           // We don't want to jump the whole width, since an image
           // might be cut at the edge
@@ -966,20 +966,20 @@
 	  var delay_lazy = this.settings.animation_speed;
       this.countdown.hide();
       var context = this;
-      this.start_link.click(
+      this.start_link.on('click', 
         function() {
 			     context.start();
         }
       );
 	  
-      this.stop_link.click(
+      this.stop_link.on('click', 
 	  
         function() {
           	context.stop();
           }
       );
 	  
-      $(document).keydown(
+      $(document).on('keydown', 
         function(e) {
           if(e.keyCode == 83) {
             // 's'

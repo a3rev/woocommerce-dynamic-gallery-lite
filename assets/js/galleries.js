@@ -1,6 +1,6 @@
 // JavaScript Document
 jQuery(document).ready(function() {
-	jQuery('.preview_gallery').click(function(){
+	jQuery('.preview_gallery').on('click', function(){
 		var url = jQuery(this).attr("href");
 		var order = jQuery('.a3rev_panel_container').find('form').serialize();
 		var height = 500;
