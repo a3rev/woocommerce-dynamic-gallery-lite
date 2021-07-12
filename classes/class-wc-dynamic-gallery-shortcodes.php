@@ -16,6 +16,8 @@ class Shortcodes
 			'product_id'  => '',
         ), $attributes ) );
 
+        $product_id = esc_attr( $product_id );	// XSS ok
+
         if ( empty( $product_id ) && is_product() ) {
         	global $post;
 
