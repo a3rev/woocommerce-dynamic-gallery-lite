@@ -12,11 +12,11 @@ class Shortcodes
 			$attributes = array();
 		}
 
-		extract( array_merge(array(
+		$attr = array_merge(array(
 			'product_id'  => '',
-        ), $attributes ) );
+        ), $attributes );
 
-        $product_id = esc_attr( $product_id );	// XSS ok
+        $product_id = esc_attr( $attr['product_id'] );	// XSS ok
 
         if ( empty( $product_id ) && is_product() ) {
         	global $post;

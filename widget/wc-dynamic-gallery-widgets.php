@@ -25,21 +25,19 @@ class Widgets extends \WP_Widget
 		parent::__construct( 'wc_dynamic_gallery_widget', __('WC Product Dynamic Gallery', 'woocommerce-dynamic-gallery' ), $widget_ops );
 	}
 
-	function widget($args, $instance) {
-		extract($args);
-		
+	function widget($args, $instance) {		
 		$title      = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 		$product_id = empty($instance['product_id']) ? '' : $instance['product_id'];
 
-		echo $before_widget;
+		echo $args['before_widget'];
 
 		if ( $title != '') {
-			echo $before_title . $title . $after_title;
+			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
 		echo do_shortcode( '[wc_product_dynamic_gallery product_id="'.$product_id.'"]' );
 
-		echo $after_widget;
+		echo $args['after_widget'];
 
 	}
 
