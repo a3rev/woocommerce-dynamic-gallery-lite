@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 5.6
-Tested up to: 5.9
-Stable tag: 2.9.0
+Tested up to: 6.0
+Stable tag: 3.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -131,6 +131,18 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.0.0 - 2022/05/24 =
+* This release is for compatibility with WordPress major version 6.0 and WooCommerce version 6.5.1. It and includes various code tweaks and tweaks to harden security.
+* Tweak - Test for compatibility with WordPress 6.0
+* Tweak - Add filter on generate_border_style_css
+* Tweak - Add filter on generate_border_corner_css
+* Tweak - Test for compatibility with WooCommerce 6.5
+* Framework – Upgrade Plugin Framework to version 2.6.0
+* Security - Various code hardening tweaks.
+* Security - Escape all $-variable
+* Security - Sanitize all $_REQUEST, $_GET, $_POST
+* Security - Apply wp_unslash before sanitize
 
 = 2.9.0 - 2022/01/22 =
 * This release has a new Google Fonts API Validation feature plus compatibility with WordPress 5.9 and WooCommerce 6.1.1
@@ -820,6 +832,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 3.0.0 =
+This release is for compatibility with WordPress major version 6.0 and WooCommerce version 6.5.1. It and includes various code tweaks and tweaks to harden security.
 
 = 2.9.0 =
 This release has a new Google Fonts API Validation feature plus compatibility with WordPress 5.9 and WooCommerce 6.1.1
