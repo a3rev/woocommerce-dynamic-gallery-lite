@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 5.6
 Tested up to: 6.0
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -131,6 +131,10 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.0.1 - 2022/05/25 =
+* This release fixes a bug with the just released version 3.0.0
+* Fix - Do not call update_google_map_api_key from construct of Admin UI
 
 = 3.0.0 - 2022/05/24 =
 * This release is for compatibility with WordPress major version 6.0 and WooCommerce version 6.5.1. It and includes various code tweaks and tweaks to harden security.
@@ -832,6 +836,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 3.0.1 =
+This release fixes a bug with the just released version 3.0.0
 
 = 3.0.0 =
 This release is for compatibility with WordPress major version 6.0 and WooCommerce version 6.5.1. It and includes various code tweaks and tweaks to harden security.
