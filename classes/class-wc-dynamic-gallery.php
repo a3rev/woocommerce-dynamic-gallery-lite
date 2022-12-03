@@ -195,7 +195,7 @@ class Main
 				if ( $max_height > 0 ) {
 					$g_height = false;
 			?>
-	            <script type="text/javascript">
+	            <script type="text/javascript" id="a3-wc-dynamic-gallery-inline-script">
 				(function($){
 					$(function(){
 						a3revWCDynamicGallery_<?php echo $product_id; ?> = {
@@ -369,7 +369,7 @@ class Main
 			echo '
 			</style>';
 
-			echo '<script type ="text/javascript">
+			echo '<script type ="text/javascript" id="a3-wc-dynamic-gallery-init-inline-script">
 				jQuery(function() {
 					var settings_defaults_'.$product_id.' = { loader_image: "'.WOO_DYNAMIC_GALLERY_JS_URL.'/mygallery/loader.gif",
 						start_at_index: 0,
@@ -518,8 +518,8 @@ class Main
 								}
 
 								echo '<li class="'.$li_class.'">';
-								echo '<a alt="'. esc_attr( $gallery_item['alt_text'] ).'" class="gallery_product_'.$product_id.' gallery_product_'.$product_id.'_'.$idx.'" title="'. esc_attr( $gallery_item['caption_text'] ).'" rel="gallery_product_'.$product_id.'" href="'.$image_single_url.'">';
-								echo '<img
+								echo Functions::filter_image_url( '<a alt="'. esc_attr( $gallery_item['alt_text'] ).'" class="gallery_product_'.$product_id.' gallery_product_'.$product_id.'_'.$idx.'" title="'. esc_attr( $gallery_item['caption_text'] ).'" rel="gallery_product_'.$product_id.'" href="'.$image_single_url.'">', true );
+								echo Functions::filter_image_url( '<img
 								org-width="'. esc_attr( $gallery_item['single']['width'] ).'"
 								org-height="'. esc_attr( $gallery_item['single']['height'] ).'"
 								org-sizes="'. esc_attr( $gallery_item['single']['img_sizes'] ).'"
@@ -532,7 +532,7 @@ class Main
 								data-caption="'. esc_attr( $gallery_item['caption_text'] ).'"
 								class="image'.$idx.'"
 								width="'.$thumb_width.'"
-								height="'.$thumb_height.'">';
+								height="'.$thumb_height.'">' );
 								echo '</a>';
 								echo '</li>';
 
@@ -576,7 +576,7 @@ class Main
 						} elseif( 'colorbox' == $popup_gallery ) {
 							echo $script_colorbox;
 						} else {
-							echo $script_fancybox;
+							echo Functions::filter_image_url( $script_fancybox );
 						}
 
 						echo '</ul>

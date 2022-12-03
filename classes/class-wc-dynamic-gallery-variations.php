@@ -38,6 +38,6 @@ class Variations
 			}
 		}
 
-		return $product_image;
+		return Functions::filter_image_url( $product_image );
 	}
 }

@@ -426,7 +426,7 @@
           };
           context.images[i] = { thumb: thumb.attr('src'), image: image_src, error: false,
                                 preloaded: false, desc: desc, title: title, size: false,
-                                link: link,alt:alt, sizes: thumb.attr('org-sizes'), srcset: thumb.attr('org-srcset'), org_width: thumb.attr('org-width'), org_height: thumb.attr('org-height') };
+                                link: link,alt:alt, sizes: thumb.attr('org-sizes'), srcset: thumb.attr('srcset'), org_width: thumb.attr('org-width'), org_height: thumb.attr('org-height') };
         }
       );
     },

@@ -231,6 +231,29 @@ class Functions
 		return $dgallery_ids;
 	}
 
+	public static function filter_image_url( $image_url, $apply_href = false ) {
+		$filter_list = array( 'post_thumbnail_html' );
+		$filter_list = apply_filters( 'wc_dynamic_gallery_image_url_filter_list', $filter_list );
+
+		if ( empty( $filter_list ) ) return $image_url;
+
+		if ( $apply_href && stristr( $image_url, 'href' ) !== false ) {
+			$image_url = str_replace( 'href', 'src', $image_url );
+		} else {
+			$apply_href = false;
+		}
+
+		foreach ( $filter_list as $filter_tag ) {
+			$image_url = apply_filters( $filter_tag, $image_url );
+		}
+
+		if ( $apply_href ) {
+			$image_url = str_replace( 'src', 'href', $image_url );
+		}
+
+		return $image_url;
+	}
+
 	public static function a3_wp_admin() {
 		wp_enqueue_style( 'a3rev-wp-admin-style', WOO_DYNAMIC_GALLERY_CSS_URL . '/a3_wp_admin.css' );
 	}

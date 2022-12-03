@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 5.6
 Tested up to: 6.1
-Stable tag: 3.0.3
+Stable tag: 3.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,9 +18,10 @@ As soon as you install Dynamic Gallery your Product pages image gallery is trans
 
 = KEY FEATURES =
 
-* The #1 Product Page image gallery for WooCommerce Products page.
-* First released July 2012 with 82 maintenance updates and feature upgrade versions released in 85 months (as at August 2019)
+* A Dynamic Product Page image gallery for WooCommerce Products page.
 * Full support for WordPress responsive images - srcset and size
+* Full support for Webp images
+* Supports .jpg and .png images converted to Webp using HTML, replace URL attributes.
 * Fully integrated with WooCommerce Product Gallery
 * Full compatibility with WooCommerce version 3.6.5+ with backward compatibility to version 3.0
 * **NEW** - Fully Compatible with Elementor Premium Templates 
@@ -131,6 +132,15 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.1.0 - 2022/12/03 =
+* This feature release adds Default font control and support for Webp images converted by popular plugins, Webp Express and Imagify.
+* Feature - Apply webp filter tag to gallery images converted from .jpg and .png by 3rd party Webp conversion plugins.
+* Feature - Works when HTML Replace image URL is set in the conversion. Does not work with replace, picture tag 
+* Performance – Improved performance as actual webp images are loaded in the gallery.
+* Plugin Framework - Update typography control from plugin framework to add support for Default value
+* Plugin Framework - Default value will get fonts set in the theme.
+* Plugin Framework - Change generate typography style for change on typography control
 
 = 3.0.3 - 2022/11/21 =
 * This maintenance release has 1 bug fix and compatibility with WooCommerce 7.1
@@ -847,6 +857,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 3.1.0 =
+This feature release adds Default font control and support for Webp images converted by popular plugins, Webp Express and Imagify.
 
 = 3.0.3 =
 This maintenance release has 1 bug fix and compatibility with WooCommerce 7.1
