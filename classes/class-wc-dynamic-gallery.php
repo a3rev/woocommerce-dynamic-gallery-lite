@@ -518,7 +518,7 @@ class Main
 								}
 
 								echo '<li class="'.$li_class.'">';
-								echo Functions::filter_image_url( '<a alt="'. esc_attr( $gallery_item['alt_text'] ).'" class="gallery_product_'.$product_id.' gallery_product_'.$product_id.'_'.$idx.'" title="'. esc_attr( $gallery_item['caption_text'] ).'" rel="gallery_product_'.$product_id.'" href="'.$image_single_url.'">', true );
+								echo Functions::filter_image_url( '<a alt="'. esc_attr( $gallery_item['alt_text'] ).'" class="gallery_product_'.$product_id.' gallery_product_'.$product_id.'_'.$idx.'" title="'. esc_attr( $gallery_item['caption_text'] ).'" rel="gallery_product_'.$product_id.'" href="'.$image_single_url.'">', array( $product_id, $img_id, '', '' ), true );
 								echo Functions::filter_image_url( '<img
 								org-width="'. esc_attr( $gallery_item['single']['width'] ).'"
 								org-height="'. esc_attr( $gallery_item['single']['height'] ).'"
@@ -532,7 +532,7 @@ class Main
 								data-caption="'. esc_attr( $gallery_item['caption_text'] ).'"
 								class="image'.$idx.'"
 								width="'.$thumb_width.'"
-								height="'.$thumb_height.'">' );
+								height="'.$thumb_height.'">', array( $product_id, $img_id, '', '' ) );
 								echo '</a>';
 								echo '</li>';
 
@@ -576,7 +576,7 @@ class Main
 						} elseif( 'colorbox' == $popup_gallery ) {
 							echo $script_colorbox;
 						} else {
-							echo Functions::filter_image_url( $script_fancybox );
+							echo Functions::filter_image_url( $script_fancybox, array( $product_id, 0, '', '' ) );
 						}
 
 						echo '</ul>

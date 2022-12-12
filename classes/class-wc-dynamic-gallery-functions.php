@@ -231,7 +231,7 @@ class Functions
 		return $dgallery_ids;
 	}
 
-	public static function filter_image_url( $image_url, $apply_href = false ) {
+	public static function filter_image_url( $image_url, $args = array(), $apply_href = false ) {
 		$filter_list = array( 'post_thumbnail_html' );
 		$filter_list = apply_filters( 'wc_dynamic_gallery_image_url_filter_list', $filter_list );
 
@@ -244,7 +244,7 @@ class Functions
 		}
 
 		foreach ( $filter_list as $filter_tag ) {
-			$image_url = apply_filters( $filter_tag, $image_url );
+			$image_url = apply_filters( $filter_tag, $image_url, ...$args );
 		}
 
 		if ( $apply_href ) {

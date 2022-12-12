@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 5.6
 Tested up to: 6.1
-Stable tag: 3.1.0
+Stable tag: 3.1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -132,6 +132,10 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.1.1 - 2022/12/12 =
+* This maintenance release has a bug fix for some missing Webp filter args.
+* Fix - Add arguments to Webp filter tag made on previous version for compatibility with some theme or plugin that use other arguments.
 
 = 3.1.0 - 2022/12/03 =
 * This feature release adds Default font control and support for Webp images converted by popular plugins, Webp Express and Imagify.
@@ -857,6 +861,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 3.1.1 =
+This maintenance release has a bug fix for some missing Webp filter args.
 
 = 3.1.0 =
 This feature release adds Default font control and support for Webp images converted by popular plugins, Webp Express and Imagify.
