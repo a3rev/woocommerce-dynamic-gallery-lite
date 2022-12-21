@@ -157,24 +157,18 @@ $thumb_slider_shadow                = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 't
 <?php } ?>
 
 /* Next / Previous Icons */
-.a3-dgallery .fa-caret-left:before,
-.a3-dgallery .fa-caret-right:before,
-.a3-dgallery svg.fa-caret-left,
-.a3-dgallery svg.fa-caret-right {
-    font-size: <?php echo $nextpre_icons_size; ?>px !important;
-    color: <?php echo $nextpre_icons_color; ?> !important;
+.a3-dgallery .a3dg-prev svg,
+.a3-dgallery .a3dg-next svg {
+    width: <?php echo $nextpre_icons_size; ?>px !important;
+    height: <?php echo $nextpre_icons_size; ?>px !important;
+    fill: <?php echo $nextpre_icons_color; ?> !important;
 }
 .a3-dgallery .a3dg-image-wrapper .a3dg-next,
 .a3-dgallery .a3dg-image-wrapper .a3dg-prev {
-    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $nextpre_icons_background ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $nextpre_icons_background, $nextpre_icons_opacity ); ?>
     <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $nextpre_icons_border ); ?>
     <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $nextpre_icons_shadow ); ?>
     padding: <?php echo $nextpre_icons_padding_top; ?>px <?php echo $nextpre_icons_padding_right; ?>px <?php echo $nextpre_icons_padding_bottom; ?>px <?php echo $nextpre_icons_padding_left; ?>px !important;
-    <?php if ( isset( $nextpre_icons_background['enable'] ) && 0 == $nextpre_icons_background['enable'] ) { ?>
-    opacity: 1 !important;
-    <?php } else { ?>
-    opacity: <?php echo ( $nextpre_icons_opacity / 100 ); ?> !important;
-    <?php } ?>
 }
 .a3-dgallery .a3dg-image-wrapper .a3dg-prev {
     left: <?php echo $nextpre_icons_margin_left; ?>px !important;
@@ -184,25 +178,18 @@ $thumb_slider_shadow                = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 't
 }
 
 /* Pause | Play icon */
-.a3-dgallery .fa-pause:before,
-.a3-dgallery .fa-play:before,
-.a3-dgallery svg.fa-pause,
-.a3-dgallery svg.fa-play {
-    font-size: <?php echo $pauseplay_icon_size; ?>px !important;
-    color: <?php echo $pauseplay_icon_color; ?> !important;
+.a3-dgallery .a3dg-slideshow-start-slide svg,
+.a3-dgallery .a3dg-slideshow-stop-slide svg {
+    width: <?php echo $pauseplay_icon_size; ?>px !important;
+    height: <?php echo $pauseplay_icon_size; ?>px !important;
+    fill: <?php echo $pauseplay_icon_color; ?> !important;
 }
-
 .a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-start-slide,
 .a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-stop-slide {
-    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $pauseplay_icon_background ); ?>
+    <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $pauseplay_icon_background, $pauseplay_icon_opacity ); ?>
     <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $pauseplay_icon_border ); ?>
     <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $pauseplay_icon_shadow ); ?>
     padding: <?php echo $pauseplay_icon_padding_top; ?>px <?php echo $pauseplay_icon_padding_right; ?>px <?php echo $pauseplay_icon_padding_bottom; ?>px <?php echo $pauseplay_icon_padding_left; ?>px !important;
-    <?php if ( isset( $pauseplay_icon_background['enable'] ) && 0 == $pauseplay_icon_background['enable'] ) { ?>
-    opacity: 1 !important;
-    <?php } else { ?>
-    opacity: <?php echo ( $pauseplay_icon_opacity / 100 ); ?> !important;
-    <?php } ?>
 }
 
 .a3dg-image-wrapper .slide-ctrl {
@@ -227,14 +214,12 @@ margin-right: <?php echo $pauseplay_icon_margin_right; ?>px !important;
 }
 
 /* Thumbnail Slider Next / Previous icons */
-.a3-dgallery .fa-angle-left:before,
-.a3-dgallery .fa-angle-right:before,
-.a3-dgallery svg.fa-angle-left,
-.a3-dgallery svg.fa-angle-right {
-    font-size: <?php echo $thumb_nextpre_icons_size; ?>px !important;
-    color: <?php echo $thumb_nextpre_icons_color; ?> !important;
+.a3-dgallery .a3dg-nav svg,
+.a3-dgallery .a3dg-forward svg {
+    width: <?php echo $thumb_nextpre_icons_size; ?>px !important;
+    height: <?php echo $thumb_nextpre_icons_size; ?>px !important;
+    fill: <?php echo $thumb_nextpre_icons_color; ?> !important;
 }
-
 .a3-dgallery .a3dg-forward,
 .a3-dgallery .a3dg-back {
     <?php echo $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $thumb_nextpre_icons_background ); ?>

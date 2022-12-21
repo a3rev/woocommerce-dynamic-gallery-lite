@@ -16,11 +16,7 @@ class Main
 	public static function frontend_register_scripts() {
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
-		// If don't have any plugin or theme register font awesome style then register it from plugin framework
-		if ( ! wp_style_is( 'font-awesome-styles', 'registered' ) ) {
-			$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->register_fontawesome_style();
-		}
-		wp_register_style( 'a3-dgallery-style', WOO_DYNAMIC_GALLERY_JS_URL . '/mygallery/jquery.a3-dgallery.css', array( 'font-awesome-styles' ), WOO_DYNAMIC_GALLERY_VERSION );
+		wp_register_style( 'a3-dgallery-style', WOO_DYNAMIC_GALLERY_JS_URL . '/mygallery/jquery.a3-dgallery.css', array(), WOO_DYNAMIC_GALLERY_VERSION );
 
 		wp_register_script( 'a3-dgallery-script', WOO_DYNAMIC_GALLERY_JS_URL . '/mygallery/jquery.a3-dgallery.js', array( 'jquery' ), WOO_DYNAMIC_GALLERY_VERSION, true );
 		wp_register_script( 'a3-dgallery-variations-script', WOO_DYNAMIC_GALLERY_JS_URL . '/select_variations.js', array( 'jquery', 'wc-add-to-cart-variation' ), WOO_DYNAMIC_GALLERY_VERSION, true );
@@ -38,9 +34,7 @@ class Main
 	public static function backend_register_scripts() {
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
-		$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->register_fontawesome_style();
-
-		wp_register_style( 'a3-dgallery-style', WOO_DYNAMIC_GALLERY_JS_URL . '/mygallery/jquery.a3-dgallery.css', array( 'thickbox', 'font-awesome-styles' ), WOO_DYNAMIC_GALLERY_VERSION );
+		wp_register_style( 'a3-dgallery-style', WOO_DYNAMIC_GALLERY_JS_URL . '/mygallery/jquery.a3-dgallery.css', array( 'thickbox' ), WOO_DYNAMIC_GALLERY_VERSION );
 		wp_register_style( 'woocommerce_fancybox_styles', WOO_DYNAMIC_GALLERY_JS_URL . '/fancybox/jquery.fancybox.min.css', array(), '1.3.4' );
 		wp_register_style( 'a3_colorbox_style', WOO_DYNAMIC_GALLERY_JS_URL . '/colorbox/colorbox.css', array(), '1.4.4' );
 		wp_register_style( 'a3-dynamic-metabox-admin-style', WOO_DYNAMIC_GALLERY_CSS_URL . '/a3.dynamic.metabox.admin.css', array(), WOO_DYNAMIC_GALLERY_VERSION );
@@ -113,7 +107,7 @@ class Main
 			$thumbnail_size_name = 'shop_thumbnail';
 		} else {
 			$single_size_name    = 'woocommerce_single';
-			$thumbnail_size_name = 'woocommerce_thumbnail';
+			$thumbnail_size_name = 'woocommerce_gallery_thumbnail';
 		}
 
 		// Process to get max height and width of max height for set gallery container
@@ -431,8 +425,8 @@ class Main
 				<div class="a3dg-navbar-control"><div class="a3dg-navbar-separator"></div></div>
 				<div style="clear: both"></div>
 				<div class="a3dg-nav">
-					<div class="a3dg-back"><i class="fa fa-angle-left"></i></div>
-					<div class="a3dg-forward"><i class="fa fa-angle-right"></i></div>
+					<div class="a3dg-back"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></div>
+					<div class="a3dg-forward"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></div>
 					<div class="a3dg-thumbs '.$thumbs_list_class.'">
 						<ul class="a3dg-thumb-list">';
 

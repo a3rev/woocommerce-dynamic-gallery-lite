@@ -17,7 +17,13 @@ class Preview
 	public static function wc_dynamic_gallery_preview($request = ''){
 		if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) die();
 
-		$request = array_map( 'sanitize_text_field', $_REQUEST );
+		$request = array_map( function( $field ) {
+			if ( is_array( $field ) ) {
+				return array_map( 'sanitize_text_field', $field );
+			}
+
+			return sanitize_text_field( $field );
+		}, $_REQUEST );
 		/**
 		 * Single Product Image
 		 */
@@ -103,7 +109,7 @@ class Preview
             	// bw compat. for less than WC 3.3.0
 				$woocommerce_thumbnail  = wc_get_image_size( 'shop_thumbnail' );
 			} else {
-				$woocommerce_thumbnail  = wc_get_image_size( 'woocommerce_thumbnail' );
+				$woocommerce_thumbnail  = wc_get_image_size( 'woocommerce_gallery_thumbnail' );
 			}
 			$g_thumb_width   = $woocommerce_thumbnail['width'];
 			$g_thumb_height  = $woocommerce_thumbnail['height'];
@@ -315,7 +321,7 @@ class Preview
 				}';
 			}
 
-			$icons_display_type                 = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX . 'icons_display_type'];
+			$icons_display_type                 = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX . 'icons_display_type'] ?? 'hover';
 
 			$nextpre_icons_size                 = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 'nextpre_icons_size', 30 );
 			$nextpre_icons_color                = get_option(WOO_DYNAMIC_GALLERY_PREFIX . 'nextpre_icons_color', '#000');
@@ -370,32 +376,19 @@ class Preview
 
 			echo '
 				/* Next / Previous Icons */
-				.a3-dgallery .fa-caret-left:before,
-				.a3-dgallery .fa-caret-right:before  {
-				    font-size: ' . $nextpre_icons_size . 'px !important;
-				    color: ' . $nextpre_icons_color . ' !important;
+				.a3-dgallery .a3dg-prev svg,
+				.a3-dgallery .a3dg-next svg {
+					width: ' . $nextpre_icons_size . 'px !important;
+					height: ' . $nextpre_icons_size . 'px !important;
+					fill: ' . $nextpre_icons_color . ' !important;
 				}
 				.a3-dgallery .a3dg-image-wrapper .a3dg-next,
 				.a3-dgallery .a3dg-image-wrapper .a3dg-prev {
-				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $nextpre_icons_background ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $nextpre_icons_background, $nextpre_icons_opacity ) . '
 				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $nextpre_icons_border ) . '
 				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $nextpre_icons_shadow ) . '
 				    padding: ' . $nextpre_icons_padding_top . 'px ' . $nextpre_icons_padding_right . 'px ' . $nextpre_icons_padding_bottom . 'px ' . $nextpre_icons_padding_left . 'px !important;
 				}';
-
-			if ( isset( $nextpre_icons_background['enable'] ) && 0 == $nextpre_icons_background['enable'] ) {
-				echo '
-				.a3-dgallery .a3dg-image-wrapper .a3dg-next,
-				.a3-dgallery .a3dg-image-wrapper .a3dg-prev {
-					opacity: 1 !important;
-				}';
-			} else {
-				echo '
-				.a3-dgallery .a3dg-image-wrapper .a3dg-next,
-				.a3-dgallery .a3dg-image-wrapper .a3dg-prev {
-					opacity: ' . ( $nextpre_icons_opacity / 100 ) . ' !important;
-				}';
-			}
 
 			echo '
 				.a3-dgallery .a3dg-image-wrapper .a3dg-prev {
@@ -408,33 +401,19 @@ class Preview
 
 			echo '
 				/* Pause | Play icon */
-				.a3-dgallery .fa-pause:before,
-				.a3-dgallery .fa-play:before  {
-				    font-size: ' . $pauseplay_icon_size . 'px !important;
-				    color: ' . $pauseplay_icon_color . ' !important;
+				.a3-dgallery .a3dg-slideshow-start-slide svg,
+				.a3-dgallery .a3dg-slideshow-stop-slide svg {
+					width: ' . $pauseplay_icon_size . 'px !important;
+					height: ' . $pauseplay_icon_size . 'px !important;
+					fill: ' . $pauseplay_icon_color . ' !important;
 				}
-
 				.a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-start-slide,
 				.a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-stop-slide {
-				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $pauseplay_icon_background ) . '
+				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_background_color_css( $pauseplay_icon_background, $pauseplay_icon_opacity ) . '
 				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_border_css( $pauseplay_icon_border ) . '
 				    ' . $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_interface']->generate_shadow_css( $pauseplay_icon_shadow ) . '
 				    padding: ' . $pauseplay_icon_padding_top . 'px ' . $pauseplay_icon_padding_right . 'px ' . $pauseplay_icon_padding_bottom . 'px ' . $pauseplay_icon_padding_left . 'px !important;
 				}';
-
-			if ( isset( $pauseplay_icon_background['enable'] ) && 0 == $pauseplay_icon_background['enable'] ) {
-				echo '
-				.a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-start-slide,
-				.a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-stop-slide {
-					opacity: 1 !important;
-				}';
-			} else {
-				echo '
-				.a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-start-slide,
-				.a3dg-image-wrapper .slide-ctrl .a3dg-slideshow-stop-slide {
-					opacity: ' . ( $pauseplay_icon_opacity / 100 ) . ' !important;
-				}';
-			}
 
 			echo '
 				.a3dg-image-wrapper .slide-ctrl {';
@@ -465,10 +444,11 @@ class Preview
 
 			echo '
 				/* Thumbnail Slider Next / Previous icons */
-				.a3-dgallery .fa-angle-left:before,
-				.a3-dgallery .fa-angle-right:before  {
-				    font-size: ' . $thumb_nextpre_icons_size . 'px !important;
-				    color: ' . $thumb_nextpre_icons_color . ' !important;
+				.a3-dgallery .a3dg-nav svg,
+				.a3-dgallery .a3dg-forward svg {
+						width: ' . $thumb_nextpre_icons_size . 'px !important;
+						height: ' . $thumb_nextpre_icons_size . 'px !important;
+				    fill: ' . $thumb_nextpre_icons_color . ' !important;
 				}
 
 				.a3-dgallery .a3dg-forward,
@@ -551,8 +531,8 @@ class Preview
                 <div class="a3dg-navbar-control"><div class="a3dg-navbar-separator"></div></div>
                 <div style="clear: both"></div>
                   <div class="a3dg-nav">
-                  	<div class="a3dg-back"><i class="fa fa-angle-left"></i></div>
-					<div class="a3dg-forward"><i class="fa fa-angle-right"></i></div>
+                  	<div class="a3dg-back"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></div>
+					<div class="a3dg-forward"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></div>
                     <div class="a3dg-thumbs '.$thumbs_list_class.'">
                       <ul class="a3dg-thumb-list">';
 						

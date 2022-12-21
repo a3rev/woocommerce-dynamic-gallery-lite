@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 5.6
 Tested up to: 6.1
-Stable tag: 3.1.1
+Stable tag: 3.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,7 +23,7 @@ As soon as you install Dynamic Gallery your Product pages image gallery is trans
 * Full support for Webp images
 * Supports .jpg and .png images converted to Webp using HTML, replace URL attributes.
 * Fully integrated with WooCommerce Product Gallery
-* Full compatibility with WooCommerce version 3.6.5+ with backward compatibility to version 3.0
+* Full compatibility with WooCommerce version 7.2
 * **NEW** - Fully Compatible with Elementor Premium Templates 
 
 = PRODUCT GALLERY =
@@ -63,7 +63,8 @@ Dynamic Gallery automatically replaces the default WooCommerce Product Gallery o
 
 * Dynamic Gallery admin panel is found in the WooCommerce submenu on your wp-admin page
 * Dynamic Gallery is found on the WooCommerce Product Data meta on each products edit page
-* Thumbnails dimensions are set from the WooCommerce > Settings > Products > Display - Product Images - Product Thumbnail settings
+* The Gallery uses the default WooCommerce Main Image size. The sizes for these are set on the Customiser menu > WooCommerce > Product images.
+* Gallery thumbnails are the default WooCommerce square cropped 100×100 pixels. WooCommerce allows changing this by filtering on woocommerce_gallery_thumbnail 
 * Translation ready and fully compatible with WPMU
 
 
@@ -132,6 +133,14 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.2.0 - 2022/12/21 =
+* This Core web vitals performance improving release removes the fontawesome lib, replacing font icons with SVGs, changes Gallery Thumbnail sizes to WooCommerce default (smaller and faster loading), plus checks for compatibility with WooCommerce 7.2.
+* Feature - Convert icon from font awesome to SVG
+* Feature - Update styling for new SVG icons
+* Plugin Framework - Remove fontawesome lib
+* Performance - Change woocommerce_thumbnails to woocommerce_gallery_thumbnail size for gallery thumbnail
+* Tweak - Test for compatibility with WooCommerce 7.2
 
 = 3.1.1 - 2022/12/12 =
 * This maintenance release has a bug fix for some missing Webp filter args.
@@ -861,6 +870,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 3.2.0 =
+This Core web vitals performance improving release removes the fontawesome lib, replacing font icons with SVGs, changes Gallery Thumbnail sizes to WooCommerce default (smaller and faster loading), plus checks for compatibility with WooCommerce 7.2
 
 = 3.1.1 =
 This maintenance release has a bug fix for some missing Webp filter args.
