@@ -1,9 +1,9 @@
 === Dynamic Product Gallery for WooCommerce ===
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
-Requires at least: 5.6
+Requires at least: 6.0
 Tested up to: 6.2
-Stable tag: 3.2.0
+Stable tag: 3.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -133,6 +133,12 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.3.0 - 2023/04/25 =
+* This release has compatibility with WordPress 6.2.0, WooCommerce 7.6.0 plus declared compatibility with WooCommerce HPOS.
+* Tweak - Test for compatibility with WordPress 6.2
+* Tweak - Test for compatibility with WooCommerce 7.6.0
+* Tweak - Test and declare plugin compatibility with WooCommerce HPOS Custom Tables.
 
 = 3.2.0 - 2022/12/21 =
 * This Core web vitals performance improving release removes the fontawesome lib, replacing font icons with SVGs, changes Gallery Thumbnail sizes to WooCommerce default (smaller and faster loading), plus checks for compatibility with WooCommerce 7.2.
@@ -870,6 +876,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 3.3.0 =
+This release has compatibility with WordPress 6.2.0, WooCommerce 7.6.0 plus declared compatibility with WooCommerce HPOS.
 
 = 3.2.0 =
 This Core web vitals performance improving release removes the fontawesome lib, replacing font icons with SVGs, changes Gallery Thumbnail sizes to WooCommerce default (smaller and faster loading), plus checks for compatibility with WooCommerce 7.2
