@@ -61,7 +61,8 @@ jQuery( function( $ ){
 		var data = {
 			action: 		"wc_dgallery_variation_save_gallery_ids",
 			variation_id: 	dgallery_ids.data('variation-id'),
-			dgallery_ids: 	dgallery_ids.val()
+			dgallery_ids: 	dgallery_ids.val(),
+			security: 		a3_dgallery_metabox.security
 		};
 
 		$.post( a3_dgallery_metabox.ajax_url, data, function(response) {

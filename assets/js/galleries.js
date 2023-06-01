@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
 		}
 		var thumb_height = 75;
  		height = parseInt(gallery_height) + parseInt(thumb_height) + 80;
-		tb_show('Dynamic gallery preview', url+'&width=700&height='+height+'&action=woo_dynamic_gallery&KeepThis=false&'+order);
+		tb_show('Dynamic gallery preview', url+'&width=700&height='+height+'&action=woo_dynamic_gallery_preview&KeepThis=false&'+order);
 		return false;
 	});
 });	

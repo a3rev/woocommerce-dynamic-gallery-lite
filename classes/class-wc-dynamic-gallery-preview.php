@@ -15,6 +15,8 @@ class Preview
 {
 
 	public static function wc_dynamic_gallery_preview($request = ''){
+		check_ajax_referer( 'wc_dgallery_preview', 'security' );
+
 		if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) die();
 
 		$request = array_map( function( $field ) {

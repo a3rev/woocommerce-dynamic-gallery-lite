@@ -13,10 +13,18 @@ class Shortcodes
 		}
 
 		$attr = array_merge(array(
-			'product_id'  => '',
+			'product_id' => '', // leave empty for current product
         ), $attributes );
 
         $product_id = esc_attr( $attr['product_id'] );	// XSS ok
+
+        if ( empty( $product_id ) ) {
+	    	global $product;
+
+	    	if ( $product && is_object( $product ) ) {
+	    		$product_id = $product->get_id();
+	    	}
+	    }
 
         if ( empty( $product_id ) && is_product() ) {
         	global $post;
@@ -31,9 +39,9 @@ class Shortcodes
         $gallery_html = '';
 
 		$global_wc_dgallery_activate = get_option( WOO_DYNAMIC_GALLERY_PREFIX . 'activate' );
-		$actived_d_gallery           = get_post_meta( $product_id, '_actived_d_gallery',true );
 
-		if ( '' == $actived_d_gallery && 'no' != $global_wc_dgallery_activate ) {
+		$actived_d_gallery = 0;
+		if ( 'no' != $global_wc_dgallery_activate ) {
 			$actived_d_gallery = 1;
 		}
 
@@ -54,7 +62,7 @@ class Shortcodes
 			}
 
 			ob_start();
-			Main::wc_dynamic_gallery_display( $product_id );
+			Main::wc_dynamic_gallery_display( $product_id, true );
 
 			$gallery_html = ob_get_clean();
 		}

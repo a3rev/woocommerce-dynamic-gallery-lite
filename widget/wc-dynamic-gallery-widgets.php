@@ -35,7 +35,7 @@ class Widgets extends \WP_Widget
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
-		echo do_shortcode( '[wc_product_dynamic_gallery product_id="'.$product_id.'"]' );
+		echo do_shortcode( '[wc_product_dgallery product_id="'.$product_id.'"]' );
 
 		echo $args['after_widget'];
 

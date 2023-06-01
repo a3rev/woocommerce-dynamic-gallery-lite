@@ -78,7 +78,7 @@ class Gallery_Styles extends FrameWork\Admin_UI
 	/* Settings Constructor */
 	/*-----------------------------------------------------------------------------------*/
 	public function __construct() {
-		$this->init_form_fields();
+		add_action( 'plugins_loaded', array( $this, 'init_form_fields' ), 1 );
 		$this->subtab_init();
 		
 		$this->form_messages = array(
@@ -96,8 +96,8 @@ class Gallery_Styles extends FrameWork\Admin_UI
 		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_init' , array( $this, 'after_save_settings' ) );
 		//add_action( $this->plugin_name . '_get_all_settings' , array( $this, 'get_settings' ) );
 		
-		add_action('wp_ajax_woo_dynamic_gallery', array('\A3Rev\WCDynamicGallery\Preview','wc_dynamic_gallery_preview'));
-		add_action('wp_ajax_nopriv_woo_dynamic_gallery', array('\A3Rev\WCDynamicGallery\Preview','wc_dynamic_gallery_preview'));
+		add_action('wp_ajax_woo_dynamic_gallery_preview', array('\A3Rev\WCDynamicGallery\Preview','wc_dynamic_gallery_preview'));
+		add_action('wp_ajax_nopriv_woo_dynamic_gallery_preview', array('\A3Rev\WCDynamicGallery\Preview','wc_dynamic_gallery_preview'));
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -204,12 +204,14 @@ class Gallery_Styles extends FrameWork\Admin_UI
 	public function init_form_fields() {
 		add_action( 'admin_enqueue_scripts', array( '\A3Rev\WCDynamicGallery\Main', 'backend_register_scripts' ) );
 
+		$wc_dgallery_preview_nonce = wp_create_nonce( 'wc_dgallery_preview' );
+
   		// Define settings			
      	$this->form_fields = array(
 		
 			array(
             	'name' 		=> '',
-				'desc'		=> '<a href="'.  admin_url( 'admin-ajax.php', 'relative') .'?act=preview-dgallery" class="preview_gallery">' . __( 'Click here to preview gallery', 'woocommerce-dynamic-gallery' ) . '</a>',
+				'desc'		=> '<a href="'.  admin_url( 'admin-ajax.php', 'relative') .'?act=preview-dgallery&security='.$wc_dgallery_preview_nonce.'" class="preview_gallery">' . __( 'Click here to preview gallery', 'woocommerce-dynamic-gallery' ) . '</a>',
                 'type' 		=> 'heading',
            	),
 			

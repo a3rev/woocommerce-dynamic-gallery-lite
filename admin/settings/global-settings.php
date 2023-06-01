@@ -463,6 +463,27 @@ class Global_Panel extends FrameWork\Admin_UI
 				<td class="forminp">' . sprintf( __( 'Set via the <a href="%s" target="_blank">Product Thumbnails Dimensions and Hard Crop</a> option from WooCommerce Settings', 'woocommerce-dynamic-gallery' ), $wc_display_settings_url ) . '</td>
 				</tr></tbody></table>',
            	),
+
+           	array(
+				'name' => __('Gallery Shortcode', 'woocommerce-dynamic-gallery' ),
+				'type' => 'heading',
+				'id'     => 'wc_dgallery_shortcode_box',
+				'is_box' => true,
+			),
+			array(
+                'type' 		=> 'heading',
+				'desc'		=> sprintf( __( '* Get Help -> <a href="%1$s" target="_blank">%1$s</a>', 'woocommerce-dynamic-gallery' ), 'https://docs.a3rev.com/woo-dynamic-gallery/#gallery-shortcode' )
+				.'<table class="form-table"><tbody>
+				<tr valign="top">
+				<th class="titledesc" scope="row"><label>' . __( 'Shop Shortcode', 'woocommerce-dynamic-gallery' ) . '</label></th>
+				<td class="forminp">' . __( '[wc_product_dgallery] will use current product id from query loop to show gallery', 'woocommerce-dynamic-gallery' ) . '</td>
+				</tr>
+				<tr valign="top">
+				<th class="titledesc" scope="row"><label>' . __( 'Single Shortcode', 'woocommerce-dynamic-gallery' ) . '</label></th>
+				<td class="forminp">' . __( '[wc_product_dgallery product_id=".."] Gallery for single product', 'woocommerce-dynamic-gallery' ) . '</td>
+				</tr>
+				</tbody></table>',
+           	),
         ));
 	}
 

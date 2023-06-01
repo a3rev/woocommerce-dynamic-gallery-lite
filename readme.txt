@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 6.0
 Tested up to: 6.2
-Stable tag: 3.3.0
+Stable tag: 3.4.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,7 +24,8 @@ As soon as you install Dynamic Gallery your Product pages image gallery is trans
 * Supports .jpg and .png images converted to Webp using HTML, replace URL attributes.
 * Fully integrated with WooCommerce Product Gallery
 * Full compatibility with WooCommerce version 7.2
-* **NEW** - Fully Compatible with Elementor Premium Templates 
+* Fully Compatible with Elementor Premium Templates
+* **NEW** Dynamic Gallery shortcodes. Works with New WC Single Product Page Bock Template and page builders like Elementor.
 
 = PRODUCT GALLERY =
 
@@ -47,9 +48,11 @@ As soon as you install Dynamic Gallery your Product pages image gallery is trans
 
 Dynamic Gallery automatically replaces the default WooCommerce Product Gallery on product pages. The Dynamic Gallery Widget and Shortcode enable you to:
 
-* Shortcode - Add a single product Dynamic Gallery to any page or post
+* Shop Shortcode - use it to add Dynamic gallery to new WooCommerce FSE Single Product Block Template
+* Shop Shortcode - use it to add Dynamic gallery to page builders WooCommerce Product Page Template. 
+* Single Shortcode - Use to insert a Single Product Gallery, by product id into anywhere that accepts shortcodes
 * Widget - Add a single product Dynamic Gallery to any widget area
-* Elementor Product Page Template - Add the WooCommerce Dynamic Gallery to your Elementor Product Page template via the Dynamic Gallery Widget.
+* Elementor Product Page Template - Add the WooCommerce Dynamic Gallery to your Elementor Product Page template via the Dynamic Gallery Widget or Shop Shortcode.
 
 
 = GALLERY THUMBNAIL SLIDER =
@@ -62,7 +65,7 @@ Dynamic Gallery automatically replaces the default WooCommerce Product Gallery o
 = THINGS TO KNOW =
 
 * Dynamic Gallery admin panel is found in the WooCommerce submenu on your wp-admin page
-* Dynamic Gallery is found on the WooCommerce Product Data meta on each products edit page
+* Dynamic Gallery is found on the WooCommerce Single Product Template
 * The Gallery uses the default WooCommerce Main Image size. The sizes for these are set on the Customiser menu > WooCommerce > Product images.
 * Gallery thumbnails are the default WooCommerce square cropped 100×100 pixels. WooCommerce allows changing this by filtering on woocommerce_gallery_thumbnail 
 * Translation ready and fully compatible with WPMU
@@ -83,7 +86,7 @@ Want to add a new language? You can contribute via [translate.wordpress.org](htt
 
 = Minimum Requirements =
 
-* PHP version 7.4 or greater is recommended
+* PHP version 8.1 or greater is recommended
 * MySQL version 5.6 or greater is recommended
 
 = Automatic installation =
@@ -133,6 +136,17 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.4.0 - 2023/06/01 =
+* This feature release adds insert Dynamic Gallery by 2 new shortcodes. Works with New WC Single Product Page Bock Template and page builders like Elementor.
+* Feature - Add Dynamic Gallery Shop shortcode. Adds Dynamic Gallery to all product pages across the store.
+* Feature - Add Single Product Dynamic Gallery shortcode. Use to insert a Single Product Gallery, by product id into anywhere that accepts shortcodes.
+* Feature - Fully compatible with the new WooCommerce Single Product Blocks Template
+* Feature - Fully compatible with page builders like Elementor, Divi etc
+* Tweak - Adds new + Gallery Shortcode option box to the Settings tab (at the bottom)
+* Tweak - Add a Get Help link from the new options box to the new shortcode section of the Dynamic Gallery Docs.
+* Depreciated - Old [wc_product_dynamic_gallery] Shortcode. Auto map existing [wc_product_dgallery] shortcode to new shortcode
+* Tweak - Test for compatibility with WooCommerce 7.7.0
 
 = 3.3.0 - 2023/04/25 =
 * This release has compatibility with WordPress 6.2.0, WooCommerce 7.6.0 plus declared compatibility with WooCommerce HPOS.
@@ -876,6 +890,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 3.4.0 =
+This feature release adds insert Dynamic Gallery by 2 new shortcodes. Works with New WC Single Product Page Bock Template and page builders like Elementor.
 
 = 3.3.0 =
 This release has compatibility with WordPress 6.2.0, WooCommerce 7.6.0 plus declared compatibility with WooCommerce HPOS.

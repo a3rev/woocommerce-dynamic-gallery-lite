@@ -49,7 +49,7 @@ class Main
 		wp_register_script( 'a3-dynamic-metabox-admin-script', WOO_DYNAMIC_GALLERY_JS_URL . '/a3.dynamic.metabox.admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse', 'jquery-ui-sortable' ), WOO_DYNAMIC_GALLERY_VERSION );
 	}
 
-	public static function wc_dynamic_gallery_display( $product_id = 0 ) {
+	public static function wc_dynamic_gallery_display( $product_id = 0, $is_shortcode = false ) {
 		global $post;
 
 		if ( $product_id < 1 ) {
@@ -59,7 +59,7 @@ class Main
 			$product = wc_get_product( $product_id );
 		}
 	?>
-		<div class="images gallery_container">
+		<div class="<?php echo ( ! $is_shortcode ? 'images' : '' ); ?> gallery_container">
 	<?php
 		do_action('wc_dynamic_gallery_before_gallery');
 
