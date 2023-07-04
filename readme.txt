@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 6.0
 Tested up to: 6.2
-Stable tag: 3.4.0
+Stable tag: 3.4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -136,6 +136,12 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.4.1 - 2023/07/04 =
+* This maintenace release has 2 performance / SEO tweaks and compatibility with WooCommerce 7.8.2
+* Performamnce - Add global no-lazy, skip-lazy classes for thumbnail images so it will automaticaally exclude those thumb from lazy load feature of any lazy load plugin. This is to resolve an issue with getting the correct image sizes.
+* Performance - Add ALT text, dimension size to preload image for improved SEO scores higher
+* Tweak - Test for compatibility with WooCommerce 7.8.2
 
 = 3.4.0 - 2023/06/01 =
 * This feature release adds insert Dynamic Gallery by 2 new shortcodes. Works with New WC Single Product Page Bock Template and page builders like Elementor.
@@ -890,6 +896,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 3.4.1 =
+This maintenace release has 2 performance / SEO tweaks and compatibility with WooCommerce 7.8.2
 
 = 3.4.0 =
 This feature release adds insert Dynamic Gallery by 2 new shortcodes. Works with New WC Single Product Page Bock Template and page builders like Elementor.

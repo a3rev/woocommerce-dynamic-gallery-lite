@@ -879,7 +879,11 @@
           var sizes = this._getContainedImageSize(image.org_width, image.org_height);
           img.attr('sizes', '(max-width:' + sizes.width +'px) 100vw, ' + sizes.width +'px' );
           if(!this.isImageLoaded(img[0])) {
-            this.preloads.append(img);
+            var preload_img = img;
+            preload_img.attr( 'alt', 'Preload image' );
+            preload_img.attr('width','1200');
+            preload_img.attr('height','800');
+            this.preloads.append(preload_img);
             var context = this;
             img.on( 'load',
               function() {

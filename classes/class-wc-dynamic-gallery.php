@@ -524,7 +524,8 @@ class Main
 								src="'.$image_thumb_url.'"
 								alt="'. esc_attr( $gallery_item['alt_text'] ).'"
 								data-caption="'. esc_attr( $gallery_item['caption_text'] ).'"
-								class="image'.$idx.'"
+								data-skip-lazy="true"
+								class="no-lazy skip-lazy wc_dgallery_image image'.$idx.'"
 								width="'.$thumb_width.'"
 								height="'.$thumb_height.'">', array( $product_id, $img_id, '', '' ) );
 								echo '</a>';
