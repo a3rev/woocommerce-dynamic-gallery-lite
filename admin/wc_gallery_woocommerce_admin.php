@@ -88,11 +88,6 @@ function setup_dynamic_gallery() {
 			// Include google fonts into header
 			add_action( 'wp_enqueue_scripts', array( '\A3Rev\WCDynamicGallery\Functions', 'add_google_fonts'), 9 );
 
-			remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
-			remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
-			add_action( 'woocommerce_before_single_product_summary', 'wc_dynamic_gallery_show', 30);
-
-
 			wp_enqueue_style( 'a3-dgallery-style' );
 			wp_enqueue_script( 'a3-dgallery-script' );
 
@@ -105,13 +100,35 @@ function setup_dynamic_gallery() {
 				wp_enqueue_style( 'a3_colorbox_style' );
 				wp_enqueue_script( 'colorbox_script' );
 			}
-
-			if ( in_array( 'woocommerce-professor-cloud/woocommerce-professor-cloud.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && get_option('woocommerce_cloud_enableCloud') == 'true' ) :
-				remove_action( 'woocommerce_before_single_product_summary', 'wc_dynamic_gallery_show', 30);
-			endif;
 		}
 	}
 }
+
+add_filter( 'wc_get_template_part', function( $template, $slug, $name ) {
+	if ( 'content' !== $slug || 'single-product' !== $name ) return $template;
+
+	global $post;
+	if ( is_singular( array( 'product' ) ) || (! empty( $post->post_content ) && stristr($post->post_content, '[product_page') !== false ) ) {
+		$global_wc_dgallery_activate = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'activate' );
+		$actived_d_gallery = get_post_meta($post->ID, '_actived_d_gallery',true);
+
+		if ($actived_d_gallery == '' && $global_wc_dgallery_activate != 'no') {
+			$actived_d_gallery = 1;
+		}
+
+		if($actived_d_gallery == 1){
+			remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+			remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
+			add_action( 'woocommerce_before_single_product_summary', 'wc_dynamic_gallery_show', 30);
+		}
+
+		if ( in_array( 'woocommerce-professor-cloud/woocommerce-professor-cloud.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && get_option('woocommerce_cloud_enableCloud') == 'true' ) :
+				remove_action( 'woocommerce_before_single_product_summary', 'wc_dynamic_gallery_show', 30);
+		endif;
+	}
+
+	return $template;
+}, 10, 3 );
 
 // Check upgrade functions
 add_action('init', 'woo_dgallery_lite_upgrade_plugin');
