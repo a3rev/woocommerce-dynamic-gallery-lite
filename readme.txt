@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 6.0
-Tested up to: 6.2
-Stable tag: 3.4.2
+Tested up to: 6.2.2
+Stable tag: 3.4.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -136,6 +136,12 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.4.3 2023/07/28 =
+* This maintenance release has 2 bug fixes for compatibility with WordPress 6.2.2 or higher.
+* Tweak - Test for compatibility with WordPress 6.2.2
+* Fix - validate if $product is WC_Product or not before call get_id() . For compatibility with WC 7.9.0
+* Fix - Show correct Dynamic Gallery for each product inside Single Product template from Gutenberg with double [[ ]] for compatibility with WP 6.2.2 or higher.
 
 = 3.4.2 - 2023/07/24 =
 * This maintenance release fixes a conflict with WooCommerce 7.9 and the single block template.
@@ -901,6 +907,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 3.4.3 =
+This maintenance release has 2 bug fixes for compatibility with WordPress 6.2.2 or higher.
 
 = 3.4.2 =
 This maintenance release fixes a conflict with WooCommerce 7.9 and the single block template.

@@ -57,6 +57,10 @@ add_action('plugin_action_links_' . WOO_DYNAMIC_GALLERY_NAME, array( '\A3Rev\WCD
 
 add_action( 'wp', array( '\A3Rev\WCDynamicGallery\Main', 'frontend_register_scripts' ) );
 
+// Force do_shortcode for the content from the shortcode & paragraph blocks
+add_filter( 'render_block_core/shortcode', array('\A3Rev\WCDynamicGallery\Shortcodes', 'render_block_core_shortcode'), 10, 3);
+add_filter( 'render_block_core/paragraph', array('\A3Rev\WCDynamicGallery\Shortcodes', 'render_block_core_shortcode'), 10, 3);
+
 // Add shortcode [wc_product_dgallery product_id=0]
 add_shortcode( 'wc_product_dgallery', array( '\A3Rev\WCDynamicGallery\Shortcodes', 'parse_shortcode_product_dynamic_gallery' ) );
 add_shortcode( 'wc_product_dynamic_gallery', array( '\A3Rev\WCDynamicGallery\Shortcodes', 'parse_shortcode_product_dynamic_gallery' ) );

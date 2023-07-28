@@ -4,6 +4,13 @@ namespace A3Rev\WCDynamicGallery;
 
 class Shortcodes 
 {
+	public static function render_block_core_shortcode( $content, $parsed_block, $block ) {
+		if ( has_shortcode( $content, 'wc_product_dynamic_gallery' ) || has_shortcode( $content, 'wc_product_dgallery' ) ) {
+			$content = do_shortcode( $content );
+		}
+	    return $content;
+	}
+
 	public static function parse_shortcode_product_dynamic_gallery( $attributes ) {
 		// Don't show content for shortcode on Dashboard, still support for admin ajax
 		if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) return;
@@ -21,7 +28,7 @@ class Shortcodes
         if ( empty( $product_id ) ) {
 	    	global $product;
 
-	    	if ( $product && is_object( $product ) ) {
+	    	if ( $product && is_a( $product, 'WC_Product' ) ) {
 	    		$product_id = $product->get_id();
 	    	}
 	    }
