@@ -6,7 +6,7 @@ Description: Auto adds a fully customizable dynamic images gallery to every sing
 Version: 3.4.3
 Author: a3rev Software
 Author URI: https://a3rev.com/
-Tested up to: 6.2.2
+Tested up to: 6.3
 Text Domain: woocommerce-dynamic-gallery
 Domain Path: /languages
 WC requires at least: 3.0.0
