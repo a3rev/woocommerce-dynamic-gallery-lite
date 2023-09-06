@@ -88,22 +88,7 @@ function setup_dynamic_gallery() {
 		}
 
 		if($actived_d_gallery == 1){
-
-			// Include google fonts into header
-			add_action( 'wp_enqueue_scripts', array( '\A3Rev\WCDynamicGallery\Functions', 'add_google_fonts'), 9 );
-
-			wp_enqueue_style( 'a3-dgallery-style' );
-			wp_enqueue_script( 'a3-dgallery-script' );
-
-
-			$popup_gallery = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'popup_gallery' );
-			if ($popup_gallery == 'fb') {
-				wp_enqueue_style( 'woocommerce_fancybox_styles' );
-				wp_enqueue_script( 'fancybox' );
-			} elseif ($popup_gallery == 'colorbox') {
-				wp_enqueue_style( 'a3_colorbox_style' );
-				wp_enqueue_script( 'colorbox_script' );
-			}
+			\A3Rev\WCDynamicGallery\Main::init_dynamic_gallery( $post->ID, true );
 		}
 	}
 }

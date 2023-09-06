@@ -26,4 +26,5 @@ return array(
     'A3Rev\\WCDynamicGallery\\Shortcodes' => $baseDir . '/classes/class-wc-dynamic-gallery-shortcodes.php',
     'A3Rev\\WCDynamicGallery\\Variations' => $baseDir . '/classes/class-wc-dynamic-gallery-variations.php',
     'A3Rev\\WCDynamicGallery\\Widgets' => $baseDir . '/widget/wc-dynamic-gallery-widgets.php',
+    'A3Rev\\WCDynamicGallery\\Blocks' => $baseDir . '/src/blocks.php',
 );

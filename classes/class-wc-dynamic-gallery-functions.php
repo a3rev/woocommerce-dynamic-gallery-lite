@@ -52,6 +52,33 @@ class Functions
 		return $no_image_uri;
 	}
 
+	public static function get_current_product_id( $product_id = 0 ) {
+		if ( empty( $product_id ) ) {
+	    	global $product;
+
+	    	if ( $product && is_a( $product, 'WC_Product' ) ) {
+	    		$product_id = $product->get_id();
+	    	}
+	    }
+
+	    // Get current product ID from Query Loop block of WP Predictive Search
+		if ( empty( $product_id ) ) {
+			global $psobject;
+			if ( $psobject ) {
+				$product_id = $psobject->id;
+			}
+		}
+
+	    if ( empty( $product_id ) && is_product() ) {
+			global $post;
+			if ( $post ) {
+				$product_id = $post->ID;
+			}
+		}
+
+		return $product_id;
+	}
+
 	public static function get_gallery_ids( $post_id = 0 ) {
 		$a3_dynamic_gallery_db_version = get_option( 'a3_dynamic_gallery_db_version', '1.0.0' );
 		if ( $post_id < 1 ) return array();

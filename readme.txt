@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 6.0
 Tested up to: 6.3
-Stable tag: 3.4.3
+Stable tag: 3.5.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,9 +23,10 @@ As soon as you install Dynamic Gallery your Product pages image gallery is trans
 * Full support for Webp images
 * Supports .jpg and .png images converted to Webp using HTML, replace URL attributes.
 * Fully integrated with WooCommerce Product Gallery
-* Full compatibility with WooCommerce version 7.2
+* Full compatibility with WooCommerce version 8.0
 * Fully Compatible with Elementor Premium Templates
-* **NEW** Dynamic Gallery shortcodes. Works with New WC Single Product Page Bock Template and page builders like Elementor.
+* Dynamic Gallery shortcodes. Works with page builders like Elementor, Divi etc.
+* **NEW** Product Gallery Block - Use with WooCommerce Single Product page Block Template 
 
 = PRODUCT GALLERY =
 
@@ -136,6 +137,13 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.5.0 - 2023/09/06 =
+* This feature release adds a "Dynamic Gallery" Block for use with Gutenberg templates. Also compatibility with WooCommerce 8.0.3 and WordPress 6.3
+* Feature - Define new "Product Dynamic Gallery" block to show gallery on Gutenberg Block templates pages.
+* Tweak - Test for compatibility with WooCommerce 8.0.3
+* Tweak - Test for compatibility with WordPress 6.3.0
+* Fix - New Product Gallery Block resolves issues that the Gallery shortcode has with Gutenberg templates
 
 = 3.4.3 - 2023/07/28 =
 * This maintenance release has 2 bug fixes for compatibility with WordPress 6.2.2 or higher.
@@ -907,6 +915,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Upgrade Notice ==
+
+= 3.5.0 =
+This feature release adds a "Dynamic Gallery" Block for use with Gutenberg templates. Also compatibility with WooCommerce 8.0.3 and WordPress 6.3
 
 = 3.4.3 =
 This maintenance release has 2 bug fixes for compatibility with WordPress 6.2.2 or higher.

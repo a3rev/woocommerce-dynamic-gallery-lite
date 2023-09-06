@@ -49,15 +49,30 @@ class Main
 		wp_register_script( 'a3-dynamic-metabox-admin-script', WOO_DYNAMIC_GALLERY_JS_URL . '/a3.dynamic.metabox.admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse', 'jquery-ui-sortable' ), WOO_DYNAMIC_GALLERY_VERSION );
 	}
 
-	public static function wc_dynamic_gallery_display( $product_id = 0, $is_shortcode = false ) {
-		global $post;
+	public static function init_dynamic_gallery( $product_id = 0, $is_product_showing = true ) {
+		if ( empty( $product_id ) ) return '';
 
-		if ( $product_id < 1 ) {
-			global $product;
-			$product_id = $post->ID;
-		} else {
-			$product = wc_get_product( $product_id );
+		// Include google fonts into header
+		add_action( 'wp_enqueue_scripts', array( '\A3Rev\WCDynamicGallery\Functions', 'add_google_fonts'), 9 );
+
+		wp_enqueue_style( 'a3-dgallery-style' );
+		wp_enqueue_script( 'a3-dgallery-script' );
+
+		$popup_gallery = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'popup_gallery' );
+		if ($popup_gallery == 'fb') {
+			wp_enqueue_style( 'woocommerce_fancybox_styles' );
+			wp_enqueue_script( 'fancybox' );
+		} elseif ($popup_gallery == 'colorbox') {
+			wp_enqueue_style( 'a3_colorbox_style' );
+			wp_enqueue_script( 'colorbox_script' );
 		}
+	}
+
+	public static function wc_dynamic_gallery_display( $product_id = 0, $is_shortcode = false ) {
+		$product_id = Functions::get_current_product_id( $product_id );
+		if ( empty( $product_id ) ) return '';
+		
+		$product = wc_get_product( $product_id );
 	?>
 		<div class="<?php echo ( ! $is_shortcode ? 'images' : '' ); ?> gallery_container">
 	<?php

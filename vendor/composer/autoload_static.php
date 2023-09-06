@@ -44,6 +44,7 @@ class ComposerStaticInit3f9dd01c9f0540cf82122595f2fc3946
         'A3Rev\\WCDynamicGallery\\Shortcodes' => __DIR__ . '/../..' . '/classes/class-wc-dynamic-gallery-shortcodes.php',
         'A3Rev\\WCDynamicGallery\\Variations' => __DIR__ . '/../..' . '/classes/class-wc-dynamic-gallery-variations.php',
         'A3Rev\\WCDynamicGallery\\Widgets' => __DIR__ . '/../..' . '/widget/wc-dynamic-gallery-widgets.php',
+        'A3Rev\\WCDynamicGallery\\Blocks' => __DIR__ . '/../..' . '/src/blocks.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
