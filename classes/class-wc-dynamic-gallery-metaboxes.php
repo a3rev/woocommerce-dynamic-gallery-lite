@@ -6,8 +6,6 @@
  *
  * Table Of Contents
  *
- * woocommerce_meta_boxes_image()
- * woocommerce_product_image_box()
  * save_actived_d_gallery()
  */
 
@@ -19,12 +17,8 @@ class MetaBoxes
 	public function __construct() {
 		$current_db_version = get_option( 'woocommerce_db_version', null );
 
-		if ( version_compare( $current_db_version, '2.3.0', '>=' ) ) {
-			add_filter( 'woocommerce_product_data_tabs', array( $this, 'dynamic_gallery_tab' ), 100 );
-			add_action( 'woocommerce_product_data_panels', array( $this, 'dynamic_gallery_panel' ), 100 );
-		} else {
-			add_action( 'add_meta_boxes', array( $this, 'woocommerce_meta_boxes_image' ), 9 );
-		}
+		add_filter( 'woocommerce_product_data_tabs', array( $this, 'dynamic_gallery_tab' ), 100 );
+		add_action( 'woocommerce_product_data_panels', array( $this, 'dynamic_gallery_panel' ), 100 );
 
 		add_action( 'save_post', array( $this, 'save_actived_d_gallery' ), 11 );
 	}
@@ -163,125 +157,6 @@ class MetaBoxes
 
 		</div>
 	<?php
-	}
-
-	public function woocommerce_meta_boxes_image() {
-		add_meta_box( 'wc-dgallery-product-images', __( 'A3 Dynamic Image Gallery', 'woocommerce-dynamic-gallery' ), array( $this, 'woocommerce_product_image_box' ), 'product', 'side', 'high'
-			, array( 
-				'__block_editor_compatible_meta_box' => true,
-				'__back_compat_meta_box' => false,
-			));
-	}
-
-	public function woocommerce_product_image_box() {
-		global $post;
-
-		$global_wc_dgallery_activate  = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'activate' );
-		$actived_d_gallery            = get_post_meta( $post->ID, '_actived_d_gallery',true );
-
-		if ($actived_d_gallery == '' && $global_wc_dgallery_activate != 'no') {
-			$actived_d_gallery = 1;
-		}
-
-		$default_enable_gallery_thumb = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'enable_gallery_thumb' );
-		$enable_gallery_thumb         = get_post_meta($post->ID, '_wc_dgallery_enable_gallery_thumb',true);
-		if ( $enable_gallery_thumb == '' ) {
-			$enable_gallery_thumb = $default_enable_gallery_thumb;
-		}
-		if ( $enable_gallery_thumb == 1 || $enable_gallery_thumb == 'yes' ) {
-			$enable_gallery_thumb = 1 ;
-		}
-
-		$default_auto_feature_image = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'auto_feature_image' );
-		$auto_feature_image         = get_post_meta($post->ID, '_wc_dgallery_auto_feature_image',true);
-		if ( $auto_feature_image == '' ) {
-			$auto_feature_image = $default_auto_feature_image;
-		}
-		if ( $auto_feature_image == 1 || $auto_feature_image == 'yes' ) {
-			$auto_feature_image = 1 ;
-		}
-
-		wp_enqueue_style( 'a3-dynamic-metabox-admin-style' );
-		if ( is_rtl() ) {
-			wp_enqueue_style( 'a3-dynamic-metabox-admin-style-rtl' );
-		}
-		wp_enqueue_script( 'a3-dynamic-metabox-admin-script' );
-		wp_localize_script( 'a3-dynamic-metabox-admin-script', 'a3_dgallery_metabox', array( 'ajax_url' => admin_url( 'admin-ajax.php', 'relative' ), 'security' => wp_create_nonce( 'wc_dg_nonce' ) ) );
-		wp_enqueue_media();
-
-		ob_start();
-
-		?>
-        <div class="a3rev_panel_container a3-metabox-panel-wrap a3-dynamic-metabox-panel-wrap" style="padding-left: 0px;">
-
-			<div style="margin-bottom:10px;">
-        		<label class="a3_actived_d_gallery" style="margin-right: 50px;">
-        			<input type="checkbox" <?php checked( 1, $actived_d_gallery, true ); ?> value="1" name="actived_d_gallery" class="actived_d_gallery" /> 
-        			<?php echo __( 'A3 Dynamic Image Gallery activated', 'woocommerce-dynamic-gallery' ); ?>
-        		</label>
-        		<br />
-				<?php echo __( 'Use the Product Gallery Meta box in the right sidebar of this product edit page to Add, Move or Delete images.', 'woocommerce-dynamic-gallery' ); ?>
-				<br />
-				<?php echo __( '<strong>Important!</strong> If you do not see the Product Gallery meta box in the sidebar go to the Screen Options Tab at the top right corner of this page and check the [ ] Product Gallery box so it will show.', 'woocommerce-dynamic-gallery' ); ?>
-				<br />
-				<?php echo __( '<strong>Tip!</strong> When a3 Dynamic Gallery is activated for this product the meta box name auto changes from Product Gallery to Dynamic Product Gallery.', 'woocommerce-dynamic-gallery' ); ?>
-        	</div>
-
-			<div id="main_dgallery_panel" class="dgallery_images_container a3-metabox-panel a3-metabox-options-panel" style="<?php if ( 1 != $actived_d_gallery ) { echo 'display: none;'; } ?>">
-
-				<p class="a3_dgallery_is_variable_product">
-					<label class="a3_wc_dgallery_enable_gallery_thumb">
-						<input type="checkbox" <?php checked( 1, $enable_gallery_thumb, true ); ?> value="1" name="wc_dgallery_enable_gallery_thumb" class="wc_dgallery_enable_gallery_thumb" />
-						<?php echo __( 'Check to show Thumbnails with this Gallery', 'woocommerce-dynamic-gallery' ); ?>
-					</label>
-				</p>
-
-				<p class="a3_dgallery_is_variable_product">
-					<label class="a3_wc_dgallery_auto_feature_image">
-						<input type="checkbox" <?php checked( 1, $auto_feature_image, true ); ?> value="1" name="wc_dgallery_auto_feature_image" class="wc_dgallery_auto_feature_image" />
-						<?php echo __( 'Check to auto include Feature Image to Gallery on frontend', 'woocommerce-dynamic-gallery' ); ?>
-					</label>
-				</p>
-
-			</div>
-
-			<?php
-			// Add an nonce field so we can check for it later.
-			wp_nonce_field( 'a3_dynamic_metabox_action', 'a3_dynamic_metabox_nonce_field' );
-			?>
-			<div style="clear: both;"></div>
-
-		</div>
-		<div style="clear: both;"></div>
-
-        <script type="text/javascript">
-		jQuery(document).ready(function() {
-			var dynamic_gallery_title_text    = '<?php echo __( 'Dynamic Product Gallery', 'woocommerce-dynamic-gallery' ); ?>';
-			var dynamic_gallery_link_add_text = '<?php echo __( 'Add dynamic gallery images', 'woocommerce-dynamic-gallery' ); ?>';
-			var woo_gallery_title             = jQuery('#woocommerce-product-images').find('.hndle span');
-			var woo_gallery_link_add          = jQuery('#woocommerce-product-images').find('.add_product_images a');
-			var woo_gallery_title_text        = woo_gallery_title.html();
-			var woo_gallery_link_add_text     = woo_gallery_link_add.html();
-
-			if( jQuery('input.actived_d_gallery').is(":checked") ) {
-				woo_gallery_title.html(dynamic_gallery_title_text);
-				woo_gallery_link_add.html(dynamic_gallery_link_add_text);
-			}
-
-			jQuery('input.actived_d_gallery').on('change', function() {
-				if( jQuery(this).is(":checked") ) {
-					woo_gallery_title.html(dynamic_gallery_title_text);
-					woo_gallery_link_add.html(dynamic_gallery_link_add_text);
-				} else {
-					woo_gallery_title.html(woo_gallery_title_text);
-					woo_gallery_link_add.html(woo_gallery_link_add_text);
-				}
-			});
-		});
-		</script>
-        <?php
-		$output = ob_get_clean();
-		echo $output;
 	}
 
 	public function save_actived_d_gallery( $post_id = 0 ) {

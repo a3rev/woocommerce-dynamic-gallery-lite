@@ -107,12 +107,7 @@ class Preview
         <div class="images" style="100%; margin:30px auto;">
           <div class="product_gallery">
             <?php
-            if ( version_compare( WC_VERSION, '3.3.0', '<' ) ) {
-            	// bw compat. for less than WC 3.3.0
-				$woocommerce_thumbnail  = wc_get_image_size( 'shop_thumbnail' );
-			} else {
-				$woocommerce_thumbnail  = wc_get_image_size( 'woocommerce_gallery_thumbnail' );
-			}
+			$woocommerce_thumbnail  = wc_get_image_size( 'woocommerce_gallery_thumbnail' );
 			$g_thumb_width   = $woocommerce_thumbnail['width'];
 			$g_thumb_height  = $woocommerce_thumbnail['height'];
 			$g_thumb_spacing = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'thumb_spacing'];

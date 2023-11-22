@@ -28,13 +28,7 @@ class Variations
 			if ( is_array( $dgallery_ids ) && count( $dgallery_ids ) > 0 ) {
 				// Use first image from variation gallery
 				$img_id = (int) array_shift( $dgallery_ids );
-
-				if ( version_compare( WC_VERSION, '3.3.0', '<' ) ) {
-					// bw compat. for less than WC 3.3.0
-					$product_image = wp_get_attachment_image( $img_id, 'shop_thumbnail' );
-				} else {
-					$product_image = wp_get_attachment_image( $img_id, 'woocommerce_gallery_thumbnail' );
-				}
+				$product_image = wp_get_attachment_image( $img_id, 'woocommerce_gallery_thumbnail' );
 			}
 		}
 

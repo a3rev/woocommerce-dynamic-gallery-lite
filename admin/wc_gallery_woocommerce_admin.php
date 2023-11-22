@@ -7,14 +7,7 @@ function wc_dynamic_gallery_install(){
 	update_option('a3rev_woo_dgallery_lite_version', WOO_DYNAMIC_GALLERY_VERSION );
 	update_option('a3_dynamic_gallery_db_version', WOO_DYNAMIC_GALLERY_DB_VERSION);
 
-	// Set Settings Default from Admin Init
-	$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_init']->set_default_settings();
-
-	// Build sass
-	$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'less']->plugin_build_sass();
-
 	delete_metadata( 'user', 0, $GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_init']->plugin_name . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
-
 
 	update_option('a3rev_woo_dgallery_just_installed', true);
 }
@@ -25,6 +18,12 @@ function wc_dynamic_gallery_install(){
 function wc_dynamic_gallery_init() {
 	if ( get_option('a3rev_woo_dgallery_just_installed') ) {
 		delete_option('a3rev_woo_dgallery_just_installed');
+
+		// Set Settings Default from Admin Init
+		$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'admin_init']->set_default_settings();
+
+		// Build sass
+		$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'less']->plugin_build_sass();
 	}
 
 	wc_dynamic_gallery_plugin_textdomain();
@@ -65,19 +64,12 @@ add_filter( 'render_block_core/paragraph', array('\A3Rev\WCDynamicGallery\Shortc
 add_shortcode( 'wc_product_dgallery', array( '\A3Rev\WCDynamicGallery\Shortcodes', 'parse_shortcode_product_dynamic_gallery' ) );
 add_shortcode( 'wc_product_dynamic_gallery', array( '\A3Rev\WCDynamicGallery\Shortcodes', 'parse_shortcode_product_dynamic_gallery' ) );
 
-$woocommerce_db_version = get_option( 'woocommerce_db_version', null );
-
 // Change the image show in cart page
-if ( version_compare( $woocommerce_db_version, '2.1', '<' ) ) {
-	add_filter( 'woocommerce_in_cart_product_thumbnail', array('\A3Rev\WCDynamicGallery\Variations', 'change_image_in_cart_page'), 50, 3 );
-} else {
-	add_filter( 'woocommerce_cart_item_thumbnail', array('\A3Rev\WCDynamicGallery\Variations', 'change_image_in_cart_page'), 50, 3 );
-}
+add_filter( 'woocommerce_cart_item_thumbnail', array('\A3Rev\WCDynamicGallery\Variations', 'change_image_in_cart_page'), 50, 3 );
 
 add_action( 'wp', 'setup_dynamic_gallery', 20);
 function setup_dynamic_gallery() {
 	global $post;
-	$current_db_version = get_option( 'woocommerce_db_version', null );
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 	if ( is_singular( array( 'product' ) ) || (! empty( $post->post_content ) && stristr($post->post_content, '[product_page') !== false ) ) {
 		$global_wc_dgallery_activate = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'activate' );

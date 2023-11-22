@@ -32,12 +32,7 @@ class Thumbnails
 	/*-----------------------------------------------------------------------------------*/
 	public function init_form_fields() {
 
-		$wc_version = get_option( 'woocommerce_version', '1.0' );
-
 		$wc_display_settings_url = admin_url( 'customize.php?autofocus[panel]=woocommerce&autofocus[section]=woocommerce_product_images' );
-		if ( version_compare( $wc_version, '3.3.0', '<' ) ) {
-			$wc_display_settings_url = admin_url( 'admin.php?page=wc-settings&tab=products&section=display' );
-		}
 				
   		// Define settings			
      	$this->form_fields = array(

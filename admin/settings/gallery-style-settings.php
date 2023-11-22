@@ -204,7 +204,10 @@ class Gallery_Styles extends FrameWork\Admin_UI
 	public function init_form_fields() {
 		add_action( 'admin_enqueue_scripts', array( '\A3Rev\WCDynamicGallery\Main', 'backend_register_scripts' ) );
 
-		$wc_dgallery_preview_nonce = wp_create_nonce( 'wc_dgallery_preview' );
+		$wc_dgallery_preview_nonce = '';
+		if ( function_exists( 'wp_create_nonce') ) {
+			$wc_dgallery_preview_nonce = wp_create_nonce( 'wc_dgallery_preview' );
+		}
 
   		// Define settings			
      	$this->form_fields = array(

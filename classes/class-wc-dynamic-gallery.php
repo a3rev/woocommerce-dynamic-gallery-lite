@@ -116,14 +116,8 @@ class Main
 		$max_height          = 0;
 		$width_of_max_height = 0;
 
-		if ( version_compare( WC_VERSION, '3.3.0', '<' ) ) {
-			// bw compat. for less than WC 3.3.0
-			$single_size_name    = 'shop_single';
-			$thumbnail_size_name = 'shop_thumbnail';
-		} else {
-			$single_size_name    = 'woocommerce_single';
-			$thumbnail_size_name = 'woocommerce_gallery_thumbnail';
-		}
+		$single_size_name    = 'woocommerce_single';
+		$thumbnail_size_name = 'woocommerce_gallery_thumbnail';
 
 		// Process to get max height and width of max height for set gallery container
 		if ( count( $dgallery_ids ) > 0 ) {
