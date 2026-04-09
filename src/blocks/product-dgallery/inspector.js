@@ -31,10 +31,11 @@ export default class Inspector extends Component {
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings' ) }>
-					<TextControl
-						label={ __( 'Product ID' ) }
+				<TextControl
+					__next40pxDefaultSize
+					label={ __( 'Product ID' ) }
 						help={ __( 'Leave empty for use ID of current product' ) }
-						value={ postID }
+						value={ postID || '' }
 						onChange={ ( newPostID ) =>
 							setAttributes( { postID: newPostID } )
 						}

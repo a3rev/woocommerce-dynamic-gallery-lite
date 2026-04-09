@@ -25,11 +25,9 @@ function wc_dynamic_gallery_init() {
 		// Build sass
 		$GLOBALS[WOO_DYNAMIC_GALLERY_PREFIX.'less']->plugin_build_sass();
 	}
-
-	wc_dynamic_gallery_plugin_textdomain();
 }
 
-// Add language
+add_action( 'after_setup_theme', 'wc_dynamic_gallery_plugin_textdomain' );
 add_action('init', 'wc_dynamic_gallery_init');
 
 // Add custom style to dashboard

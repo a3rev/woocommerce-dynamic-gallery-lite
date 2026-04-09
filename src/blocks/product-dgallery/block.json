@@ -10,7 +10,8 @@
 	"textdomain": "woocommerce-dynamic-gallery",
 	"attributes":{
 		"postID": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		}
 	},
 	"selectors": {
