@@ -49,10 +49,10 @@ class Preview
 			$gallery_height_type = 'dynamic';
 		}
 		if ( $woo_dg_width_type == 'px' ) {
-			$g_width = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_width_fixed'].'px';
-			$g_height = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_height'];
+			$g_width = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_width_fixed'].'px';
+			$g_height = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_height'];
 		} else {
-			$g_width = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_width_responsive'].'%';
+			$g_width = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_width_responsive'].'%';
 		}
 
 		$max_height          = 533;
@@ -110,28 +110,28 @@ class Preview
 			$woocommerce_thumbnail  = wc_get_image_size( 'woocommerce_gallery_thumbnail' );
 			$g_thumb_width   = $woocommerce_thumbnail['width'];
 			$g_thumb_height  = $woocommerce_thumbnail['height'];
-			$g_thumb_spacing = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'thumb_spacing'];
+			$g_thumb_spacing = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'thumb_spacing'];
 			if ( isset( $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'thumb_show_type'] ) ) {
 				$thumb_show_type = 'slider';
 			} else {
 				$thumb_show_type = 'static';
 			}
 
-			$thumb_columns   = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX . 'thumb_columns'];
+			$thumb_columns   = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX . 'thumb_columns'];
 			if ( 'static' == $thumb_show_type ) {
 				$thumbs_list_class = 'a3dg-thumbs-static';
 				$display_back_and_forward = 'false';
 			}
 
-			if ( isset( $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_auto_start'] ) ) {
-            	$g_auto = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_auto_start'];
+			if ( isset( $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_auto_start'] ) && 'true' === $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_auto_start'] ) {
+            	$g_auto = 'true';
 			} else {
 				$g_auto = 'false';
 			}
 
-            $g_speed = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_speed'];
-            $g_effect = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_effect'];
-            $g_animation_speed = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_animation_speed'];
+            $g_speed = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_speed'];
+            $g_effect = sanitize_key( $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_effect'] );
+            $g_animation_speed = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_animation_speed'];
 
 			$main_bg_color = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_bg_color'];
 			if ( ! isset( $main_bg_color['enable'] ) ) {
@@ -145,14 +145,14 @@ class Preview
 			if ( ! isset( $main_shadow['enable'] ) ) {
 				$main_shadow['enable'] = 0;
 			}
-			$main_margin_top     = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_margin_top'];
-			$main_margin_bottom  = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_margin_bottom'];
-			$main_margin_left    = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_margin_left'];
-			$main_margin_right   = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_margin_right'];
-			$main_padding_top    = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_padding_top'];
-			$main_padding_bottom = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_padding_bottom'];
-			$main_padding_left   = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_padding_left'];
-			$main_padding_right  = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_padding_right'];
+			$main_margin_top     = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_margin_top'];
+			$main_margin_bottom  = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_margin_bottom'];
+			$main_margin_left    = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_margin_left'];
+			$main_margin_right   = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_margin_right'];
+			$main_padding_top    = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_padding_top'];
+			$main_padding_bottom = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_padding_bottom'];
+			$main_padding_left   = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_padding_left'];
+			$main_padding_right  = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'main_padding_right'];
 
 			if ( isset( $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_nav'] ) ) {
 				$product_gallery_nav = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'product_gallery_nav'];
@@ -171,14 +171,14 @@ class Preview
 			if ( ! isset( $navbar_shadow['enable'] ) ) {
 				$navbar_shadow['enable'] = 0;
 			}
-			$navbar_margin_top     = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_margin_top'];
-			$navbar_margin_bottom  = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_margin_bottom'];
-			$navbar_margin_left    = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_margin_left'];
-			$navbar_margin_right   = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_margin_right'];
-			$navbar_padding_top    = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_padding_top'];
-			$navbar_padding_bottom = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_padding_bottom'];
-			$navbar_padding_left   = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_padding_left'];
-			$navbar_padding_right  = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_padding_right'];
+			$navbar_margin_top     = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_margin_top'];
+			$navbar_margin_bottom  = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_margin_bottom'];
+			$navbar_margin_left    = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_margin_left'];
+			$navbar_margin_right   = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_margin_right'];
+			$navbar_padding_top    = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_padding_top'];
+			$navbar_padding_bottom = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_padding_bottom'];
+			$navbar_padding_left   = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_padding_left'];
+			$navbar_padding_right  = (int) $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_padding_right'];
 
 			$navbar_separator      = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'navbar_separator'];
 
@@ -188,7 +188,7 @@ class Preview
 			}
 			$caption_bg_transparent = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'caption_bg_transparent'];
 
-			$transition_scroll_bar = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'transition_scroll_bar'];
+			$transition_scroll_bar = esc_attr( $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'transition_scroll_bar'] );
 
 			if ( isset( $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'lazy_load_scroll'] ) ) {
 				$lazy_load_scroll = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'lazy_load_scroll'];
@@ -214,8 +214,8 @@ class Preview
 				$enable_gallery_thumb = 'no';
 			}
 
-			$thumb_border_color = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'thumb_border_color'];
-			$thumb_current_border_color = $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'thumb_current_border_color'];
+			$thumb_border_color = esc_attr( $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'thumb_border_color'] );
+			$thumb_current_border_color = esc_attr( $woo_a3_gallery_settings[WOO_DYNAMIC_GALLERY_PREFIX.'thumb_current_border_color'] );
 
             echo '<style>
 				#TB_window{width:auto !important;}

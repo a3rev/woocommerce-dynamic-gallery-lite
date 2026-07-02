@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce image gallery, WooCommerce, WooCommerce Product images, WooCommerce Product Gallery, WooCommerce Dynamic Gallery, Elementor WooCommerce Product Gallery, Elementor Product Gallery
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 3.6.0
+Stable tag: 3.6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -137,6 +137,12 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 
 == Changelog ==
+
+= 3.6.1 - 2026/07/02 =
+* This maintenance release has a security patch - please run this update now.
+* Security - Hardened internal admin AJAX handlers with stricter permission checks
+* Security - Improved data sanitization and output escaping across admin screens
+* Framework - General code hygiene and consistency improvements
 
 = 3.6.0 - 2026/03/31 =
 * This maintenance release has bug fixes and compatibility with WordPress 7.0, WooCommerce 10.6
