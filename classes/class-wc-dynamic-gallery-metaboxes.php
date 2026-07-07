@@ -187,7 +187,7 @@ class MetaBoxes
 		}
 
 		if ( isset( $_REQUEST['wc_dgallery_image_source'] ) ) {
-			update_post_meta( $post_id, '_wc_dgallery_image_source', sanitize_text_field( $_REQUEST['wc_dgallery_image_source'] ) );
+			update_post_meta( $post_id, '_wc_dgallery_image_source', sanitize_text_field( wp_unslash( $_REQUEST['wc_dgallery_image_source'] ) ) );
 		} else {
 			delete_post_meta( $post_id, '_wc_dgallery_image_source' );
 		}

@@ -101,7 +101,6 @@ class Gallery_Styles extends FrameWork\Admin_UI
 		//add_action( $this->plugin_name . '_get_all_settings' , array( $this, 'get_settings' ) );
 		
 		add_action('wp_ajax_woo_dynamic_gallery_preview', array('\A3Rev\WCDynamicGallery\Preview','wc_dynamic_gallery_preview'));
-		add_action('wp_ajax_nopriv_woo_dynamic_gallery_preview', array('\A3Rev\WCDynamicGallery\Preview','wc_dynamic_gallery_preview'));
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
