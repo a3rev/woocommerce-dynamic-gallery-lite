@@ -69,7 +69,7 @@ class Main
 	}
 
 	public static function wc_dynamic_gallery_display( $product_id = 0, $is_shortcode = false ) {
-		$product_id = Functions::get_current_product_id( $product_id );
+		$product_id = absint( Functions::get_current_product_id( $product_id ) );
 		if ( empty( $product_id ) ) return '';
 		
 		$product = wc_get_product( $product_id );
@@ -91,6 +91,7 @@ class Main
 		/**
 		 * Single Product Image
 		 */
+		$product_id = absint( $product_id );
 		global $post;
 
 		$global_stop_scroll_1image = get_option( WOO_DYNAMIC_GALLERY_PREFIX.'stop_scroll_1image' );

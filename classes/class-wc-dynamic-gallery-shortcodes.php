@@ -23,7 +23,7 @@ class Shortcodes
 			'product_id' => '', // leave empty for current product
         ), $attributes );
 
-        $product_id = esc_attr( $attr['product_id'] );	// XSS ok
+        $product_id = absint( $attr['product_id'] );
 
         $product_id = Functions::get_current_product_id( $product_id );
 
