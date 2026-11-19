@@ -76,7 +76,7 @@ class Functions
 			}
 		}
 
-		return $product_id;
+		return absint( $product_id );
 	}
 
 	public static function get_gallery_ids( $post_id = 0 ) {

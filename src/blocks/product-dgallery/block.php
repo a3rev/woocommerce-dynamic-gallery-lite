@@ -15,7 +15,7 @@
  * @return string Returns the filtered post title for the current post wrapped inside "h1" tags.
  */
 function render_block_wc_dgallery( $attributes, $content, $block ) {
-	$product_id = ! empty( $attributes['postID'] ) ? $attributes['postID'] : '';
+	$product_id = ! empty( $attributes['postID'] ) ? absint( $attributes['postID'] ) : 0;
 	$product_id = \A3Rev\WCDynamicGallery\Functions::get_current_product_id( $product_id );
 	if ( empty( $product_id ) ) {
     	return '';
