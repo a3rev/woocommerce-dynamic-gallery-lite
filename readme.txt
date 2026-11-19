@@ -954,6 +954,9 @@ You can use this plugin only when you have installed the WooCommerce plugin.
 
 == Upgrade Notice ==
 
+= 3.6.2 =
+This maintenance release has a security patch - please run this update now.
+
 = 3.6.0 =
 This maintenance release has bug fixes and compatibility with WordPress 7.0, WooCommerce 10.6
 
